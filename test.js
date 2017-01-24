@@ -1,6 +1,14 @@
 const stringFn = require("./source")
 
-describe("toKebab", () => {
+describe("split", () => {
+  it("should work with camel case", () => {
+    expect(
+      stringFn.split("fooBarBaz")
+    ).toEqual(["foo","Bar","Baz"])
+  })
+})
+  
+  describe("toKebab", () => {
   it("should work with camel case", () => {
     expect(
       stringFn.toKebab("fooBarBaz")

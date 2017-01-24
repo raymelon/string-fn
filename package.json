@@ -24,7 +24,10 @@
   },
   "homepage": "https://github.com/selfrefactor/string-fn#readme",
   "devDependencies": {
-    "jest": "^18.1.0"
+    "beautify-benchmark": "^0.2.4",
+    "benchmark": "^2.1.3",
+    "jest": "^18.1.0",
+    "voca": "^1.2.0"
   },
   "dependencies": {
     "rambda": "^0.4.1"
