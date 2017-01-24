@@ -33,7 +33,7 @@ if (options.kebabCase) {
 }
 
 const camelCaseSuite = new Benchmark.Suite
-options.camelCase = true
+options.camelCase = false
 
 if (options.camelCase) {
   const str = "foo bar Baz"
@@ -43,6 +43,58 @@ if (options.camelCase) {
   console.log(fnFirst())
   console.log(fnSecond())
   kebabCaseSuite
+    .add("StringFn#toCamelCase", () => {
+      fnFirst()
+    })
+    .add("Voca", () => {
+      fnSecond()
+    })
+    .on("cycle", event => {
+      benchmarks.add(event.target)
+    })
+    .on("complete", () => {
+      benchmarks.log()
+    })
+    .run()
+}
+
+const snakeCaseSuite = new Benchmark.Suite
+options.snakeCase = 0
+
+if (options.snakeCase) {
+  const str = "foo bar Baz"
+  const fnFirst = () => stringFn.toSnakeCase(str)
+  const fnSecond = () => voca.snakeCase(str)
+
+  console.log(fnFirst())
+  console.log(fnSecond())
+  kebabCaseSuite
+    .add("StringFn#toCamelCase", () => {
+      fnFirst()
+    })
+    .add("Voca", () => {
+      fnSecond()
+    })
+    .on("cycle", event => {
+      benchmarks.add(event.target)
+    })
+    .on("complete", () => {
+      benchmarks.log()
+    })
+    .run()
+}
+
+const countSuite = new Benchmark.Suite
+options.count = true
+
+if (options.count) {
+  const str = "foo bar Baz foo"
+  const fnFirst = () => stringFn.count(str,"foo")
+  const fnSecond = () => voca.countSubstrings(str,"foo")
+
+  console.log(fnFirst())
+  console.log(fnSecond())
+  countSuite
     .add("StringFn#toCamelCase", () => {
       fnFirst()
     })

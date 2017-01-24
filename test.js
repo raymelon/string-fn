@@ -8,6 +8,22 @@ describe("toWords", () => {
   })
 })
 
+describe("count", () => {
+  it("should work", () => {
+    expect(
+      stringFn.count("fooBarfoo","foo")
+    ).toEqual(2)
+    
+    expect(
+      stringFn.count("fooBarfoo","baz")
+    ).toEqual(0)
+    
+    expect(
+      stringFn.count("foo1 Bar foo1 baz Foo1 foo1","foo1")
+    ).toEqual(3)
+  })
+})
+
 describe("toCamelCase", () => {
   it("should work", () => {
     expect(
@@ -33,6 +49,20 @@ describe("toSnakeCase", () => {
     expect(
       stringFn.toSnakeCase("foo bar bazö",true)
     ).toEqual("foo_bar_bazö")
+  })
+})
+
+describe("toTitleCase", () => {
+  it("should work", () => {
+    expect(
+      stringFn.toTitleCase("foo bar BAZ")
+    ).toEqual("Foo Bar Baz")
+  })
+  
+  it("should work with ö", () => {
+    expect(
+      stringFn.toTitleCase("foo bar bazö",true)
+    ).toEqual("Foo Bar Bazö")
   })
 })
 

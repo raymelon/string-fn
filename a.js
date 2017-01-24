@@ -1,11 +1,13 @@
-const Benchmark = require("benchmark")
-const benchmarks = require("beautify-benchmark")
+const R = require("rambda")
 
+const str = `
 const stringFn = require("./source")
-const voca = require("voca")
 
-  const str = "foo BAR baZ"
-  const fnSecond = ()=> voca.words(str)
-    
-  console.log(fnSecond())
-
+describe("toWords", () => {
+  it("should work", () => {
+    expect(
+      stringFn.toWords("fooBarBaz")
+    ).toEqual(["foo", "Bar", "Baz"])
+  })
+})
+`
