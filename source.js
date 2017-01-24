@@ -26,5 +26,15 @@ function toKebabCase(str, flag = false){
   return R.toLower(R.join("-",toWords(str,flag)))
 }
 
+function toCamelCase(str, flag = false){
+  console.log(toWords(str,flag))
+  return R.compose(
+    val => `${R.toLower(R.head(val))}${R.tail(val)}`,
+    R.join(""),
+    R.map(val=> `${R.toUpper(R.head(val))}${R.toLower(R.tail(val))}`)  
+  )(toWords(str,flag))
+}
+
 module.exports.toKebabCase = toKebabCase
+module.exports.toCamelCase = toCamelCase
 module.exports.toWords = toWords
