@@ -1,15 +1,9 @@
 const stringFn = require("./source")
 
-describe("camelToSlug",()=>{
-  it("should work",()=>{
+describe("toKebabCase",()=>{
+  it("should work with camel case",()=>{
     expect(
-      stringFn.camelToSlug("fooBarBaz")
+      stringFn.toKebabCase("fooBarBaz")
     ).toEqual("foo-bar-baz")
-  })  
-})
-
-describe("camelToSlug",()=>{
-  it("should work",()=>{
-    expect(1).toEqual(1)
-  })  
+  })
 })

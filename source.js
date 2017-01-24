@@ -1,17 +1,18 @@
 const R = require("rambda")
 
-function camelToSlug(str){
+function toKebabCase(str){
   return R.compose(
+    val => R.replace(/[^a-zA-Z]{1,3}/g,"-",val),
     R.join(""),
     R.map(val =>{
       if (R.toUpper(val) === val) {
         return `-${ R.toLower(val) }`
       }
-      
+
       return val
     }),
     R.split("")
-  )(str)    
+  )(str)
 }
 
-module.exports.camelToSlug = camelToSlug
+module.exports.toKebabCase = toKebabCase
