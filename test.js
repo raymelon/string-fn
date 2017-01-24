@@ -22,6 +22,20 @@ describe("toCamelCase", () => {
   })
 })
 
+describe("toSnakeCase", () => {
+  it("should work", () => {
+    expect(
+      stringFn.toSnakeCase("foo bar BAZ")
+    ).toEqual("foo_bar_baz")
+  })
+  
+  it("should work with ö", () => {
+    expect(
+      stringFn.toSnakeCase("foo bar bazö",true)
+    ).toEqual("foo_bar_bazö")
+  })
+})
+
 describe("toKebabCase", () => {
   it("should work with camel case", () => {
     expect(

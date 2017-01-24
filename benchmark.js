@@ -36,9 +36,9 @@ const camelCaseSuite = new Benchmark.Suite
 options.camelCase = true
 
 if (options.camelCase) {
-  const str = "Foo bar Baz"
+  const str = "foo bar Baz"
   const fnFirst = () => stringFn.toCamelCase(str)
-  const fnSecond = () => voca.kebabCase(str)
+  const fnSecond = () => voca.camelCase(str)
 
   console.log(fnFirst())
   console.log(fnSecond())
