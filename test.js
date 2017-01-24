@@ -1,37 +1,37 @@
 const stringFn = require("./source")
 
-describe("split", () => {
+describe("toWords", () => {
   it("should work with camel case", () => {
     expect(
-      stringFn.split("fooBarBaz")
+      stringFn.toWords("fooBarBaz")
     ).toEqual(["foo","Bar","Baz"])
   })
 })
   
-  describe("toKebab", () => {
+  describe("toKebabCase", () => {
   it("should work with camel case", () => {
     expect(
-      stringFn.toKebab("fooBarBaz")
+      stringFn.toKebabCase("fooBarBaz")
     ).toEqual("foo-bar-baz")
   })
 
   it("should work with snake case", () => {
     expect(
-      stringFn.toKebab("foo_bar_baz")
+      stringFn.toKebabCase("foo_bar_baz")
     ).toEqual("foo-bar-baz")
   })
 
   it("should work as lodash", () => {
     expect(
-      stringFn.toKebab("Foo Bar BAZ")
+      stringFn.toKebabCase("Foo Bar BAZ")
     ).toEqual("foo-bar-baz")    
     
     expect(
-      stringFn.toKebab("__FOO_BAR__")
+      stringFn.toKebabCase("__FOO_BAR__")
     ).toEqual("foo-bar")
     
     expect(
-      stringFn.toKebab("Foo Bar BAZ")
+      stringFn.toKebabCase("Foo Bar BAZ")
     ).toEqual("foo-bar-baz")
     
     
