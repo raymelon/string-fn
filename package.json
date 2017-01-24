@@ -1,0 +1,32 @@
+{
+  "name": "string-fn",
+  "version": "0.1.0",
+  "description": "Useful string manipulations",
+  "main": "source.js",
+  "scripts": {
+    "test": "jest",
+    "cover": "jest --coverage",
+    "de": "git add . --all&&git commit -m update&&git push"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/selfrefactor/string-fn.git"
+  },
+  "keywords": [
+    "string",
+    "util",
+    "manipulation"
+  ],
+  "author": "self_refactor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/selfrefactor/string-fn/issues"
+  },
+  "homepage": "https://github.com/selfrefactor/string-fn#readme",
+  "devDependencies": {
+    "jest": "^18.1.0"
+  },
+  "dependencies": {
+    "rambda": "^0.4.1"
+  }
+}

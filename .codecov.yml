@@ -1,0 +1,14 @@
+codecov:
+  notify:
+    require_ci_to_pass: false
+    after_n_builds: 1
+
+  token: 0c68eb24-f7ac-4ad1-a186-f15e914ed216
+coverage:
+  status:
+    project: false
+    patch:
+      default:
+        target: 70%
+
+comment: false
