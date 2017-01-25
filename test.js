@@ -14,7 +14,7 @@ describe("cleanHtml", () => {
   it("should work", () => {
     
     expect(
-      stringFn.cleanHtml("<p>foo <b>bar</b><hr/> baz</p>")
+      stringFn.cleanHtml("<p>foo <b>bar</b>   <hr/> baz</p>")
     ).toEqual("foo bar baz")
   })
 })
@@ -72,6 +72,30 @@ describe("distance", () => {
     
     expect(
       stringFn.distance("foobarbaz","foobarbaz")
+    ).toEqual(0)
+  })
+})
+
+describe("distanceGerman", () => {
+  it("should work", () => {
+    expect(
+      stringFn.distanceGerman("foobarbaz","ffoobarbaz")
+    ).toEqual(1)
+    
+    expect(
+      stringFn.distanceGerman("schön","shön")
+    ).toEqual(1)
+    
+    expect(
+      stringFn.distanceGerman("Müde","mude")
+    ).toEqual(0)
+    
+    expect(
+      stringFn.distanceGerman("die Männer","die manner")
+    ).toEqual(0)
+    
+    expect(
+      stringFn.distanceGerman("der anlass","der Anlaß")
     ).toEqual(0)
   })
 })

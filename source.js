@@ -123,19 +123,19 @@ function distance(a, b) {
   return row[a.length]
 }
 
-function replaceLast(str, replacer = ""){
+function replaceLast(str, replacer = "") {
   return `${R.init(str)}${replacer}`
 }
 
-function replaceFirst(str, replacer = ""){
+function replaceFirst(str, replacer = "") {
   return `${replacer}${R.tail(str)}`
 }
 
-function stripPunctuation(str){
-  return R.replace(PUNCTUATIONS,"",str)
+function stripPunctuation(str) {
+  return R.replace(PUNCTUATIONS, "", str)
 }
 
-function cleanHtml(str){
+function cleanHtml(str) {
   return R.replace(
     /\s+/g,
     " ",
@@ -147,11 +147,44 @@ function cleanHtml(str){
   ).trim()
 }
 
+
+function returnEasyStyleGerman(keyIs) {
+  if (keyIs === "ä") {
+    return "a"
+  }
+  else if (keyIs === "ö") {
+    return "o"
+  }
+  else if (keyIs === "ü") {
+    return "u"
+  }
+  else if (keyIs === "ß") {
+    return "ss"
+  }
+
+  return keyIs
+}
+
+function normalizeGermanWord(str) {
+  return R.join(
+    "",
+    R.map(
+      val => returnEasyStyleGerman(val),
+      R.split("", R.toLower(str))
+    )
+  )
+}
+
+function distanceGerman(a,b) {
+  return distance(normalizeGermanWord(a),normalizeGermanWord(b))
+}
+
 module.exports.cleanHtml = cleanHtml
 module.exports.stripPunctuation = stripPunctuation
 module.exports.replaceFirst = replaceFirst
 module.exports.replaceLast = replaceLast
 module.exports.distance = distance
+module.exports.distanceGerman = distanceGerman
 module.exports.count = count
 module.exports.surround = surround
 module.exports.shuffle = shuffle

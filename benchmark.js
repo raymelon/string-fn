@@ -3,7 +3,7 @@ const benchmarks = require("beautify-benchmark")
 
 const stringFn = require("./source")
 const voca = require("voca")
-const strman = require('strman')
+var S = require('string')
 
 const options = {}
 
@@ -111,18 +111,18 @@ if (options.count) {
     .run()
 }
 
-const shuffleSuite = new Benchmark.Suite
-options.shuffle = true
+const cleanHtmlSuite = new Benchmark.Suite
+options.cleanHtml = true
 
-if (options.shuffle) {
-  const str = "foobarbaz"
-  const fnFirst = () => stringFn.shuffle(str)
-  const fnSecond = () => strman.shuffle(str)
+if (options.cleanHtml) {
+  const str = "<p>foo <b>bar</b>   <hr/> baz</p>"
+  const fnFirst = () => stringFn.cleanHtml(str)
+  const fnSecond = () => S(str).stripTags().s
 
   console.log(fnFirst())
   console.log(fnSecond())
-  shuffleSuite
-    .add("StringFn#shuffle", () => {
+  cleanHtmlSuite
+    .add("StringFn#cleanHtml", () => {
       fnFirst()
     })
     .add("Strman", () => {
