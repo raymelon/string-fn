@@ -26,7 +26,7 @@ https://unpkg.com/string-fn@0.2.0/webVersion.js
 
 ## API
 
-- between(str, leftLimiter, rightLimiter)
+## between(str, leftLimiter, rightLimiter)
 
 Returns substring of **str** placed between **leftLimiter** and **rightLimiter**
 
@@ -41,7 +41,7 @@ stringFn.between("begin foo bar baz end", "q", "x")
 // => "begin foo bar baz end"
 ```
 
-- camelCase(str, extendedLatinFlag = false)
+## camelCase(str, extendedLatinFlag = false)
 
 Returns camel case version of **str**.
 
@@ -68,7 +68,7 @@ stringFn.camelCase("foo bar bazö", true)
 // => "fooBarBazö"
 ```
 
-- clean(str)
+## clean(str)
 
 Trims **str** and turns multiple whitespace to single whitespace
 
@@ -77,7 +77,7 @@ stringFn.clean("   foo  bar   baz   ")
 // => "foo bar baz"
 ```
 
-- count(str, substring)
+## count(str, substring)
 
 Count number of occurances of **substring** within **str**
 
@@ -92,7 +92,7 @@ stringFn.count("foo1 Bar foo1 baz Foo1 foo1", "foo1")
 // => 3
 ```
 
-- distance(firstString, secondString)
+## distance(firstString, secondString)
 
 Calculates Levenshtein distance between **firstString** and **secondString**
 
@@ -110,7 +110,7 @@ stringFn.distance("foobarbaz", "foobarbaz")
 // => 0
 ```
 
-- distanceGerman(firstString, secondString)
+## distanceGerman(firstString, secondString)
 
 Calculates Levenshtein distance between normalized German strings
 
