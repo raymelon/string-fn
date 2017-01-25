@@ -10,6 +10,23 @@ describe("words", () => {
   })
 })
 
+describe("capitalize", () => {
+  it("should work", () => {
+
+    expect(
+      stringFn.capitalize("in my time |,of dying")
+    ).toEqual("In my Time of Dying")
+
+    expect(
+      stringFn.capitalize("i got ants in my pants")
+    ).toEqual("I Got Ants in my Pants")
+
+    expect(
+      stringFn.capitalize("i got ants in my pants",2)
+    ).toEqual("I Got Ants In My Pants")
+  })
+})
+
 describe("between", () => {
   it("should work", () => {
 
@@ -22,8 +39,8 @@ describe("between", () => {
     ).toEqual("bar")
 
     expect(
-      stringFn.between("begin oo   bar   ba end","foo","baz")
-    ).toEqual("bar")
+      stringFn.between("begin foo bar baz end","q","x")
+    ).toEqual("begin foo bar baz end")
   })
 })
 

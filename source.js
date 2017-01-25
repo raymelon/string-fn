@@ -73,6 +73,24 @@ function titleCase(str, flag = false) {
   )
 }
 
+function capitalize(str, lowLimit = 3, flag = false) {
+
+  const result = R.join(
+    " ",
+    R.map(
+      val => {
+        if(val.length>=lowLimit){
+          return `${R.toUpper(R.head(val))}${R.toLower(R.tail(val))}`
+        }
+        return val
+      },
+      words(str, flag)
+    )
+  )
+
+  return `${R.toUpper(R.head(result))}${R.tail(result)}`
+}
+
 function camelCase(str, flag = false) {
   const result = R.join(
     "",
@@ -192,13 +210,7 @@ function between(str, leftLimit, rightLimit) {
   ).trim()
 }
 
-function betweens(str, leftLimit, rightLimit) {
-  return R.split(
-    leftLimit,
-    R.head(R.split(rightLimit, str))
-  )
-}
-
+module.exports.capitalize = capitalize
 module.exports.between = between
 module.exports.reverse = reverse
 module.exports.stripTags = stripTags
