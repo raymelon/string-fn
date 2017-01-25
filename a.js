@@ -1,6 +1,6 @@
 const R = require("rambda")
 
-const str = `
+const a = `
 const stringFn = require("./source")
 
 describe("toWords", () => {
@@ -19,29 +19,28 @@ describe("toCamelCase", () => {
   })
   
   it("should work with ö", () => {
-    expect(
-      stringFn.toCamelCase("foo bar bazö",true)
-    ).toEqual("fooBarBazö")
+    expect(stringFn.toCamelCase("foo bar bazö",true)).toEqual("fooBarBazö")
   })
 })
-
 `
 
-let a = R.split("expect(\n")(str)
-a = R.tail(a)
+function main(str) {
+  const strAsArr = R.tail(R.split("expect(")(str))
 
-let willReturn = ""
-a.map(val=>{
-    if(val.includes("toEqual")){
-        let b = R.split(").toEqual(")(val)
-        let c = R.init(b[1].split("\n")[0])
+  let willReturn = ""
+  strAsArr.map(val => {
+    if (val.includes("toEqual")) {
+      const expectationAsArr = R.split(").toEqual(")(val)
+      const result = R.init(expectationAsArr[1].split("\n")[0])
 
-        willReturn +=`
-${b[0].trim()} 
-// => ${c}
+      willReturn += `
+${expectationAsArr[0].trim()} 
+// => ${result}
 
-`        
+`
     }
-})
+  })
+  return willReturn
+}
 
-console.log(willReturn)
+console.log(main(a))
