@@ -361,6 +361,10 @@ describe("wrap", () => {
     expect(
       stringFn.wrap("dr strangelove or how i learned to love the bomb", 5)
     ).toEqual([ "dr", "or", "how i", "to", "love", "the", "bomb" ])
+
+    expect(
+      stringFn.wrap("dr strangelove or how i learned to love the bomb", 15)
+    ).toEqual([ "dr", "or", "how i", "to", "love", "the", "bomb" ])
   })
 
   it("when string flag is true", () => {
