@@ -1,3 +1,4 @@
+const R = require("rambda")
 const stringFn = require("./source")
 
 describe("toWords", () => {
@@ -8,16 +9,28 @@ describe("toWords", () => {
   })
 })
 
+describe("shuffle", () => {
+  it("should work", () => {
+
+    expect(
+      R.equals(
+        stringFn.shuffle("fooBarBaz"),
+        "fooBarBaz"
+      )
+    ).toBeFalsy()
+  })
+})
+
 describe("count", () => {
   it("should work", () => {
     expect(
       stringFn.count("fooBarfoo","foo")
     ).toEqual(2)
-    
+
     expect(
       stringFn.count("fooBarfoo","baz")
     ).toEqual(0)
-    
+
     expect(
       stringFn.count("foo1 Bar foo1 baz Foo1 foo1","foo1")
     ).toEqual(3)
@@ -30,7 +43,7 @@ describe("toCamelCase", () => {
       stringFn.toCamelCase("foo bar BAZ")
     ).toEqual("fooBarBaz")
   })
-  
+
   it("should work with ö", () => {
     expect(
       stringFn.toCamelCase("foo bar bazö",true)
@@ -44,7 +57,7 @@ describe("toSnakeCase", () => {
       stringFn.toSnakeCase("foo bar BAZ")
     ).toEqual("foo_bar_baz")
   })
-  
+
   it("should work with ö", () => {
     expect(
       stringFn.toSnakeCase("foo bar bazö",true)
@@ -58,7 +71,7 @@ describe("toTitleCase", () => {
       stringFn.toTitleCase("foo bar BAZ")
     ).toEqual("Foo Bar Baz")
   })
-  
+
   it("should work with ö", () => {
     expect(
       stringFn.toTitleCase("foo bar bazö",true)
