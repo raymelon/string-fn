@@ -10,6 +10,19 @@ describe("words", () => {
   })
 })
 
+describe("between", () => {
+  it("should work", () => {
+    
+    expect(
+      stringFn.between("begin foobarbaz end","foo","baz")
+    ).toEqual("bar")
+    
+    expect(
+      stringFn.between("begin foo   bar   baz end","foo","baz")
+    ).toEqual("bar")
+  })
+})
+
 describe("reverse", () => {
   it("should work", () => {
     

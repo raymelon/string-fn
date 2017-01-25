@@ -175,14 +175,31 @@ function normalizeGermanWord(str) {
   )
 }
 
-function distanceGerman(a,b) {
-  return distance(normalizeGermanWord(a),normalizeGermanWord(b))
+function distanceGerman(a, b) {
+  return distance(normalizeGermanWord(a), normalizeGermanWord(b))
 }
 
-function reverse(str){
+function reverse(str) {
   return str.split("").reverse().join("")
 }
 
+function between(str, leftLimit, rightLimit) {
+  return R.last(
+    R.split(
+      leftLimit,
+      R.head(R.split(rightLimit, str))
+    )
+  ).trim()
+}
+
+function betweens(str, leftLimit, rightLimit) {
+  return R.split(
+    leftLimit,
+    R.head(R.split(rightLimit, str))
+  )
+}
+
+module.exports.between = between
 module.exports.reverse = reverse
 module.exports.stripTags = stripTags
 module.exports.stripPunctuation = stripPunctuation
