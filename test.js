@@ -1,11 +1,11 @@
 const R = require("rambda")
 const stringFn = require("./source")
 
-describe("toWords", () => {
+describe("words", () => {
   it("should work", () => {
     
     expect(
-      stringFn.toWords("fooBarBaz")
+      stringFn.words("fooBarBaz")
     ).toEqual(["foo", "Bar", "Baz"])
   })
 })
@@ -15,15 +15,15 @@ describe("reverse", () => {
     
     expect(
       stringFn.reverse("fooBarBaz")
-    ).toEqual("")
+    ).toEqual("zaBraBoof")
   })
 })
 
-describe("cleanHtml", () => {
+describe("stripTags", () => {
   it("should work", () => {
     
     expect(
-      stringFn.cleanHtml("<p>foo <b>bar</b>   <hr/> baz</p>")
+      stringFn.stripTags("<p>foo <b>bar</b>   <hr/> baz</p>")
     ).toEqual("foo bar baz")
   })
 })
@@ -153,74 +153,72 @@ describe("count", () => {
   })
 })
 
-describe("toCamelCase", () => {
+describe("camelCase", () => {
   it("should work", () => {
     expect(
-      stringFn.toCamelCase("foo bar BAZ")
+      stringFn.camelCase("foo bar BAZ")
     ).toEqual("fooBarBaz")
   })
 
   it("should work with ö", () => {
     expect(
-      stringFn.toCamelCase("foo bar bazö",true)
+      stringFn.camelCase("foo bar bazö",true)
     ).toEqual("fooBarBazö")
   })
 })
 
-describe("toSnakeCase", () => {
+describe("snakeCase", () => {
   it("should work", () => {
     expect(
-      stringFn.toSnakeCase("foo bar BAZ")
+      stringFn.snakeCase("foo bar BAZ")
     ).toEqual("foo_bar_baz")
   })
 
   it("should work with ö", () => {
     expect(
-      stringFn.toSnakeCase("foo bar bazö",true)
+      stringFn.snakeCase("foo bar bazö",true)
     ).toEqual("foo_bar_bazö")
   })
 })
 
-describe("toTitleCase", () => {
+describe("titleCase", () => {
   it("should work", () => {
     expect(
-      stringFn.toTitleCase("foo bar BAZ")
+      stringFn.titleCase("foo bar BAZ")
     ).toEqual("Foo Bar Baz")
   })
 
   it("should work with ö", () => {
     expect(
-      stringFn.toTitleCase("foo bar bazö",true)
+      stringFn.titleCase("foo bar bazö",true)
     ).toEqual("Foo Bar Bazö")
   })
 })
 
-describe("toKebabCase", () => {
+describe("kebabCase", () => {
   it("should work with camel case", () => {
     expect(
-      stringFn.toKebabCase("fooBarBaz")
+      stringFn.kebabCase("fooBarBaz")
     ).toEqual("foo-bar-baz")
   })
 
   it("should work with snake case", () => {
     expect(
-      stringFn.toKebabCase("foo_bar_baz")
+      stringFn.kebabCase("foo_bar_baz")
     ).toEqual("foo-bar-baz")
   })
 
   it("should work as lodash", () => {
     expect(
-      stringFn.toKebabCase("Foo Bar BAZ")
+      stringFn.kebabCase("Foo Bar BAZ")
     ).toEqual("foo-bar-baz")
 
     expect(
-      stringFn.toKebabCase("__FOO_BAR__")
+      stringFn.kebabCase("__FOO_BAR__")
     ).toEqual("foo-bar")
 
     expect(
-      stringFn.toKebabCase("Foo Bar BAZ")
+      stringFn.kebabCase("Foo Bar BAZ")
     ).toEqual("foo-bar-baz")
-
-
   })
 })

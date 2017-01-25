@@ -111,12 +111,12 @@ if (options.count) {
     .run()
 }
 
-const cleanHtmlSuite = new Benchmark.Suite
-options.cleanHtml = true
+const stripTagsSuite = new Benchmark.Suite
+options.stripTags = false
 
-if (options.cleanHtml) {
+if (options.stripTags) {
   const str = "<p>foo <b>bar</b>   <hr/> baz</p>"
-  const fnFirst = () => stringFn.cleanHtml(str)
+  const fnFirst = () => stringFn.stripTags(str)
   const fnSecond = () => S(str).stripTags().s
 
   console.log(fnFirst())
@@ -126,6 +126,32 @@ if (options.cleanHtml) {
       fnFirst()
     })
     .add("Strman", () => {
+      fnSecond()
+    })
+    .on("cycle", event => {
+      benchmarks.add(event.target)
+    })
+    .on("complete", () => {
+      benchmarks.log()
+    })
+    .run()
+}
+
+const testSuite = new Benchmark.Suite
+options.test = true
+
+if (options.test) {
+  const str = "foo bar baz"
+  const fnFirst = () => str.endsWith("baz")
+  const fnSecond = () => voca.endsWith(str, "baz")
+
+  console.log(fnFirst())
+  console.log(fnSecond())
+  cleanHtmlSuite
+    .add("Test1", () => {
+      fnFirst()
+    })
+    .add("Test2", () => {
       fnSecond()
     })
     .on("cycle", event => {

@@ -35,7 +35,7 @@ function surround(str, leftStr, rightStr) {
   return `${leftStr}${str}${rightStr}`
 }
 
-function toWords(str, flag = false) {
+function words(str, flag = false) {
   const regex = flag ?
     WORDS_EXTENDED :
     WORDS
@@ -43,42 +43,42 @@ function toWords(str, flag = false) {
   return R.match(regex, str)
 }
 
-function toKebabCase(str, flag = false) {
+function kebabCase(str, flag = false) {
   return R.toLower(
     R.join(
       "-",
-      toWords(str, flag)
+      words(str, flag)
     )
   )
 }
 
-function toSnakeCase(str, flag = false) {
+function snakeCase(str, flag = false) {
 
   return R.toLower(
     R.join(
       "_",
-      toWords(str, flag)
+      words(str, flag)
     )
   )
 }
 
-function toTitleCase(str, flag = false) {
+function titleCase(str, flag = false) {
 
   return R.join(
     " ",
     R.map(
       val => `${R.toUpper(R.head(val))}${R.toLower(R.tail(val))}`,
-      toWords(str, flag)
+      words(str, flag)
     )
   )
 }
 
-function toCamelCase(str, flag = false) {
+function camelCase(str, flag = false) {
   const result = R.join(
     "",
     R.map(
       val => `${R.toUpper(R.head(val))}${R.toLower(R.tail(val))}`,
-      toWords(str, flag)
+      words(str, flag)
     )
   )
 
@@ -135,7 +135,7 @@ function stripPunctuation(str) {
   return R.replace(PUNCTUATIONS, "", str)
 }
 
-function cleanHtml(str) {
+function stripTags(str) {
   return R.replace(
     /\s+/g,
     " ",
@@ -180,11 +180,11 @@ function distanceGerman(a,b) {
 }
 
 function reverse(str){
-  str.split("").reverse().join("")
+  return str.split("").reverse().join("")
 }
 
 module.exports.reverse = reverse
-module.exports.cleanHtml = cleanHtml
+module.exports.stripTags = stripTags
 module.exports.stripPunctuation = stripPunctuation
 module.exports.replaceFirst = replaceFirst
 module.exports.replaceLast = replaceLast
@@ -193,8 +193,8 @@ module.exports.distanceGerman = distanceGerman
 module.exports.count = count
 module.exports.surround = surround
 module.exports.shuffle = shuffle
-module.exports.toKebabCase = toKebabCase
-module.exports.toTitleCase = toTitleCase
-module.exports.toSnakeCase = toSnakeCase
-module.exports.toCamelCase = toCamelCase
-module.exports.toWords = toWords
+module.exports.kebabCase = kebabCase
+module.exports.titleCase = titleCase
+module.exports.snakeCase = snakeCase
+module.exports.camelCase = camelCase
+module.exports.words = words
