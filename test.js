@@ -10,6 +10,15 @@ describe("toWords", () => {
   })
 })
 
+describe("reverse", () => {
+  it("should work", () => {
+    
+    expect(
+      stringFn.reverse("fooBarBaz")
+    ).toEqual("")
+  })
+})
+
 describe("cleanHtml", () => {
   it("should work", () => {
     

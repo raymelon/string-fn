@@ -179,6 +179,11 @@ function distanceGerman(a,b) {
   return distance(normalizeGermanWord(a),normalizeGermanWord(b))
 }
 
+function reverse(str){
+  str.split("").reverse().join("")
+}
+
+module.exports.reverse = reverse
 module.exports.cleanHtml = cleanHtml
 module.exports.stripPunctuation = stripPunctuation
 module.exports.replaceFirst = replaceFirst
