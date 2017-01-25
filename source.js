@@ -210,6 +210,59 @@ function between(str, leftLimit, rightLimit) {
   ).trim()
 }
 
+function wrap(str, wrapLimit, flag = false){
+  const strAsArr = str.split("")
+  const willReturn = []
+  let counter = 0
+
+  Array(str.length).fill().map((val,key)=>{
+    if(key === counter){
+      const nextCellKey = key+wrapLimit+1
+      if(nextCellKey>strAsArr.length){
+
+        willReturn.push(str.substr(key))
+      }else{
+
+        const shortString = str.substr(key, wrapLimit)
+
+        if(strAsArr[nextCellKey]===" "){
+
+          willReturn.push(shortString)
+          counter = nextCellKey
+        }else{
+
+          let spaceCellKey = shortString.lastIndexOf(" ")
+          if(spaceCellKey === -1){
+
+            const longSubstring = str.substr(key)
+            spaceCellKey = longSubstring.indexOf(" ")
+            if(spaceCellKey === -1){
+
+              if(flag){
+
+                willReturn.push(longSubstring)
+              }
+              counter = str.length
+            }else{
+
+              willReturn.push(longSubstring.substring(0,spaceCellKey))
+              counter = spaceCellKey
+            }
+          }else{
+
+            willReturn.push(shortString.substring(0,spaceCellKey))
+            counter = spaceCellKey
+          }
+
+        }
+      }
+    }
+  })
+
+  return willReturn
+}
+
+module.exports.wrap = wrap
 module.exports.capitalize = capitalize
 module.exports.between = between
 module.exports.reverse = reverse

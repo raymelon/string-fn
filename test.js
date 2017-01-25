@@ -1,6 +1,15 @@
 const R = require("rambda")
 const stringFn = require("./source")
 
+describe("wrap", () => {
+  it("should work", () => {
+
+    expect(
+      stringFn.wrap("dr strangelove or how i learned to love the bomb", 5)
+    ).toEqual("Baz")
+  })
+})
+
 describe("words", () => {
   it("should work", () => {
 
