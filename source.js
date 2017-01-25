@@ -211,6 +211,10 @@ function between(str, leftLimit, rightLimit) {
 }
 
 function wrap(str, wrapLimit, flag = false){
+  wrapLimit = wrapLimit <= 0 ?
+    1 :
+    wrapLimit
+
   const strAsArr = str.split("")
   const willReturn = []
   let counter = 0
@@ -266,6 +270,28 @@ function wrap(str, wrapLimit, flag = false){
   return willReturn
 }
 
+function glob(str, glob){
+  const numGlobs = count(glob,"*")
+  if(numGlobs === 1){
+    if(R.head(glob)==="*"){
+      return str.endsWith(R.tail(glob))
+    }else if(R.last(glob)==="*"){
+      return str.startsWith(R.init(glob))
+    }
+  }else if(
+    numGlobs === 2 &&
+    R.head(glob)==="*" &&
+    R.last(glob)==="*"
+  ){
+    glob = R.init(R.tail(glob))
+    const foundIndex = str.indexOf(glob)
+    return foundIndex > 0 && foundIndex + glob.length < str.length
+  }
+
+  return str.includes(glob)
+}
+
+module.exports.glob = glob
 module.exports.wrap = wrap
 module.exports.capitalize = capitalize
 module.exports.between = between

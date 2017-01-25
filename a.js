@@ -1,4 +1,4 @@
 const stringFn = require('./source')
 
-let a = stringFn.wrap("dr strangelove or how i learned to love the bomb", 5)
+let a = stringFn.glob("dr strangelove or how i learned to love the bomb", "*dr*e")
 console.log(a)

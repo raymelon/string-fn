@@ -23,13 +23,64 @@ describe("wrap", () => {
     ).toEqual(["i"])
   })
 
-  it("when string wrapLimit is short", () => {
+  it("when string wrapLimit is 0", () => {
 
     expect(
       stringFn.wrap("dr strangelove or how i learned", 0)
     ).toEqual(["i"])
   })
 
+})
+
+describe("glob", () => {
+  it("when star is on the left", () => {
+
+    expect(
+      stringFn.glob("/home/work/dev/foo.js","*.js")
+    ).toBeTruthy()
+
+    expect(
+      stringFn.glob("/home/work/dev/foo.js","*.ts")
+    ).toBeFalsy()
+  })
+
+  it("when star is on the right", () => {
+
+    expect(
+      stringFn.glob("/home/work/dev/foo.js","/home/*")
+    ).toBeTruthy()
+
+    expect(
+      stringFn.glob("/home/work/dev/foo.js","/usr/*")
+    ).toBeFalsy()
+  })
+
+  it("when two stars", () => {
+
+    expect(
+      stringFn.glob("/home/work/dev/foo.js","*/work/dev/*")
+    ).toBeTruthy()
+
+    expect(
+      stringFn.glob("/home/work/dev/foo.js","*/home/*")
+    ).toBeFalsy()
+  })
+
+  it("when incorrect glob", () => {
+
+    expect(
+      stringFn.glob("/home/work/dev/foo*.js","foo*.")
+    ).toBeTruthy()
+
+    expect(
+      stringFn.glob("/home/work/dev/foo*bar.js","foo*baz")
+    ).toBeFalsy()
+
+    expect(
+      stringFn.glob("/home/work/dev/foo*bar*.js","foo*baz*")
+    ).toBeFalsy()
+  })
+  
 })
 
 describe("words", () => {
