@@ -26,7 +26,7 @@ https://unpkg.com/string-fn@0.2.0/webVersion.js
 
 ## API
 
-- between(str,leftLimiter, rightLimiter)
+- between(str, leftLimiter, rightLimiter)
 
 Returns substring of **str** placed between **leftLimiter** and **rightLimiter**
 
@@ -41,7 +41,7 @@ stringFn.between("begin foo bar baz end", "q", "x")
 // => "begin foo bar baz end"
 ```
 
-- camelCase(str,extendedLatinFlag)
+- camelCase(str, extendedLatinFlag = false)
 
 Returns camel case version of **str**.
 
@@ -66,4 +66,29 @@ stringFn.camelCase("foo-bar-baz")
 
 stringFn.camelCase("foo bar bazö", true)
 // => "fooBarBazö"
+```
+
+- capitalize(str, lowLimit = 3)
+
+Capitalize each word of **str** as long as word's length is higher or equal to
+**lowLimit**
+
+```
+stringFn.capitalize("in my time |,of dying")
+// => "In my Time of Dying"
+
+stringFn.capitalize("i got ants in my pants")
+// => "I Got Ants in my Pants"
+
+stringFn.capitalize("i got ants in my pants", 2)
+// => "I Got Ants In My Pants"
+```
+
+- clean(str)
+
+Trims **str** and turns multiple whitespace to single whitespace
+
+```
+stringFn.clean("   foo  bar   baz   ")
+// => "foo bar baz"
 ```

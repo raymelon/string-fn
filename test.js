@@ -133,6 +133,14 @@ describe("distanceGerman", () => {
   })
 })
 
+describe("filter",()=>{
+  it("default",()=>{
+    expect(
+      stringFn.filter("foo",val => val==="o")
+    ).toEqual("oo")
+  })
+})
+
 describe("glob", () => {
   it("when star is on the left", () => {
     expect(
@@ -176,6 +184,14 @@ describe("glob", () => {
     expect(
       stringFn.glob("/home/work/dev/foo*bar*.js", "foo*baz*")
     ).toBeFalsy()
+  })
+})
+
+describe("map",()=>{
+  it("default",()=>{
+    expect(
+      stringFn.map("foo",val =>`|${val}| `)
+    ).toEqual("|f| |o| |o| ")
   })
 })
 

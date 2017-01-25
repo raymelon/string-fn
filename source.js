@@ -109,6 +109,16 @@ function distanceGerman (a, b) {
   return distance(normalizeGermanWord(a), normalizeGermanWord(b))
 }
 
+function filter(str,fn){
+  return R.join(
+    "",
+    R.filter(
+      val => fn(val),
+      R.split("",str)
+    )
+  )
+}
+
 function glob (str, globStr) {
   const numGlobs = count(globStr, "*")
   if (numGlobs === 1) {
@@ -136,6 +146,16 @@ function kebabCase (str, flag = false) {
     R.join(
       "-",
       words(str, flag)
+    )
+  )
+}
+
+function map(str, fn){
+  return R.join(
+    "",
+    R.map(
+      val => fn(val),
+      R.split("",str)
     )
   )
 }
@@ -295,8 +315,10 @@ module.exports.clean = clean
 module.exports.count = count
 module.exports.distance = distance
 module.exports.distanceGerman = distanceGerman
+module.exports.filter = filter
 module.exports.glob = glob
 module.exports.kebabCase = kebabCase
+module.exports.map = map
 module.exports.replaceFirst = replaceFirst
 module.exports.replaceLast = replaceLast
 module.exports.reverse = reverse
