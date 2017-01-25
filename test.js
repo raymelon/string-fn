@@ -49,22 +49,6 @@ describe("camelCase", () => {
   })
 })
 
-describe("capitalize", () => {
-  it("should work", () => {
-    expect(
-      stringFn.capitalize("in my time |,of dying")
-    ).toEqual("In my Time of Dying")
-
-    expect(
-      stringFn.capitalize("i got ants in my pants")
-    ).toEqual("I Got Ants in my Pants")
-
-    expect(
-      stringFn.capitalize("i got ants in my pants", 2)
-    ).toEqual("I Got Ants In My Pants")
-  })
-})
-
 describe("clean", () => {
   it("default", () => {
     expect(
@@ -256,6 +240,22 @@ describe("reverse", () => {
     expect(
       stringFn.reverse("fooBarBaz")
     ).toEqual("zaBraBoof")
+  })
+})
+
+describe("seoTitle", () => {
+  it("should work", () => {
+    expect(
+      stringFn.seoTitle("in my time |,of dying")
+    ).toEqual("In my Time of Dying")
+
+    expect(
+      stringFn.seoTitle("i got ants in my pants")
+    ).toEqual("I Got Ants in my Pants")
+
+    expect(
+      stringFn.seoTitle("i got ants in my pants", 2)
+    ).toEqual("I Got Ants In My Pants")
   })
 })
 

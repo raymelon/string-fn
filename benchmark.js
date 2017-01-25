@@ -3,7 +3,8 @@ const benchmarks = require("beautify-benchmark")
 
 const stringFn = require("./source")
 const voca = require("voca")
-var S = require('string')
+const S = require('string')
+const _ = require('underscore.string')
 
 const options = {}
 
@@ -137,8 +138,36 @@ if (options.stripTags) {
     .run()
 }
 
+const mapSuite = new Benchmark.Suite
+options.map = true
+
+if (options.map) {
+  const str = "foo bar baz"
+  const fn = val => `|${val}| `
+  const fnFirst = () => stringFn.map(str,fn)
+  const fnSecond = () => _.map(str, fn)
+
+  console.log(fnFirst())
+  console.log(fnSecond())
+  mapSuite
+    .add("StringFn#map", () => {
+      fnFirst()
+    })
+    .add("Underscore.string", () => {
+      fnSecond()
+    })
+    .on("cycle", event => {
+      benchmarks.add(event.target)
+    })
+    .on("complete", () => {
+      benchmarks.log()
+    })
+    .run()
+}
+
+
 const testSuite = new Benchmark.Suite
-options.test = true
+options.test = false
 
 if (options.test) {
   const str = "foo bar baz"

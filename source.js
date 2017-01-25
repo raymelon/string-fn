@@ -26,24 +26,6 @@ function camelCase (str, flag = false) {
   return `${ R.toLower(R.head(result)) }${ R.tail(result) }`
 }
 
-function capitalize (str, lowLimit = 3, flag = false) {
-  const result = R.join(
-    " ",
-    R.map(
-      val => {
-        if (val.length >= lowLimit) {
-          return `${ R.toUpper(R.head(val)) }${ R.toLower(R.tail(val)) }`
-        }
-
-        return val
-      },
-      words(str, flag)
-    )
-  )
-
-  return `${ R.toUpper(R.head(result)) }${ R.tail(result) }`
-}
-
 function clean (str) {
   return R.replace(/\s+/g, " ", str).trim()
 }
@@ -173,6 +155,24 @@ function reverse (str) {
   .split("")
   .reverse()
   .join("")
+}
+
+function seoTitle (str, lowLimit = 3, flag = false) {
+  const result = R.join(
+    " ",
+    R.map(
+      val => {
+        if (val.length >= lowLimit) {
+          return `${ R.toUpper(R.head(val)) }${ R.toLower(R.tail(val)) }`
+        }
+
+        return val
+      },
+      words(str, flag)
+    )
+  )
+
+  return `${ R.toUpper(R.head(result)) }${ R.tail(result) }`
 }
 
 const shuffleArr = arr => {
@@ -310,7 +310,6 @@ function wrap (str, wrapLimit, flag = false) {
 
 module.exports.between = between
 module.exports.camelCase = camelCase
-module.exports.capitalize = capitalize
 module.exports.clean = clean
 module.exports.count = count
 module.exports.distance = distance
@@ -322,6 +321,7 @@ module.exports.map = map
 module.exports.replaceFirst = replaceFirst
 module.exports.replaceLast = replaceLast
 module.exports.reverse = reverse
+module.exports.seoTitle = seoTitle
 module.exports.shuffle = shuffle
 module.exports.snakeCase = snakeCase
 module.exports.stripPunctuation = stripPunctuation
