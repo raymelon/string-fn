@@ -217,7 +217,7 @@ function wrap(str, wrapLimit, flag = false){
 
   Array(str.length).fill().map((val,key)=>{
     if(key === counter){
-      const nextCellKey = key+wrapLimit+1
+      const nextCellKey = key+wrapLimit
       if(nextCellKey>strAsArr.length){
 
         willReturn.push(str.substr(key))
@@ -228,30 +228,34 @@ function wrap(str, wrapLimit, flag = false){
         if(strAsArr[nextCellKey]===" "){
 
           willReturn.push(shortString)
-          counter = nextCellKey
+          counter = nextCellKey +1
         }else{
 
           let spaceCellKey = shortString.lastIndexOf(" ")
-          if(spaceCellKey === -1){
+          if(spaceCellKey > -1){
+
+            willReturn.push(shortString.substring(0,spaceCellKey))
+            counter = spaceCellKey + key + 1
+          }else{
 
             const longSubstring = str.substr(key)
             spaceCellKey = longSubstring.indexOf(" ")
-            if(spaceCellKey === -1){
+
+            if(spaceCellKey > -1){
+
+              if(flag){
+
+                willReturn.push(longSubstring.substring(0,spaceCellKey))
+              }
+              counter = spaceCellKey + key +1
+            }else{
 
               if(flag){
 
                 willReturn.push(longSubstring)
               }
               counter = str.length
-            }else{
-
-              willReturn.push(longSubstring.substring(0,spaceCellKey))
-              counter = spaceCellKey
             }
-          }else{
-
-            willReturn.push(shortString.substring(0,spaceCellKey))
-            counter = spaceCellKey
           }
 
         }

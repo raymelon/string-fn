@@ -2,12 +2,34 @@ const R = require("rambda")
 const stringFn = require("./source")
 
 describe("wrap", () => {
-  it("should work", () => {
+  it("when default", () => {
 
     expect(
       stringFn.wrap("dr strangelove or how i learned to love the bomb", 5)
-    ).toEqual("Baz")
+    ).toEqual(["dr", "or", "how i", "to", "love", "the", "bomb"])
   })
+
+  it("when string flag is true", () => {
+
+    expect(
+      stringFn.wrap("dr strangelove or how i learned", 5, true)
+    ).toEqual(["dr", "strangelove", "or", "how i", "learned"])
+  })
+
+  it("when string wrapLimit is short", () => {
+
+    expect(
+      stringFn.wrap("dr strangelove or how i learned", 1)
+    ).toEqual(["i"])
+  })
+
+  it("when string wrapLimit is short", () => {
+
+    expect(
+      stringFn.wrap("dr strangelove or how i learned", 0)
+    ).toEqual(["i"])
+  })
+
 })
 
 describe("words", () => {
