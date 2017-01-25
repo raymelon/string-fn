@@ -8,70 +8,16 @@ const _ = require('underscore.string')
 
 const options = {}
 
-const kebabCaseSuite = new Benchmark.Suite
-options.kebabCase = false
-
-if (options.kebabCase) {
-  const str = "FooBarBaz"
-  const fnFirst = () => stringFn.toKebabCase(str)
-  const fnSecond = () => voca.kebabCase(str)
-
-  console.log(fnFirst())
-  console.log(fnSecond())
-  kebabCaseSuite
-    .add("StringFn#toKebabCase", () => {
-      fnFirst()
-    })
-    .add("Voca", () => {
-      fnSecond()
-    })
-    .on("cycle", event => {
-      benchmarks.add(event.target)
-    })
-    .on("complete", () => {
-      benchmarks.log()
-    })
-    .run()
-}
-
 const camelCaseSuite = new Benchmark.Suite
-options.camelCase = false
+options.camelCase = true
 
 if (options.camelCase) {
   const str = "foo bar Baz"
-  const fnFirst = () => stringFn.toCamelCase(str)
+  const fnFirst = () => stringFn.camelCase(str)
   const fnSecond = () => voca.camelCase(str)
 
-  console.log(fnFirst())
-  console.log(fnSecond())
-  kebabCaseSuite
-    .add("StringFn#toCamelCase", () => {
-      fnFirst()
-    })
-    .add("Voca", () => {
-      fnSecond()
-    })
-    .on("cycle", event => {
-      benchmarks.add(event.target)
-    })
-    .on("complete", () => {
-      benchmarks.log()
-    })
-    .run()
-}
-
-const snakeCaseSuite = new Benchmark.Suite
-options.snakeCase = 0
-
-if (options.snakeCase) {
-  const str = "foo bar Baz"
-  const fnFirst = () => stringFn.toSnakeCase(str)
-  const fnSecond = () => voca.snakeCase(str)
-
-  console.log(fnFirst())
-  console.log(fnSecond())
-  kebabCaseSuite
-    .add("StringFn#toCamelCase", () => {
+  camelCaseSuite
+    .add("StringFn#camelCase", () => {
       fnFirst()
     })
     .add("Voca", () => {
@@ -87,17 +33,15 @@ if (options.snakeCase) {
 }
 
 const countSuite = new Benchmark.Suite
-options.count = false
+options.count = true
 
 if (options.count) {
   const str = "foo bar Baz foo"
   const fnFirst = () => stringFn.count(str, "foo")
   const fnSecond = () => voca.countSubstrings(str, "foo")
 
-  console.log(fnFirst())
-  console.log(fnSecond())
   countSuite
-    .add("StringFn#toCamelCase", () => {
+    .add("StringFn#count", () => {
       fnFirst()
     })
     .add("Voca", () => {
@@ -112,21 +56,19 @@ if (options.count) {
     .run()
 }
 
-const stripTagsSuite = new Benchmark.Suite
-options.stripTags = false
+const kebabCaseSuite = new Benchmark.Suite
+options.kebabCase = true
 
-if (options.stripTags) {
-  const str = "<p>foo <b>bar</b>   <hr/> baz</p>"
-  const fnFirst = () => stringFn.stripTags(str)
-  const fnSecond = () => S(str).stripTags().s
+if (options.kebabCase) {
+  const str = "FooBarBaz"
+  const fnFirst = () => stringFn.kebabCase(str)
+  const fnSecond = () => voca.kebabCase(str)
 
-  console.log(fnFirst())
-  console.log(fnSecond())
-  cleanHtmlSuite
-    .add("StringFn#cleanHtml", () => {
+  kebabCaseSuite
+    .add("StringFn#toKebabCase", () => {
       fnFirst()
     })
-    .add("Strman", () => {
+    .add("Voca", () => {
       fnSecond()
     })
     .on("cycle", event => {
@@ -147,8 +89,6 @@ if (options.map) {
   const fnFirst = () => stringFn.map(str,fn)
   const fnSecond = () => _.map(str, fn)
 
-  console.log(fnFirst())
-  console.log(fnSecond())
   mapSuite
     .add("StringFn#map", () => {
       fnFirst()
@@ -165,22 +105,67 @@ if (options.map) {
     .run()
 }
 
+const reverseSuite = new Benchmark.Suite
+options.reverse = true
 
-const testSuite = new Benchmark.Suite
-options.test = false
-
-if (options.test) {
+if (options.reverse) {
   const str = "foo bar baz"
-  const fnFirst = () => str.endsWith("baz")
-  const fnSecond = () => voca.endsWith(str, "baz")
+  const fnFirst = () => stringFn.reverse(str)
+  const fnSecond = () => voca.reverse(str)
 
-  console.log(fnFirst())
-  console.log(fnSecond())
-  cleanHtmlSuite
-    .add("Test1", () => {
+  reverseSuite
+    .add("StringFn#reverse", () => {
       fnFirst()
     })
-    .add("Test2", () => {
+    .add("Voca", () => {
+      fnSecond()
+    })
+    .on("cycle", event => {
+      benchmarks.add(event.target)
+    })
+    .on("complete", () => {
+      benchmarks.log()
+    })
+    .run()
+}
+
+const snakeCaseSuite = new Benchmark.Suite
+options.snakeCase = true
+
+if (options.snakeCase) {
+  const str = "foo bar Baz"
+  const fnFirst = () => stringFn.snakeCase(str)
+  const fnSecond = () => voca.snakeCase(str)
+
+  snakeCaseSuite
+    .add("StringFn#snakeCase", () => {
+      fnFirst()
+    })
+    .add("Voca", () => {
+      fnSecond()
+    })
+    .on("cycle", event => {
+      benchmarks.add(event.target)
+    })
+    .on("complete", () => {
+      benchmarks.log()
+    })
+    .run()
+}
+
+const stripTagsSuite = new Benchmark.Suite
+options.stripTags = true
+
+if (options.stripTags) {
+  const str = "<p>foo <b>bar</b>   <hr/> baz</p>"
+  const fnFirst = () => stringFn.stripTags(str)
+  const fnSecond = () => S(str).stripTags().s
+
+  stripTagsSuite
+    .add("StringFn#stripTags", () => {
+      fnFirst()
+    })
+    .add("Strman", () => {
       fnSecond()
     })
     .on("cycle", event => {

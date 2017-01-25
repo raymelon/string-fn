@@ -94,7 +94,7 @@ stringFn.count("foo1 Bar foo1 baz Foo1 foo1", "foo1")
 
 - distance(firstString, secondString)
 
-Calculates Levinstein distance between **firstString** and **secondString**
+Calculates Levenshtein distance between **firstString** and **secondString**
 
 ```
 stringFn.distance("foobarbaz", "ffoobarbaz")
@@ -112,7 +112,7 @@ stringFn.distance("foobarbaz", "foobarbaz")
 
 - distanceGerman(firstString, secondString)
 
-Calculates Levinstein distance between strings in German language
+Calculates Levenshtein distance between normalized German strings
 
 ```
 stringFn.distanceGerman("foobarbaz", "ffoobarbaz")
