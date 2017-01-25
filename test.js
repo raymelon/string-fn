@@ -36,6 +36,10 @@ describe("camelCase", () => {
     expect(
       stringFn.camelCase("foo bar BAZ")
     ).toEqual("fooBarBaz")
+
+    expect(
+      stringFn.camelCase("foo-bar-baz")
+    ).toEqual("fooBarBaz")
   })
 
   it("should work with ö", () => {
