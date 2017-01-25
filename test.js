@@ -3,9 +3,56 @@ const stringFn = require("./source")
 
 describe("toWords", () => {
   it("should work", () => {
+    
     expect(
       stringFn.toWords("fooBarBaz")
     ).toEqual(["foo", "Bar", "Baz"])
+  })
+})
+
+describe("cleanHtml", () => {
+  it("should work", () => {
+    
+    expect(
+      stringFn.cleanHtml("<p>foo <b>bar</b><hr/> baz</p>")
+    ).toEqual("foo bar baz")
+  })
+})
+
+describe("stripPunctuation", () => {
+  it("should work", () => {
+    
+    expect(
+      stringFn.stripPunctuation("If my wings should fail me, Lord, please meet me ...")
+    ).toEqual("If my wings should fail me Lord please meet me ")
+  })
+})
+
+describe("replaceFirst", () => {
+  it("should work", () => {
+    expect(
+      stringFn.replaceFirst("fooBarBaz","F")
+    ).toEqual("FooBarBaz")
+  })
+  
+  it("should work", () => {
+    expect(
+      stringFn.replaceFirst("fooBarBaz")
+    ).toEqual("ooBarBaz")
+  })
+})
+
+describe("replaceLast", () => {
+  it("should work", () => {
+    expect(
+      stringFn.replaceLast("fooBarBaz","ZZ")
+    ).toEqual("fooBarBaZZ")
+  })
+  
+  it("should work", () => {
+    expect(
+      stringFn.replaceLast("fooBarBaz")
+    ).toEqual("fooBarBa")
   })
 })
 

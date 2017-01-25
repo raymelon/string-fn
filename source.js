@@ -2,6 +2,8 @@ const R = require("rambda")
 
 const WORDS = /[A-Z]?[a-z]+|[A-Z]+(?![a-z])+/g
 const WORDS_EXTENDED = /[A-Z\xC0-\xD6\xD8-\xDE]?[a-z\xDF-\xF6\xF8-\xFF]+|[A-Z\xC0-\xD6\xD8-\xDE]+(?![a-z\xDF-\xF6\xF8-\xFF])/g
+const PUNCTUATIONS = /[\u2000-\u206F\u2E00-\u2E7F\\'!"#$%&()*+,\-.\/:;<=>?@\[\]^_`{|}~]/g
+const HTML_TAGS = /<[^>]*>/g
 
 function shuffleArr(array) {
   let counter = array.length
@@ -121,6 +123,34 @@ function distance(a, b) {
   return row[a.length]
 }
 
+function replaceLast(str, replacer = ""){
+  return `${R.init(str)}${replacer}`
+}
+
+function replaceFirst(str, replacer = ""){
+  return `${replacer}${R.tail(str)}`
+}
+
+function stripPunctuation(str){
+  return R.replace(PUNCTUATIONS,"",str)
+}
+
+function cleanHtml(str){
+  return R.replace(
+    /\s+/g,
+    " ",
+    R.replace(
+      HTML_TAGS,
+      " ",
+      str
+    )
+  ).trim()
+}
+
+module.exports.cleanHtml = cleanHtml
+module.exports.stripPunctuation = stripPunctuation
+module.exports.replaceFirst = replaceFirst
+module.exports.replaceLast = replaceLast
 module.exports.distance = distance
 module.exports.count = count
 module.exports.surround = surround
