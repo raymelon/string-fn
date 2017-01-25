@@ -9,6 +9,42 @@ describe("toWords", () => {
   })
 })
 
+describe("distance", () => {
+  it("should work", () => {
+    expect(
+      stringFn.distance("foobarbaz","ffoobarbaz")
+    ).toEqual(1)
+    
+    expect(
+      stringFn.distance("foobarbaz","foo")
+    ).toEqual(6)
+    
+    expect(
+      stringFn.distance("foo","foobarbaz")
+    ).toEqual(6)
+    
+    expect(
+      stringFn.distance("foobarbaz","foobarbaz")
+    ).toEqual(0)
+  })
+})
+
+describe("surround", () => {
+  it("should work", () => {
+
+    expect(
+      stringFn.surround("foo","<br/>")
+    ).toEqual("<br/>foo<br/>")
+  })
+  
+  it("should work", () => {
+
+    expect(
+      stringFn.surround("foo","<b>","</b>")
+    ).toEqual("<b>foo</b>")
+  })
+})
+
 describe("shuffle", () => {
   it("should work", () => {
 

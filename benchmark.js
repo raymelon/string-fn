@@ -3,6 +3,7 @@ const benchmarks = require("beautify-benchmark")
 
 const stringFn = require("./source")
 const voca = require("voca")
+const strman = require('strman')
 
 const options = {}
 
@@ -85,12 +86,12 @@ if (options.snakeCase) {
 }
 
 const countSuite = new Benchmark.Suite
-options.count = true
+options.count = false
 
 if (options.count) {
   const str = "foo bar Baz foo"
-  const fnFirst = () => stringFn.count(str,"foo")
-  const fnSecond = () => voca.countSubstrings(str,"foo")
+  const fnFirst = () => stringFn.count(str, "foo")
+  const fnSecond = () => voca.countSubstrings(str, "foo")
 
   console.log(fnFirst())
   console.log(fnSecond())
@@ -99,6 +100,32 @@ if (options.count) {
       fnFirst()
     })
     .add("Voca", () => {
+      fnSecond()
+    })
+    .on("cycle", event => {
+      benchmarks.add(event.target)
+    })
+    .on("complete", () => {
+      benchmarks.log()
+    })
+    .run()
+}
+
+const shuffleSuite = new Benchmark.Suite
+options.shuffle = true
+
+if (options.shuffle) {
+  const str = "foobarbaz"
+  const fnFirst = () => stringFn.shuffle(str)
+  const fnSecond = () => strman.shuffle(str)
+
+  console.log(fnFirst())
+  console.log(fnSecond())
+  shuffleSuite
+    .add("StringFn#shuffle", () => {
+      fnFirst()
+    })
+    .add("Strman", () => {
       fnSecond()
     })
     .on("cycle", event => {
