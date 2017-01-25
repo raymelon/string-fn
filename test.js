@@ -3,7 +3,7 @@ const stringFn = require("./source")
 
 describe("words", () => {
   it("should work", () => {
-    
+
     expect(
       stringFn.words("fooBarBaz")
     ).toEqual(["foo", "Bar", "Baz"])
@@ -12,20 +12,24 @@ describe("words", () => {
 
 describe("between", () => {
   it("should work", () => {
-    
+
     expect(
       stringFn.between("begin foobarbaz end","foo","baz")
     ).toEqual("bar")
-    
+
     expect(
       stringFn.between("begin foo   bar   baz end","foo","baz")
+    ).toEqual("bar")
+
+    expect(
+      stringFn.between("begin oo   bar   ba end","foo","baz")
     ).toEqual("bar")
   })
 })
 
 describe("reverse", () => {
   it("should work", () => {
-    
+
     expect(
       stringFn.reverse("fooBarBaz")
     ).toEqual("zaBraBoof")
@@ -34,7 +38,7 @@ describe("reverse", () => {
 
 describe("stripTags", () => {
   it("should work", () => {
-    
+
     expect(
       stringFn.stripTags("<p>foo <b>bar</b>   <hr/> baz</p>")
     ).toEqual("foo bar baz")
@@ -43,7 +47,7 @@ describe("stripTags", () => {
 
 describe("stripPunctuation", () => {
   it("should work", () => {
-    
+
     expect(
       stringFn.stripPunctuation("If my wings should fail me, Lord, please meet me ...")
     ).toEqual("If my wings should fail me Lord please meet me ")
@@ -56,7 +60,7 @@ describe("replaceFirst", () => {
       stringFn.replaceFirst("fooBarBaz","F")
     ).toEqual("FooBarBaz")
   })
-  
+
   it("should work", () => {
     expect(
       stringFn.replaceFirst("fooBarBaz")
@@ -70,7 +74,7 @@ describe("replaceLast", () => {
       stringFn.replaceLast("fooBarBaz","ZZ")
     ).toEqual("fooBarBaZZ")
   })
-  
+
   it("should work", () => {
     expect(
       stringFn.replaceLast("fooBarBaz")
@@ -83,15 +87,15 @@ describe("distance", () => {
     expect(
       stringFn.distance("foobarbaz","ffoobarbaz")
     ).toEqual(1)
-    
+
     expect(
       stringFn.distance("foobarbaz","foo")
     ).toEqual(6)
-    
+
     expect(
       stringFn.distance("foo","foobarbaz")
     ).toEqual(6)
-    
+
     expect(
       stringFn.distance("foobarbaz","foobarbaz")
     ).toEqual(0)
@@ -103,19 +107,19 @@ describe("distanceGerman", () => {
     expect(
       stringFn.distanceGerman("foobarbaz","ffoobarbaz")
     ).toEqual(1)
-    
+
     expect(
       stringFn.distanceGerman("schön","shön")
     ).toEqual(1)
-    
+
     expect(
       stringFn.distanceGerman("Müde","mude")
     ).toEqual(0)
-    
+
     expect(
       stringFn.distanceGerman("die Männer","die manner")
     ).toEqual(0)
-    
+
     expect(
       stringFn.distanceGerman("der anlass","der Anlaß")
     ).toEqual(0)
@@ -129,7 +133,7 @@ describe("surround", () => {
       stringFn.surround("foo","<br/>")
     ).toEqual("<br/>foo<br/>")
   })
-  
+
   it("should work", () => {
 
     expect(
