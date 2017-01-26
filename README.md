@@ -345,9 +345,6 @@ stringFn.words("fooBarBaz")
 
 ## wrap(str, wrapLimit, lazyFlag = false)
 
-This is not so easy to explain, so better see one example first
-
-
 ```
 stringFn.wrap("dr strangelove or how i learned to love the bomb", 15)
 // => [ "dr strangelove", "or how i", "learned to love", "the bomb" ]
