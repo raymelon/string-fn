@@ -131,7 +131,7 @@ stringFn.distanceGerman("der anlass", "der Anlaß")
 // => 0
 ```
 
-- filter(str, fn)
+## filter(str, fn)
 
 Returns string with those chars of **str** which passes **fn**
 
@@ -140,7 +140,7 @@ stringFn.filter("foo", val => val === "o")
 // => "oo"
 ```
 
-- glob(str, globRule)
+## glob(str, globRule)
 
 Returns boolean of **str** following **globRule**.
 
@@ -179,7 +179,7 @@ stringFn.glob("/home/work/dev/foo*bar*.js", "foo*baz*")
 // => false
 ```
 
-- map(str, fn)
+## map(str, fn)
 
 Returns joined chars of **str** after each of them is passed through **fn**
 
@@ -188,7 +188,7 @@ stringFn.map("foo", val =>`|${val}| `)
 // => "|f| |o| |o| "
 ```
 
-- kebabCase(str, extendedLatinFlag = false)
+## kebabCase(str, extendedLatinFlag = false)
 
 Return kebab case version of **str**
 
@@ -209,7 +209,7 @@ stringFn.kebabCase("Foo Bar BAZ")
 // => "foo-bar-baz"
 ```
 
-- replaceFirst(str, replacer = "")
+## replaceFirst(str, replacer = "")
 
 Replaces the first char of **str** with **replacer**
 
@@ -221,7 +221,7 @@ stringFn.replaceFirst("fooBarBaz")
 // => "ooBarBaz"
 ```
 
-- replaceLast(str, replacer = "")
+## replaceLast(str, replacer = "")
 
 Replaces the last char of **str** with **replacer**
 
@@ -233,14 +233,14 @@ stringFn.replaceLast("fooBarBaz")
 // => "fooBarBa"
 ```
 
-- reverse(str)
+## reverse(str)
 
 ```
 stringFn.reverse("fooBarBaz")
 // => "zaBraBoof"
 ```
 
-- seoTitle(str, lowLimit = 3, extendedLatinFlag = false)
+## seoTitle(str, lowLimit = 3, extendedLatinFlag = false)
 
 Capitalize each word of **str** as long as word's length is higher or equal to
 **lowLimit**. First word is always capitalized.
@@ -256,7 +256,7 @@ stringFn.seoTitle("i got ants in my pants", 2)
 // => "I Got Ants In My Pants"
 ```
 
-- shuffle(str)
+## shuffle(str)
 
 Randomize **str** content
 
@@ -265,7 +265,7 @@ stringFn.shuffle("fooBarBaz") === "fooBarBaz"
 // => false
 ```
 
-- snakeCase(str, extendedLatinFlag = false)
+## snakeCase(str, extendedLatinFlag = false)
 
 Returns snake case version of **str**
 
@@ -277,7 +277,7 @@ stringFn.snakeCase("foo bar bazö", true)
 // => "foo_bar_bazö"
 ```
 
-- stripPunctuation(str)
+## stripPunctuation(str)
 
 Removes all the punctiation marks from **str**
 
@@ -286,7 +286,7 @@ stringFn.stripPunctuation("If my, wings should, fail me ...")
 // => "If my wings should fail me "
 ```
 
-- stripTags(str)
+## stripTags(str)
 
 Removes Html tags from **str**
 
@@ -295,7 +295,7 @@ stringFn.stripTags("<p>foo <b>bar</b>   <hr/> baz</p>")
 // => "foo bar baz"
 ```
 
-- surround(str, leftString, rightString)
+## surround(str, leftString, rightString)
 
 Returns **str** surrounded by **leftStrring** and **rightString**
 
@@ -307,7 +307,7 @@ stringFn.surround("foo", "<b>", "</b>")
 // => "<b>foo</b>"
 ```
 
-- titleCase(str, extendedLatinFlag = false)
+## titleCase(str, extendedLatinFlag = false)
 
 Returns title case version of **str**
 
@@ -319,7 +319,7 @@ stringFn.titleCase("foo bar bazö", true)
 // => "Foo Bar Bazö"
 ```
 
-- truncate(str, lengthLimit, tail = "...")
+## truncate(str, lengthLimit, tail = "...")
 
 Truncates **str** if its length is greater than **lengthLimit**
 
@@ -334,7 +334,7 @@ stringFn.truncate("dr strangelove", 20)
 // => "dr strangelove"
 ```
 
-- words(str, extendedLatinFlag = false)
+## words(str, extendedLatinFlag = false)
 
 Returns array with the words of **str**
 
@@ -343,7 +343,7 @@ stringFn.words("fooBarBaz")
 // => [ "foo", "Bar", "Baz" ]
 ```
 
-- wrap(str, wrapLimit, lazyFlag = false)
+## wrap(str, wrapLimit, lazyFlag = false)
 
 This is not so easy to explain, so better see one example first
 
