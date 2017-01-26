@@ -266,6 +266,12 @@ describe("maskWords", () => {
       })
     ).toEqual("J**** B****")
   })
+  
+  it("when passing empty string", () => {
+    expect(
+      stringFn.maskWords({words:""})
+    ).toEqual("")
+  })
 })
 
 describe("kebabCase", () => {

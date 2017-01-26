@@ -147,18 +147,15 @@ const addSpaceAroundPunctuation = sentence => {
 } 
 
 const maskWordHelper = (word, replacer, charLimit) => {
-  if(R.test(PUNCTUATIONS,word)){
+  if(
+    R.test(PUNCTUATIONS,word) ||
+    word.length < 2
+    ){
     return word
   }
   
   if(word.length<charLimit){
-    const repeatCount = word.length === 0 ?
-      1 :
-      word.length
     return `${ R.head(word) }${ replacer.repeat(word.length - 1) }`
-  }
-  if(word.length < 2){
-    return word
   }
   
   return `${ R.head(word) }${ replacer.repeat(word.length - 2) }${ R.last(word) }`  
