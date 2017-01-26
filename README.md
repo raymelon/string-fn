@@ -25,7 +25,7 @@ console.log(stringFn.camelCase("foo-bar-baz"))
 - For browser usage refer to
 
 ```
-https://unpkg.com/string-fn@0.2.1/webVersion.js
+https://unpkg.com/string-fn@0.2.2/webVersion.js
 ```
 
 ## API

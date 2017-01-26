@@ -4,7 +4,8 @@ const benchmarks = require("beautify-benchmark")
 const stringFn = require("./source")
 const voca = require("voca")
 const S = require('string')
-const _ = require('underscore.string')
+const _ = require('lodash')
+const underscore = require('underscore.string')
 
 const options = {}
 
@@ -22,6 +23,9 @@ if (options.camelCase) {
     })
     .add("Voca", () => {
       fnSecond()
+    })
+    .add("Lodash", () => {
+      _.camelCase(str)
     })
     .on("cycle", event => {
       benchmarks.add(event.target)
@@ -71,6 +75,9 @@ if (options.kebabCase) {
     .add("Voca", () => {
       fnSecond()
     })
+    .add("Lodash", () => {
+      _.kebabCase(str)
+    })
     .on("cycle", event => {
       benchmarks.add(event.target)
     })
@@ -87,7 +94,7 @@ if (options.map) {
   const str = "foo bar baz"
   const fn = val => `|${val}| `
   const fnFirst = () => stringFn.map(str,fn)
-  const fnSecond = () => _.map(str, fn)
+  const fnSecond = () => underscore.map(str, fn)
 
   mapSuite
     .add("StringFn#map", () => {
@@ -143,6 +150,9 @@ if (options.snakeCase) {
     })
     .add("Voca", () => {
       fnSecond()
+    })
+    .add("Lodash", () => {
+      _.snakeCase(str)
     })
     .on("cycle", event => {
       benchmarks.add(event.target)
