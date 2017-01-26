@@ -142,18 +142,33 @@ function map(str, fn){
   )
 }
 
+const addSpaceAroundPunctuation = sentence => {
+  return sentence.replace(PUNCTUATIONS, match => ` ${match} `)
+} 
+
+const maskWord = (word, replacer, charLimit) => {
+  if(R.test(PUNCTUATIONS,word)){
+    return {hiddenPart: word, visiblePart: word}
+  }
+  
+}
+
 function maskSentence (sentence, replacer = "_", charLimit = 3) {
+
+  sentence = clean(
+    addSpaceAroundPunctuation(sentence)
+  )
 
   const hidden = []
   const visible = []
 
   R.map(
     val=>{
-      const {hiddenPart, visiblePart} = parseWord(val)
-      hidden.push(R.flatten(hiddenPart))
-      visible.push(R.flatten(visiblePart))
+      const {hiddenPart, visiblePart} = maskWord(val, replacer, charLimit)
+      hidden.push(hiddenPart)
+      visible.push(visiblePart)
     },
-    R.split(" ", clean(sentence))
+    R.split(" ", sentence)
   )
 
   const maskWord = word => {
