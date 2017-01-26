@@ -91,12 +91,12 @@ function distanceGerman (a, b) {
   return distance(normalizeGermanWord(a), normalizeGermanWord(b))
 }
 
-function filter(str,fn){
+function filter (str, fn) {
   return R.join(
     "",
     R.filter(
       val => fn(val),
-      R.split("",str)
+      R.split("", str)
     )
   )
 }
@@ -132,37 +132,34 @@ function kebabCase (str, flag = false) {
   )
 }
 
-function map(str, fn){
+function map (str, fn) {
   return R.join(
     "",
     R.map(
       val => fn(val),
-      R.split("",str)
+      R.split("", str)
     )
   )
 }
 
-const addSpaceAroundPunctuation = sentence => {
-  return sentence.replace(PUNCTUATIONS, match => ` ${match} `)
-} 
+const addSpaceAroundPunctuation = sentence => sentence.replace(PUNCTUATIONS, match => ` ${ match } `)
 
 const maskWordHelper = (word, replacer, charLimit) => {
-  if(
-    R.test(PUNCTUATIONS,word) ||
+  if (
+    R.test(PUNCTUATIONS, word) ||
     word.length < 2
-    ){
+    ) {
     return word
   }
-  
-  if(word.length<charLimit){
+
+  if (word.length < charLimit) {
     return `${ R.head(word) }${ replacer.repeat(word.length - 1) }`
   }
-  
-  return `${ R.head(word) }${ replacer.repeat(word.length - 2) }${ R.last(word) }`  
+
+  return `${ R.head(word) }${ replacer.repeat(word.length - 2) }${ R.last(word) }`
 }
 
-function maskSentence ({sentence, replacer = "_", charLimit = 3, words = []}) {
-
+function maskSentence ({ sentence, replacer = "_", charLimit = 3, words = [] }) {
   sentence = clean(
     addSpaceAroundPunctuation(sentence)
   )
@@ -171,14 +168,14 @@ function maskSentence ({sentence, replacer = "_", charLimit = 3, words = []}) {
   const visible = []
 
   R.map(
-    val=>{
+    val => {
       let visiblePart
-      if(
+      if (
         words.length === 0 ||
         words.includes(val)
-      ){
+      ) {
         visiblePart = maskWordHelper(val, replacer, charLimit)
-      }else{
+      } else {
         visiblePart = val
       }
       hidden.push(val)
@@ -187,15 +184,18 @@ function maskSentence ({sentence, replacer = "_", charLimit = 3, words = []}) {
     R.split(" ", sentence)
   )
 
-  return {hidden, visible}
+  return {
+    hidden,
+    visible
+  }
 }
 
-function maskWords({words, replacer = "_", charLimit=3}){
+function maskWords ({ words, replacer = "_", charLimit = 3 }) {
   const result = R.map(
     val => maskWordHelper(val, replacer, charLimit),
-    R.split(" ",words)
+    R.split(" ", words)
   )
-  
+
   return R.join(" ", result)
 }
 
