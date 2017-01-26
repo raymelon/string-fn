@@ -146,8 +146,8 @@ Returns boolean of **str** following **globRule**.
 
 Three types of valid glob rules:
 
-1. ***foo**
-2. **foo***
+1. *foo
+2. foo*
 3. \*foo*
 
 ```
