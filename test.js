@@ -274,6 +274,22 @@ describe("maskWords", () => {
   })
 })
 
+describe("padLeft",()=>{
+  it("default",()=>{
+    expect(
+      stringFn.padLeft({str:"13",padChar:"0",padLimit:7})
+    ).toEqual("0000013")
+  })
+})
+
+describe("padRight",()=>{
+  it("default",()=>{
+    expect(
+      stringFn.padRight({str:"13",padChar:"0",padLimit:7})
+    ).toEqual("1300000")
+  })
+})
+
 describe("kebabCase", () => {
   it("should work with camel case", () => {
     expect(
@@ -299,6 +315,33 @@ describe("kebabCase", () => {
     expect(
       stringFn.kebabCase("Foo Bar BAZ")
     ).toEqual("foo-bar-baz")
+  })
+})
+
+describe("removeLeftPadding",()=>{
+  it("default",()=>{
+    expect(
+      stringFn.removeLeftPadding({str:"0000130",padChar:"0"})
+    ).toEqual("130")
+  })
+  it("when input don't contain padding",()=>{
+    expect(
+      stringFn.removeLeftPadding({str:"888",padChar:"0"})
+    ).toEqual("888")
+  })
+})
+
+describe("removeRightPadding",()=>{
+  it("default",()=>{
+    expect(
+      stringFn.removeRightPadding({str:"0130000",padChar:"0"})
+    ).toEqual("013")
+  })
+
+  it("when input don't contain padding",()=>{
+    expect(
+      stringFn.removeRightPadding({str:"888",padChar:"0"})
+    ).toEqual("888")
   })
 })
 

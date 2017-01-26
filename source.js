@@ -19,7 +19,7 @@ function camelCase (str, flag = false) {
     "",
     R.map(
       val => `${ R.toUpper(R.head(val)) }${ R.toLower(R.tail(val)) }`,
-      words(str, flag)
+      splitToWords(str, flag)
     )
   )
 
@@ -127,7 +127,7 @@ function kebabCase (str, flag = false) {
   return R.toLower(
     R.join(
       "-",
-      words(str, flag)
+      splitToWords(str, flag)
     )
   )
 }
@@ -199,6 +199,48 @@ function maskWords ({ words, replacer = "_", charLimit = 3 }) {
   return R.join(" ", result)
 }
 
+function padLeft({str, padLimit, padChar}){
+  const length = str.length
+  if(padLimit<length){
+    return str
+  }
+  return `${padChar.repeat(padLimit-length)}${str}`
+}
+
+function padRight({str, padLimit, padChar}){
+  const length = str.length
+  if(padLimit<length){
+    return str
+  }
+  return `${str}${padChar.repeat(padLimit-length)}`
+}
+
+function removeLeftPadding({str, padChar}){
+  let index = -1
+  let flag = true
+
+  while(flag && ++index < str.length){
+    if(str[index]!==padChar){
+      flag = false
+    }
+  }
+
+  return str.substr(index)
+}
+
+function removeRightPadding({str, padChar}){
+  let index = str.length
+  let flag = true
+
+  while(flag && --index > 0){
+    if(str[index]!==padChar){
+      flag = false
+    }
+  }
+
+  return str.substring(0,index+1)
+}
+
 function replaceLast (str, replacer = "") {
   return `${ R.init(str) }${ replacer }`
 }
@@ -225,7 +267,7 @@ function seoTitle (str, lowLimit = 3, flag = false) {
 
         return val
       },
-      words(str, flag)
+      splitToWords(str, flag)
     )
   )
 
@@ -258,7 +300,7 @@ function snakeCase (str, flag = false) {
   return R.toLower(
     R.join(
       "_",
-      words(str, flag)
+      splitToWords(str, flag)
     )
   )
 }
@@ -292,7 +334,7 @@ function titleCase (str, flag = false) {
     " ",
     R.map(
       val => `${ R.toUpper(R.head(val)) }${ R.toLower(R.tail(val)) }`,
-      words(str, flag)
+      splitToWords(str, flag)
     )
   )
 }
@@ -307,7 +349,7 @@ function truncate (str, lengthLimit, tail = "...") {
   return str
 }
 
-function words (str, flag = false) {
+function splitToWords (str, flag = false) {
   const regex = flag ?
     WORDS_EXTENDED :
     WORDS
@@ -377,6 +419,10 @@ module.exports.kebabCase = kebabCase
 module.exports.map = map
 module.exports.maskSentence = maskSentence
 module.exports.maskWords = maskWords
+module.exports.padLeft = padLeft
+module.exports.padRight = padRight
+module.exports.removeLeftPadding = removeLeftPadding
+module.exports.removeRightPadding = removeRightPadding
 module.exports.replaceFirst = replaceFirst
 module.exports.replaceLast = replaceLast
 module.exports.reverse = reverse
@@ -388,5 +434,5 @@ module.exports.stripTags = stripTags
 module.exports.surround = surround
 module.exports.titleCase = titleCase
 module.exports.truncate = truncate
-module.exports.words = words
+module.exports.words = splitToWords
 module.exports.wrap = wrap
