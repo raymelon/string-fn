@@ -25,7 +25,7 @@ console.log(stringFn.camelCase("foo-bar-baz"))
 - For browser usage refer to
 
 ```
-https://unpkg.com/string-fn@0.2.2/webVersion.js
+https://unpkg.com/string-fn@0.2.3/webVersion.js
 ```
 
 ## API
@@ -223,6 +223,26 @@ Each word of **words** is masked following the rules:
 
 - If word is shorter than **charLimit**, then each char from the tail is replaced with **replacer**
 
+## padLeft({str:String, padLimit:Number, padChar:String})
+
+```
+stringFn.padLeft({str:"13",padChar:"0",padLimit:7})
+// => "0000013"
+
+stringFn.padLeft({str:"1313",padChar:"0",padLimit:3})
+// => "1313"
+```
+
+## padRight({str:String, padLimit:Number, padChar:String})
+
+```
+stringFn.padRight({str:"13",padChar:"0",padLimit:7})
+// => "1300000"
+
+stringFn.padRight({str:"1313",padChar:"0",padLimit:3})
+// => "1313"
+```
+
 ## kebabCase(str, extendedLatinFlag = false)
 
 Return kebab case version of **str**
@@ -242,6 +262,24 @@ stringFn.kebabCase("__FOO_BAR__")
 
 stringFn.kebabCase("Foo Bar BAZ")
 // => "foo-bar-baz"
+```
+
+## removeLeftPadding({str, padChar})
+```
+stringFn.removeLeftPadding({str:"0000130",padChar:"0"})
+// => "130"
+
+stringFn.removeLeftPadding({str:"888",padChar:"0"})
+// => "888"
+```
+
+## removeRightPadding({str, padChar})
+```
+stringFn.removeRightPadding({str:"0130000",padChar:"0"})
+// => "013"
+
+stringFn.removeRightPadding({str:"888",padChar:"0"})
+// => "888"
 ```
 
 ## replaceFirst(str, replacer = "")

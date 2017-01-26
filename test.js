@@ -279,6 +279,10 @@ describe("padLeft",()=>{
     expect(
       stringFn.padLeft({str:"13",padChar:"0",padLimit:7})
     ).toEqual("0000013")
+
+    expect(
+      stringFn.padLeft({str:"1313",padChar:"0",padLimit:3})
+    ).toEqual("1313")
   })
 })
 
@@ -287,6 +291,9 @@ describe("padRight",()=>{
     expect(
       stringFn.padRight({str:"13",padChar:"0",padLimit:7})
     ).toEqual("1300000")
+    expect(
+      stringFn.padRight({str:"1313",padChar:"0",padLimit:3})
+    ).toEqual("1313")
   })
 })
 
