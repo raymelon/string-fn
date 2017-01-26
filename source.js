@@ -146,7 +146,7 @@ const addSpaceAroundPunctuation = sentence => {
   return sentence.replace(PUNCTUATIONS, match => ` ${match} `)
 } 
 
-const maskWord = (word, replacer, charLimit) => {
+const maskWordHelper = (word, replacer, charLimit) => {
   if(R.test(PUNCTUATIONS,word)){
     return word
   }
@@ -164,7 +164,7 @@ const maskWord = (word, replacer, charLimit) => {
   return `${ R.head(word) }${ replacer.repeat(word.length - 2) }${ R.last(word) }`  
 }
 
-function maskSentence (sentence, replacer = "_", charLimit = 3) {
+function maskSentence ({sentence, replacer = "_", charLimit = 3, words = []}) {
 
   sentence = clean(
     addSpaceAroundPunctuation(sentence)
@@ -175,7 +175,15 @@ function maskSentence (sentence, replacer = "_", charLimit = 3) {
 
   R.map(
     val=>{
-      const visiblePart = maskWord(val, replacer, charLimit)
+      let visiblePart
+      if(
+        words.length === 0 ||
+        words.includes(val)
+      ){
+        visiblePart = maskWordHelper(val, replacer, charLimit)
+      }else{
+        visiblePart = val
+      }
       hidden.push(val)
       visible.push(visiblePart)
     },
@@ -183,6 +191,15 @@ function maskSentence (sentence, replacer = "_", charLimit = 3) {
   )
 
   return {hidden, visible}
+}
+
+function maskWords({words, replacer = "_", charLimit=3}){
+  const result = R.map(
+    val => maskWordHelper(val, replacer, charLimit),
+    R.split(" ",words)
+  )
+  
+  return R.join(" ", result)
 }
 
 function replaceLast (str, replacer = "") {
@@ -362,6 +379,7 @@ module.exports.glob = glob
 module.exports.kebabCase = kebabCase
 module.exports.map = map
 module.exports.maskSentence = maskSentence
+module.exports.maskWords = maskWords
 module.exports.replaceFirst = replaceFirst
 module.exports.replaceLast = replaceLast
 module.exports.reverse = reverse

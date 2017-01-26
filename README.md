@@ -192,6 +192,51 @@ stringFn.map("foo", val =>`|${val}| `)
 // => "|f| |o| |o| "
 ```
 
+## maskSentence( { sentence, replacer = "_", charLimit = 3, words = [] } )
+
+```
+const sentence = "it was, for what i need, good."
+const {hidden , visible} = stringFn.maskSentence({ sentence })
+// hidden => ["it", "was", ",", "for", "what", "i", "need", ",", "good", "."]
+// visible => ["i_", "w_s", ",", "f_r", "w__t", "i", "n__d", ",", "g__d", "."]
+```
+Returns object with notation **{visible: Array<string>, hidden: Array<string>}**
+
+**visible** is array of masked words following the rules:
+
+1. Each punctuation is treated as a word
+2. If word is longer than **charLimit**, then each char from the middle part is replaced with **replacer**
+3. If word is shorter than **charLimit**, then each char from the tail is replaced with **replacer**
+
+**hidden** is the unmasked version of **visible**
+
+You can pass **words** array so the masking rule is applied only to members of **words**.  
+```
+const sentence = "it was good."
+const words = ["good"]
+const {hidden, visible} = stringFn.maskSentence({ sentence, words })
+// hidden => ["it", "was", "good", "."]
+// visible => ["it", "was", "g__d", "."]
+```
+
+## maskWords({words, replacer = "_", charLimit = 3})
+
+```
+stringFn.maskWords({words:"James Brown"})
+// => "J___s B___n"
+
+stringFn.maskWords({words:"James"})
+// => "J___s"
+```
+
+Returns string that is masked version of **words**
+
+Each word of **words** is masked following the rules: 
+
+- If word is longer than **charLimit**, then each char from the middle part is replaced with **replacer**
+
+- If word is shorter than **charLimit**, then each char from the tail is replaced with **replacer**
+
 ## kebabCase(str, extendedLatinFlag = false)
 
 Return kebab case version of **str**

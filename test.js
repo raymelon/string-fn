@@ -182,7 +182,7 @@ describe("map",()=>{
 describe("maskSentence",()=>{
   it("default",()=>{
     expect(
-      stringFn.maskSentence(" it was, for what i need, good.  ")
+      stringFn.maskSentence({sentence:" it was, for what i need, good.  "})
     ).toEqual(
       {
         "hidden": ["it", "was", ",", "for", "what", "i", "need", ",", "good", "."], 
@@ -193,7 +193,7 @@ describe("maskSentence",()=>{
   
   it("when custom replacer",()=>{
     expect(
-      stringFn.maskSentence(" it was, for what i need, good.  ", "*")
+      stringFn.maskSentence({sentence:"it was, for what i need, good.", replacer:"*"})
     ).toEqual(
       {
         "hidden": ["it", "was", ",", "for", "what", "i", "need", ",", "good", "."], 
@@ -204,13 +204,67 @@ describe("maskSentence",()=>{
   
   it("when custom replacer and highest charLimit",()=>{
     expect(
-      stringFn.maskSentence(" it was, for what i need, good.  ", "*",Infinity)
+      stringFn.maskSentence({
+          sentence: "it was, for what i need, good.",
+          charLimit:Infinity
+        })
     ).toEqual(
       {
         "hidden": ["it", "was", ",", "for", "what", "i", "need", ",", "good", "."], 
-        "visible": ["i*", "w**", ",", "f**", "w***", "i", "n***", ",", "g***", "."]
+        "visible": ["i_", "w__", ",", "f__", "w___", "i", "n___", ",", "g___", "."]
       }
     )
+  })
+  
+  it("when custom replacer and lowest charLimit",()=>{
+    expect(
+      stringFn.maskSentence({
+        sentence:"it was, for what i need, good.", 
+        replacer:"*",
+        charLimit: 0})
+    ).toEqual(
+      {
+        "hidden": ["it", "was", ",", "for", "what", "i", "need", ",", "good", "."], 
+        "visible": ["it", "w*s", ",", "f*r", "w**t", "i", "n**d", ",", "g**d", "."]
+      }
+    )
+  })
+  
+  it("when passing words array",()=>{
+    expect(
+      stringFn.maskSentence({
+        sentence:"it was, for what i need, good.", 
+        words: ["was","what"]})
+    ).toEqual(
+      {
+        "hidden": ["it", "was", ",", "for", "what", "i", "need", ",", "good", "."], 
+        "visible": ["it", "w_s", ",", "for", "w__t", "i", "need", ",", "good", "."]
+      }
+    )
+  })
+})
+
+describe("maskWords", () => {
+  it("default", () => {
+    expect(
+      stringFn.maskWords({words:"James Brown"})
+    ).toEqual("J___s B___n")
+  })
+  
+  it("when passing replacer", () => {
+    expect(
+      stringFn.maskWords({words:"James Brown", replacer: "*"})
+    ).toEqual("J***s B***n")
+  })
+  
+  it("when passing highest charLimit", () => {
+    expect(
+      stringFn.maskWords({
+        words:"James Brown", 
+        replacer: "*",
+        charLimit: Infinity
+      })
+    ).toEqual("J**** B****")
   })
 })
 
