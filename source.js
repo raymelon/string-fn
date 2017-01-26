@@ -148,9 +148,20 @@ const addSpaceAroundPunctuation = sentence => {
 
 const maskWord = (word, replacer, charLimit) => {
   if(R.test(PUNCTUATIONS,word)){
-    return {hiddenPart: word, visiblePart: word}
+    return word
   }
   
+  if(word.length<charLimit){
+    const repeatCount = word.length === 0 ?
+      1 :
+      word.length
+    return `${ R.head(word) }${ replacer.repeat(word.length - 1) }`
+  }
+  if(word.length < 2){
+    return word
+  }
+  
+  return `${ R.head(word) }${ replacer.repeat(word.length - 2) }${ R.last(word) }`  
 }
 
 function maskSentence (sentence, replacer = "_", charLimit = 3) {
@@ -164,43 +175,14 @@ function maskSentence (sentence, replacer = "_", charLimit = 3) {
 
   R.map(
     val=>{
-      const {hiddenPart, visiblePart} = maskWord(val, replacer, charLimit)
-      hidden.push(hiddenPart)
+      const visiblePart = maskWord(val, replacer, charLimit)
+      hidden.push(val)
       visible.push(visiblePart)
     },
     R.split(" ", sentence)
   )
 
-  const maskWord = word => {
-    if (word.length === 2) {
-      return word
-    } else if (word.length === 3) {
-      return `${ head(word) }__`
-    }
-
-    return `${ head(word) }${ "_".repeat(word.length - 2) }${ last(word) }`
-  }
-
-  let normalizedState = R.map(val => {
-    if (isPunctuation(last(val))) {
-      return [ init(val), last(val) ]
-    }
-
-    return val
-  })(R.split(" ", sentence))
-  normalizedState = flatten(normalizedState)
-  const hiddenState = map(val => {
-    if (isPunctuation(val)) {
-      return val
-    }
-
-    return maskWord(val)
-  })(normalizedState)
-
-  return {
-    hidden: normalizedState,
-    visible: hiddenState,
-  }
+  return {hidden, visible}
 }
 
 function replaceLast (str, replacer = "") {

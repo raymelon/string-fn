@@ -179,6 +179,41 @@ describe("map",()=>{
   })
 })
 
+describe("maskSentence",()=>{
+  it("default",()=>{
+    expect(
+      stringFn.maskSentence(" it was, for what i need, good.  ")
+    ).toEqual(
+      {
+        "hidden": ["it", "was", ",", "for", "what", "i", "need", ",", "good", "."], 
+        "visible": ["i_", "w_s", ",", "f_r", "w__t", "i", "n__d", ",", "g__d", "."]
+      }
+    )
+  })
+  
+  it("when custom replacer",()=>{
+    expect(
+      stringFn.maskSentence(" it was, for what i need, good.  ", "*")
+    ).toEqual(
+      {
+        "hidden": ["it", "was", ",", "for", "what", "i", "need", ",", "good", "."], 
+        "visible": ["i*", "w*s", ",", "f*r", "w**t", "i", "n**d", ",", "g**d", "."]
+      }
+    )
+  })
+  
+  it("when custom replacer and highest charLimit",()=>{
+    expect(
+      stringFn.maskSentence(" it was, for what i need, good.  ", "*",Infinity)
+    ).toEqual(
+      {
+        "hidden": ["it", "was", ",", "for", "what", "i", "need", ",", "good", "."], 
+        "visible": ["i*", "w**", ",", "f**", "w***", "i", "n***", ",", "g***", "."]
+      }
+    )
+  })
+})
+
 describe("kebabCase", () => {
   it("should work with camel case", () => {
     expect(
