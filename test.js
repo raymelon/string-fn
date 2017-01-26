@@ -171,6 +171,14 @@ describe("glob", () => {
   })
 })
 
+describe("indent",()=>{
+  it("default",()=>{
+    expect(
+      stringFn.indent("foo\nbar\nbaz",4)
+    ).toEqual("    foo\n    bar\n    baz")
+  })
+})
+
 describe("map",()=>{
   it("default",()=>{
     expect(

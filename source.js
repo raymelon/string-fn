@@ -123,6 +123,16 @@ function glob (str, globStr) {
   return str.includes(globStr)
 }
 
+function indent(str, indentCount, indentChar = " "){
+  return R.join(
+    "\n",
+    R.map(
+      val => `${indentChar.repeat(indentCount)}${val}`,
+      R.split("\n", str)
+    )
+  )
+}
+
 function kebabCase (str, flag = false) {
   return R.toLower(
     R.join(
@@ -417,6 +427,7 @@ module.exports.distance = distance
 module.exports.distanceGerman = distanceGerman
 module.exports.filter = filter
 module.exports.glob = glob
+module.exports.indent = indent
 module.exports.kebabCase = kebabCase
 module.exports.map = map
 module.exports.maskSentence = maskSentence
