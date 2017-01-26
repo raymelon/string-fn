@@ -142,6 +142,52 @@ function map(str, fn){
   )
 }
 
+function maskSentence (sentence, replacer = "_", charLimit = 3) {
+
+  const hidden = []
+  const visible = []
+
+  R.map(
+    val=>{
+      const {hiddenPart, visiblePart} = parseWord(val)
+      hidden.push(R.flatten(hiddenPart))
+      visible.push(R.flatten(visiblePart))
+    },
+    R.split(" ", clean(sentence))
+  )
+
+  const maskWord = word => {
+    if (word.length === 2) {
+      return word
+    } else if (word.length === 3) {
+      return `${ head(word) }__`
+    }
+
+    return `${ head(word) }${ "_".repeat(word.length - 2) }${ last(word) }`
+  }
+
+  let normalizedState = R.map(val => {
+    if (isPunctuation(last(val))) {
+      return [ init(val), last(val) ]
+    }
+
+    return val
+  })(R.split(" ", sentence))
+  normalizedState = flatten(normalizedState)
+  const hiddenState = map(val => {
+    if (isPunctuation(val)) {
+      return val
+    }
+
+    return maskWord(val)
+  })(normalizedState)
+
+  return {
+    hidden: normalizedState,
+    visible: hiddenState,
+  }
+}
+
 function replaceLast (str, replacer = "") {
   return `${ R.init(str) }${ replacer }`
 }
@@ -318,6 +364,7 @@ module.exports.filter = filter
 module.exports.glob = glob
 module.exports.kebabCase = kebabCase
 module.exports.map = map
+module.exports.maskSentence = maskSentence
 module.exports.replaceFirst = replaceFirst
 module.exports.replaceLast = replaceLast
 module.exports.reverse = reverse

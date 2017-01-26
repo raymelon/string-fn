@@ -14,6 +14,10 @@ console.log(stringFn.camelCase("foo-bar-baz"))
 // => fooBarBaz
 ```
 
+## Benchmark
+
+![Screen](/screen.png)
+
 ## Installation
 
 - Use **npm i string-fn** for Webpack and Node.js
