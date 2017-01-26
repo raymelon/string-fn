@@ -1,8 +1,8 @@
 {
   "name": "string-fn",
   "version": "0.2.0",
-  "description": "Useful string manipulations",
-  "main": "source.js",
+  "description": "String manipulation library",
+  "main": "index.js",
   "scripts": {
     "test": "jest",
     "cover": "jest --coverage",
@@ -15,6 +15,8 @@
   "keywords": [
     "string",
     "util",
+    "words",
+    "sentence",
     "manipulation"
   ],
   "author": "self_refactor",
@@ -32,6 +34,6 @@
     "voca": "^1.2.0"
   },
   "dependencies": {
-    "rambda": "^0.4.1"
+    "rambda": "*"
   }
 }

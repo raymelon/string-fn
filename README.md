@@ -4,7 +4,7 @@ Status](https://travis-ci.org/selfrefactor/ils.svg?branch=master)](https://travi
 
 # String-fn
 
-String manipulation library build for speed
+String manipulation library
 
 # Example
 
@@ -25,7 +25,7 @@ console.log(stringFn.camelCase("foo-bar-baz"))
 - For browser usage refer to
 
 ```
-https://unpkg.com/string-fn@0.2.0/webVersion.js
+https://unpkg.com/string-fn@0.2.1/webVersion.js
 ```
 
 ## API
@@ -195,7 +195,8 @@ Returns object with notation **{visible: Array<string>, hidden: Array<string>}**
 
 **hidden** is the unmasked version of **visible**
 
-You can pass **words** array so the masking rule is applied only to members of **words**.  
+You can pass **words** array so the masking rule is applied only to members of
+**words**.
 ```
 const sentence = "it was good."
 const words = ["good"]
@@ -216,7 +217,7 @@ stringFn.maskWords({words:"James"})
 
 Returns string that is masked version of **words**
 
-Each word of **words** is masked following the rules: 
+Each word of **words** is masked following the rules:
 
 - If word is longer than **charLimit**, then each char from the middle part is replaced with **replacer**
 
