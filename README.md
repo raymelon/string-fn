@@ -155,32 +155,17 @@ Three types of valid glob rules:
 3. \*foo*
 
 ```
-stringFn.glob("/home/work/dev/foo.js", "*.js")
+stringFn.glob("/home/dev/foo.js", "*.js")
 // => true
 
-stringFn.glob("/home/work/dev/foo.js", "*.ts")
+stringFn.glob("/home/dev/foo.js", "*.ts")
 // => false
 
-stringFn.glob("/home/work/dev/foo.js", "/home/*")
+stringFn.glob("/home/dev/foo.js", "/home/*")
 // => true
 
-stringFn.glob("/home/work/dev/foo.js", "/usr/*")
-// => false
-
-stringFn.glob("/home/work/dev/foo.js", "*/work/dev/*")
+stringFn.glob("/home/dev/foo.js", "*/dev/foo*")
 // => true
-
-stringFn.glob("/home/work/dev/foo.js", "*/home/*")
-// => false
-
-stringFn.glob("/home/work/dev/foo*.js", "foo*.")
-// => true
-
-stringFn.glob("/home/work/dev/foo*bar.js", "foo*baz")
-// => false
-
-stringFn.glob("/home/work/dev/foo*bar*.js", "foo*baz*")
-// => false
 ```
 
 ## map(str, fn)
