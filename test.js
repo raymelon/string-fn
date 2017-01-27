@@ -437,6 +437,28 @@ describe("snakeCase", () => {
   })
 })
 
+describe("splitSentence",()=>{
+  it("default",()=>{
+    expect(
+      stringFn.splitSentence("in my   , time of-dying, when nobody.")
+    ).toEqual(
+      [
+        "in",
+        "my",
+        ",",
+        "time",
+        "of",
+        "-",
+        "dying",
+        ",",
+        "when",
+        "nobody",
+        "."
+      ]
+    )
+  })
+})
+
 describe("stripPunctuation", () => {
   it("should work", () => {
     expect(

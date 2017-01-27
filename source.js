@@ -200,6 +200,15 @@ function maskSentence ({ sentence, replacer = "_", charLimit = 3, words = [] }) 
   }
 }
 
+function splitSentence(sentence){
+  return R.split(
+    " ",
+    clean(
+      addSpaceAroundPunctuation(sentence)
+    )
+  )
+}
+
 function maskWords ({ words, replacer = "_", charLimit = 3 }) {
   const result = R.map(
     val => maskWordHelper(val, replacer, charLimit),
@@ -316,6 +325,7 @@ function snakeCase (str, flag = false) {
     )
   )
 }
+///
 
 function stripPunctuation (str) {
   return R.replace(PUNCTUATIONS, "", str)
@@ -442,6 +452,7 @@ module.exports.reverse = reverse
 module.exports.seoTitle = seoTitle
 module.exports.shuffle = shuffle
 module.exports.snakeCase = snakeCase
+module.exports.splitSentence = splitSentence
 module.exports.stripPunctuation = stripPunctuation
 module.exports.stripTags = stripTags
 module.exports.surround = surround
