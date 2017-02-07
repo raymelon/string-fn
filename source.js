@@ -123,11 +123,21 @@ function glob (str, globStr) {
   return str.includes(globStr)
 }
 
-function indent(str, indentCount, indentChar = " "){
+function indent(str, indentCount){
   return R.join(
     "\n",
     R.map(
-      val => `${indentChar.repeat(indentCount)}${val}`,
+      val => `${" ".repeat(indentCount)}${val}`,
+      R.split("\n", str)
+    )
+  )
+}
+
+function removeIndent(str){
+  return R.join(
+    "\n",
+    R.map(
+      val => val.trimLeft(),
       R.split("\n", str)
     )
   )
@@ -444,6 +454,7 @@ module.exports.maskSentence = maskSentence
 module.exports.maskWords = maskWords
 module.exports.padLeft = padLeft
 module.exports.padRight = padRight
+module.exports.removeIndent = removeIndent
 module.exports.removeLeftPadding = removeLeftPadding
 module.exports.removeRightPadding = removeRightPadding
 module.exports.replaceFirst = replaceFirst

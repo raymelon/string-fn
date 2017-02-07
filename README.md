@@ -2,6 +2,7 @@
 Status](https://travis-ci.org/selfrefactor/ils.svg?branch=master)](https://travis-ci.org/selfrefactor/string-fn)
 [![codecov](https://codecov.io/gh/selfrefactor/string-fn/branch/master/graph/badge.svg)](https://codecov.io/gh/selfrefactor/string-fn)
 
+
 # String-fn
 
 String manipulation library
@@ -25,7 +26,7 @@ console.log(stringFn.camelCase("foo-bar-baz"))
 - For browser usage refer to
 
 ```
-https://unpkg.com/string-fn@0.3.0/webVersion.js
+https://unpkg.com/string-fn@0.3.1/webVersion.js
 ```
 
 ## API
@@ -168,6 +169,36 @@ stringFn.glob("/home/dev/foo.js", "*/dev/foo*")
 // => true
 ```
 
+## intent(str, indentCount)
+
+Intent each line in **str** with **intentCount** spaces
+
+```
+stringFn.indent("foo\nbar\nbaz",4)
+// => "    foo\n    bar\n    baz"
+```
+
+## kebabCase(str, extendedLatinFlag = false)
+
+Return kebab case version of **str**
+
+```
+stringFn.kebabCase("fooBarBaz")
+// => "foo-bar-baz"
+
+stringFn.kebabCase("foo_bar_baz")
+// => "foo-bar-baz"
+
+stringFn.kebabCase("Foo Bar BAZ")
+// => "foo-bar-baz"
+
+stringFn.kebabCase("__FOO_BAR__")
+// => "foo-bar"
+
+stringFn.kebabCase("Foo Bar BAZ")
+// => "foo-bar-baz"
+```
+
 ## map(str, fn)
 
 Returns joined chars of **str** after each of them is passed through **fn**
@@ -243,25 +274,11 @@ stringFn.padRight({str:"1313",padChar:"0",padLimit:3})
 // => "1313"
 ```
 
-## kebabCase(str, extendedLatinFlag = false)
-
-Return kebab case version of **str**
+## removeIndent(str)
 
 ```
-stringFn.kebabCase("fooBarBaz")
-// => "foo-bar-baz"
-
-stringFn.kebabCase("foo_bar_baz")
-// => "foo-bar-baz"
-
-stringFn.kebabCase("Foo Bar BAZ")
-// => "foo-bar-baz"
-
-stringFn.kebabCase("__FOO_BAR__")
-// => "foo-bar"
-
-stringFn.kebabCase("Foo Bar BAZ")
-// => "foo-bar-baz"
+stringFn.removeIndent("    foo\n    bar\n    baz")
+// => "foo\nbar\nbaz"
 ```
 
 ## removeLeftPadding({str, padChar})

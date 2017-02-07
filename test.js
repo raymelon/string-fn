@@ -179,6 +179,14 @@ describe("indent",()=>{
   })
 })
 
+describe("removeIndent",()=>{
+  it("default",()=>{
+    expect(
+      stringFn.removeIndent("    foo\n    bar\n    baz")
+    ).toEqual("foo\nbar\nbaz")
+  })
+})
+
 describe("map",()=>{
   it("default",()=>{
     expect(
