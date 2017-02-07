@@ -1,5 +1,5 @@
 const R = require("rambda")
-const stringFn = require("./source")
+const stringFn = require("./")
 
 describe("between", () => {
   it("should work", () => {
