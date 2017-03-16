@@ -1,6 +1,3 @@
-| [between] | [camelCase] | [kebabCase] |
-|-----------|-------------|-------------|
-
 [![Build
 Status](https://travis-ci.org/selfrefactor/ils.svg?branch=master)](https://travis-ci.org/selfrefactor/string-fn)
 [![codecov](https://codecov.io/gh/selfrefactor/string-fn/branch/master/graph/badge.svg)](https://codecov.io/gh/selfrefactor/string-fn)
@@ -33,6 +30,10 @@ https://unpkg.com/string-fn@0.3.1/webVersion.js
 ```
 
 ## API
+
+| [between] | [camelCase] | [kebabCase] |
+|-----------|-------------|-------------|
+
 
 ## between
 
