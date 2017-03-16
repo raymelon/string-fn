@@ -1,5 +1,5 @@
-| index | [api-list] |
-|-------|------------|
+| [between] | [camelCase] |
+|-----------|-------------|
 
 [![Build
 Status](https://travis-ci.org/selfrefactor/ils.svg?branch=master)](https://travis-ci.org/selfrefactor/string-fn)
@@ -34,9 +34,9 @@ https://unpkg.com/string-fn@0.3.1/webVersion.js
 
 ## API
 
-- [api-list]
+## between
 
-## between(str, leftLimiter, rightLimiter)
+> between(str:String, leftLimiter:String, rightLimiter:String)
 
 Returns substring of **str** placed between **leftLimiter** and **rightLimiter**
 
@@ -51,7 +51,9 @@ stringFn.between("begin foo bar baz end", "q", "x")
 // => "begin foo bar baz end"
 ```
 
-## camelCase(str, extendedLatinFlag = false)
+## camelCase
+
+> camenCase(str:String, extendedLatinFlag:Boolean = false)
 
 Returns camel case version of **str**.
 
@@ -467,5 +469,6 @@ stringFn.wrap("dr strangelove or how i learned", 1)
 // => [ "i" ]
 ```
 
-[api-list]: #api-list
+[between]: #between
+[camelCase]: #camelCase
 
