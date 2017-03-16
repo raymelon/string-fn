@@ -1,4 +1,4 @@
-| [between] | [camelCase] | [camelcase] |
+| [between] | [camelCase] | [kebabCase] |
 |-----------|-------------|-------------|
 
 [![Build
@@ -185,7 +185,9 @@ stringFn.indent("foo\nbar\nbaz",4)
 // => "    foo\n    bar\n    baz"
 ```
 
-## kebabCase(str, extendedLatinFlag = false)
+## kebabCase
+
+> kebabCase(str:String, extendedLatinFlag:Boolean = false)
 
 Return kebab case version of **str**
 
@@ -472,4 +474,6 @@ stringFn.wrap("dr strangelove or how i learned", 1)
 [between]: #between
 
 [camelcase]: #camelcase
+
+[kebabcase]: #kebabcase
 
