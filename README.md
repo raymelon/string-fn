@@ -470,5 +470,6 @@ stringFn.wrap("dr strangelove or how i learned", 1)
 ```
 
 [between]: #between
+
 [camelCase]: #camelCase
 
