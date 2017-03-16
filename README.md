@@ -1,3 +1,6 @@
+| index | [a] | [b] | [c] | [d] |
+|-------|---------------|---------|---------|------------|
+
 [![Build
 Status](https://travis-ci.org/selfrefactor/ils.svg?branch=master)](https://travis-ci.org/selfrefactor/string-fn)
 [![codecov](https://codecov.io/gh/selfrefactor/string-fn/branch/master/graph/badge.svg)](https://codecov.io/gh/selfrefactor/string-fn)
@@ -411,6 +414,8 @@ stringFn.titleCase("foo bar bazö", true)
 
 ## truncate(str, lengthLimit, tail = "...")
 
+## api-list
+
 Truncates **str** if its length is greater than **lengthLimit**
 
 ```
@@ -459,3 +464,7 @@ stringFn.wrap("dr strangelove or how i learned", 5, true)
 stringFn.wrap("dr strangelove or how i learned", 1)
 // => [ "i" ]
 ```
+[a](#api-list)
+[b](#api-list)
+[c](#api-list)
+[d](#api-list)
