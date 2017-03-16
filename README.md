@@ -34,7 +34,7 @@ https://unpkg.com/string-fn@0.3.1/webVersion.js
 
 ## API
 
-[api-list]
+- [api-list]
 
 ## between(str, leftLimiter, rightLimiter)
 
