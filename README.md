@@ -1,4 +1,4 @@
-| index | [a] | [b] | [c] | [d] |
+| index | [api-list] | [api-list] | [api-list] | [api-list] |
 |-------|---------------|---------|---------|------------|
 
 [![Build
