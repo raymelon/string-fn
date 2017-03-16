@@ -1,5 +1,5 @@
-| index | [api-list] | [api-list] | [api-list] | [api-list] |
-|-------|------------|------------|------------|------------|
+| index | [api-list] |
+|-------|------------|
 
 [![Build
 Status](https://travis-ci.org/selfrefactor/ils.svg?branch=master)](https://travis-ci.org/selfrefactor/string-fn)
@@ -466,7 +466,6 @@ stringFn.wrap("dr strangelove or how i learned", 5, true)
 stringFn.wrap("dr strangelove or how i learned", 1)
 // => [ "i" ]
 ```
-[a](#api-list)
-[b](#api-list)
-[c](#api-list)
-[d](#api-list)
+
+[api-list]: docs/run-s.md
+
