@@ -1,5 +1,5 @@
 | index | [api-list] | [api-list] | [api-list] | [api-list] |
-|-------|---------------|---------|---------|------------|
+|-------|------------|------------|------------|------------|
 
 [![Build
 Status](https://travis-ci.org/selfrefactor/ils.svg?branch=master)](https://travis-ci.org/selfrefactor/string-fn)
@@ -33,6 +33,8 @@ https://unpkg.com/string-fn@0.3.1/webVersion.js
 ```
 
 ## API
+
+[api-list]
 
 ## between(str, leftLimiter, rightLimiter)
 
