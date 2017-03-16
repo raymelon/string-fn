@@ -467,5 +467,5 @@ stringFn.wrap("dr strangelove or how i learned", 1)
 // => [ "i" ]
 ```
 
-[api-list]: docs/run-s.md
+[api-list]: #api-list
 
