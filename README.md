@@ -7,6 +7,9 @@ Status](https://travis-ci.org/selfrefactor/ils.svg?branch=master)](https://travi
 
 String manipulation library
 
+| [between] | [camelCase] | [kebabCase] |
+|-----------|-------------|-------------|
+
 # Example
 
 ```
@@ -30,10 +33,6 @@ https://unpkg.com/string-fn@0.3.1/webVersion.js
 ```
 
 ## API
-
-| [between] | [camelCase] | [kebabCase] |
-|-----------|-------------|-------------|
-
 
 ## between
 
