@@ -1,5 +1,5 @@
-| [between] | [camelCase] |
-|-----------|-------------|
+| [between] | [camelCase] | [camelcase] |
+|-----------|-------------|-------------|
 
 [![Build
 Status](https://travis-ci.org/selfrefactor/ils.svg?branch=master)](https://travis-ci.org/selfrefactor/string-fn)
@@ -471,5 +471,7 @@ stringFn.wrap("dr strangelove or how i learned", 1)
 
 [between]: #between
 
-[camelCase]: #camelCase
+[camelCase]: #camelcase
+
+[camelcase]: #camelcase
 
