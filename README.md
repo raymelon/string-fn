@@ -47,7 +47,7 @@ stringFn.between("begin foo bar baz end", "q", "x")
 // => "begin foo bar baz end"
 ```
 #### camelCase
-> camenCase(str:String, extendedLatinFlag = false)
+> camelCase(str:String, extendedLatinFlag = false)
 
 Returns camel case version of **str**.
 
@@ -422,7 +422,7 @@ stringFn.titleCase("foo bar bazö", true)
 ```
 
 #### truncate
-## truncate(str, lengthLimit, tail = "...")
+> truncate(str, lengthLimit, tail = "...")
 
 Truncates **str** if its length is greater than **lengthLimit**
 
