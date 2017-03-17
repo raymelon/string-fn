@@ -7,9 +7,6 @@ Status](https://travis-ci.org/selfrefactor/ils.svg?branch=master)](https://travi
 
 String manipulation library
 
-| [between] | [camelCase] | [kebabCase] |
-|-----------|-------------|-------------|
-
 # Example
 
 ```
@@ -34,8 +31,6 @@ https://unpkg.com/string-fn@0.3.1/webVersion.js
 
 ## API
 
-## between
-
 > between(str:String, leftLimiter:String, rightLimiter:String)
 
 Returns substring of **str** placed between **leftLimiter** and **rightLimiter**
@@ -50,8 +45,6 @@ stringFn.between("begin foo   bar   baz end", "foo", "baz")
 stringFn.between("begin foo bar baz end", "q", "x")
 // => "begin foo bar baz end"
 ```
-
-## camelCase
 
 > camenCase(str:String, extendedLatinFlag:Boolean = false)
 
@@ -80,7 +73,7 @@ stringFn.camelCase("foo bar bazö", true)
 // => "fooBarBazö"
 ```
 
-## clean(str)
+> clean(str:String)
 
 Trims **str** and turns multiple whitespace to single whitespace
 
@@ -89,7 +82,7 @@ stringFn.clean("   foo  bar   baz   ")
 // => "foo bar baz"
 ```
 
-## count(str, substring)
+> count(str:String, substring:String)
 
 Count number of occurances of **substring** within **str**
 
@@ -104,7 +97,7 @@ stringFn.count("foo1 Bar foo1 baz Foo1 foo1", "foo1")
 // => 3
 ```
 
-## distance(firstString, secondString)
+> distance(firstString:String, secondString:String)
 
 Calculates Levenshtein distance between **firstString** and **secondString**
 
@@ -122,7 +115,7 @@ stringFn.distance("foobarbaz", "foobarbaz")
 // => 0
 ```
 
-## distanceGerman(firstString, secondString)
+> distanceGerman(firstString:String, secondString:String)
 
 Calculates Levenshtein distance between normalized German strings
 
@@ -143,7 +136,7 @@ stringFn.distanceGerman("der anlass", "der Anlaß")
 // => 0
 ```
 
-## filter(str, fn)
+> filter(str:String, fn:Function)
 
 Returns string with those chars of **str** which passes **fn**
 
@@ -152,7 +145,7 @@ stringFn.filter("foo", val => val === "o")
 // => "oo"
 ```
 
-## glob(str, globRule)
+> glob(str:String, globRule:String)
 
 Returns boolean of **str** following **globRule**.
 
@@ -176,7 +169,7 @@ stringFn.glob("/home/dev/foo.js", "*/dev/foo*")
 // => true
 ```
 
-## intent(str, indentCount)
+> intent(str:String, indentCount:Number)
 
 Intent each line in **str** with **intentCount** spaces
 
@@ -184,8 +177,6 @@ Intent each line in **str** with **intentCount** spaces
 stringFn.indent("foo\nbar\nbaz",4)
 // => "    foo\n    bar\n    baz"
 ```
-
-## kebabCase
 
 > kebabCase(str:String, extendedLatinFlag:Boolean = false)
 
@@ -208,7 +199,7 @@ stringFn.kebabCase("Foo Bar BAZ")
 // => "foo-bar-baz"
 ```
 
-## map(str, fn)
+> map(str:String, fn:Function)
 
 Returns joined chars of **str** after each of them is passed through **fn**
 
@@ -217,7 +208,7 @@ stringFn.map("foo", val =>`|${val}| `)
 // => "|f| |o| |o| "
 ```
 
-## maskSentence( { sentence, replacer = "_", charLimit = 3, words = [] } )
+> maskSentence( { sentence:String, replacer = "_", charLimit = 3, words = [] } )
 
 ```
 const sentence = "it was, for what i need, good."
@@ -245,7 +236,7 @@ const {hidden, visible} = stringFn.maskSentence({ sentence, words })
 // visible => ["it", "was", "g__d", "."]
 ```
 
-## maskWords({words, replacer = "_", charLimit = 3})
+> maskWords({words:String, replacer = "_", charLimit = 3})
 
 ```
 stringFn.maskWords({words:"James Brown"})
@@ -263,7 +254,7 @@ Each word of **words** is masked following the rules:
 
 - If word is shorter than **charLimit**, then each char from the tail is replaced with **replacer**
 
-## padLeft({str:String, padLimit:Number, padChar:String})
+> padLeft({str:String, padLimit:Number, padChar:String})
 
 ```
 stringFn.padLeft({str:"13",padChar:"0",padLimit:7})
@@ -273,7 +264,7 @@ stringFn.padLeft({str:"1313",padChar:"0",padLimit:3})
 // => "1313"
 ```
 
-## padRight({str:String, padLimit:Number, padChar:String})
+> padRight({str:String, padLimit:Number, padChar:String})
 
 ```
 stringFn.padRight({str:"13",padChar:"0",padLimit:7})
@@ -283,14 +274,14 @@ stringFn.padRight({str:"1313",padChar:"0",padLimit:3})
 // => "1313"
 ```
 
-## removeIndent(str)
+> removeIndent(str:String)
 
 ```
 stringFn.removeIndent("    foo\n    bar\n    baz")
 // => "foo\nbar\nbaz"
 ```
 
-## removeLeftPadding({str, padChar})
+> removeLeftPadding({str:String, padChar:String})
 ```
 stringFn.removeLeftPadding({str:"0000130",padChar:"0"})
 // => "130"
@@ -299,7 +290,7 @@ stringFn.removeLeftPadding({str:"888",padChar:"0"})
 // => "888"
 ```
 
-## removeRightPadding({str, padChar})
+> removeRightPadding({str:String, padChar:String})
 ```
 stringFn.removeRightPadding({str:"0130000",padChar:"0"})
 // => "013"
@@ -308,7 +299,7 @@ stringFn.removeRightPadding({str:"888",padChar:"0"})
 // => "888"
 ```
 
-## replaceFirst(str, replacer = "")
+> replaceFirst(str:String, replacer = "")
 
 Replaces the first char of **str** with **replacer**
 
@@ -320,7 +311,7 @@ stringFn.replaceFirst("fooBarBaz")
 // => "ooBarBaz"
 ```
 
-## replaceLast(str, replacer = "")
+> replaceLast(str:String, replacer = "")
 
 Replaces the last char of **str** with **replacer**
 
@@ -332,14 +323,14 @@ stringFn.replaceLast("fooBarBaz")
 // => "fooBarBa"
 ```
 
-## reverse(str)
+> reverse(str:String)
 
 ```
 stringFn.reverse("fooBarBaz")
 // => "zaBraBoof"
 ```
 
-## seoTitle(str, lowLimit = 3, extendedLatinFlag = false)
+> seoTitle(str:String, lowLimit = 3, extendedLatinFlag = false)
 
 Capitalize each word of **str** as long as word's length is higher or equal to
 **lowLimit**. First word is always capitalized.
@@ -355,7 +346,7 @@ stringFn.seoTitle("i got ants in my pants", 2)
 // => "I Got Ants In My Pants"
 ```
 
-## shuffle(str)
+> shuffle(str:String)
 
 Randomize **str** content
 
@@ -364,7 +355,7 @@ stringFn.shuffle("fooBarBaz") === "fooBarBaz"
 // => false
 ```
 
-## snakeCase(str, extendedLatinFlag = false)
+> snakeCase(str:String, extendedLatinFlag = false)
 
 Returns snake case version of **str**
 
@@ -376,7 +367,7 @@ stringFn.snakeCase("foo bar bazö", true)
 // => "foo_bar_bazö"
 ```
 
-## stripPunctuation(str)
+> stripPunctuation(str:String)
 
 Removes all the punctiation marks from **str**
 
@@ -385,7 +376,7 @@ stringFn.stripPunctuation("If my, wings should, fail me ...")
 // => "If my wings should fail me "
 ```
 
-## stripTags(str)
+> stripTags(str:String)
 
 Removes Html tags from **str**
 
@@ -394,7 +385,7 @@ stringFn.stripTags("<p>foo <b>bar</b>   <hr/> baz</p>")
 // => "foo bar baz"
 ```
 
-## surround(str, leftString, rightString)
+> surround(str:String, leftString:String, rightString:String)
 
 Returns **str** surrounded by **leftStrring** and **rightString**
 
