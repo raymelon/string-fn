@@ -1,6 +1,6 @@
 {
   "name": "string-fn",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "String manipulation library",
   "main": "index.js",
   "scripts": {
