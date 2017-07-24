@@ -24,7 +24,8 @@
   "bugs": {
     "url": "https://github.com/selfrefactor/string-fn/issues"
   },
-  "homepage": "https://github.com/selfrefactor/string-fn#readme",
+  "homepage": "https://selfrefactor.github.io/string-fn",
+  "homepage__": "https://github.com/selfrefactor/string-fn#readme",
   "devDependencies": {
     "beautify-benchmark": "^0.2.4",
     "benchmark": "^2.1.3",
