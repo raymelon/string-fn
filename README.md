@@ -6,9 +6,9 @@ Status](https://travis-ci.org/selfrefactor/string-fn.svg?branch=master)](https:/
 
 
 
-[create an anchor](#camelCase)
+[create an anchor](#camelcase)
 
-[create an anchor](#kebabCase)
+[create an anchor](#kebabcase)
 
 String manipulation library
 
