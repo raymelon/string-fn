@@ -1,12 +1,14 @@
 [![Build
-Status](https://travis-ci.org/selfrefactor/ils.svg?branch=master)](https://travis-ci.org/selfrefactor/string-fn)
+Status](https://travis-ci.org/selfrefactor/string-fn.svg?branch=master)](https://travis-ci.org/selfrefactor/string-fn)
 [![codecov](https://codecov.io/gh/selfrefactor/string-fn/branch/master/graph/badge.svg)](https://codecov.io/gh/selfrefactor/string-fn)
 
 # String-fn
 
-[create an anchor](#Benchmark)
 
-[create an anchor](#benchmark)
+
+[create an anchor](#camelCase)
+
+[create an anchor](#kebabCase)
 
 String manipulation library
 
