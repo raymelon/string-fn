@@ -4,13 +4,7 @@ Status](https://travis-ci.org/selfrefactor/string-fn.svg?branch=master)](https:/
 
 # String-fn
 
-
-
-[create an anchor](#camelcase)
-
-[create an anchor](#kebabcase)
-
-String manipulation library
+String manipulation library build on top of `Rambda`
 
 # Example
 
