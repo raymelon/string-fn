@@ -1,6 +1,7 @@
 [![Build
 Status](https://travis-ci.org/selfrefactor/string-fn.svg?branch=master)](https://travis-ci.org/selfrefactor/string-fn)
 [![codecov](https://codecov.io/gh/selfrefactor/string-fn/branch/master/graph/badge.svg)](https://codecov.io/gh/selfrefactor/string-fn)
+[![CDNJS](https://img.shields.io/cdnjs/v/string-fn.svg)](https://cdnjs.com/libraries/string-fn)
 
 # String-fn
 
