@@ -1,5 +1,13 @@
 const R = require("rambda")
-const stringFn = require("./")
+const stringFn = require("./source")
+
+describe.only("", () => {
+  it("should work", () => {
+    expect(
+      stringFn.redux("fooBarBaz")
+    ).toEqual('FOO_BAR_BAZ')
+  })
+})
 
 describe("between", () => {
   it("should work", () => {

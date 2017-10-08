@@ -151,6 +151,11 @@ function kebabCase (str, flag = false) {
     )
   )
 }
+const redux = R.compose(
+    R.join('_'),
+    R.map(R.toUpper),
+    splitToWords
+  )
 
 function map (str, fn) {
   return R.join(
@@ -449,6 +454,7 @@ module.exports.filter = filter
 module.exports.glob = glob
 module.exports.indent = indent
 module.exports.kebabCase = kebabCase
+module.exports.redux = redux
 module.exports.map = map
 module.exports.maskSentence = maskSentence
 module.exports.maskWords = maskWords
