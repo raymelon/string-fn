@@ -1,7 +1,13 @@
 const R = require("rambda")
 const stringFn = require("./source")
 
-describe.only("", () => {
+describe.only("redux", () => {
+  it("should work", () => {
+    expect(
+      stringFn.redux("fooBarBaz")
+    ).toEqual('FOO_BAR_BAZ')
+  }) 
+  
   it("should work", () => {
     expect(
       stringFn.redux("fooBarBaz")
