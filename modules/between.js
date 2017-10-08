@@ -4,11 +4,11 @@ import {
   head,
 } from 'rambda'
 
-export default function between (str, leftLimit, rightLimit) {
+export default function between (str, left, right) {
   return last(
     split(
-      leftLimit,
-      head(split(rightLimit, str))
+      left,
+      head(split(right, str))
     )
   ).trim()
 }

@@ -1,4 +1,4 @@
-const R = require("rambda")
+const R = require('rambda')
 
 const WORDS = /[A-Z]?[a-z]+|[A-Z]+(?![a-z])+/g
 const WORDS_EXTENDED = /[A-Z\xC0-\xD6\xD8-\xDE]?[a-z\xDF-\xF6\xF8-\xFF]+|[A-Z\xC0-\xD6\xD8-\xDE]+(?![a-z\xDF-\xF6\xF8-\xFF])/g
@@ -16,7 +16,7 @@ function between (str, leftLimit, rightLimit) {
 
 function camelCase (str, flag = false) {
   const result = R.join(
-    "",
+    '',
     R.map(
       val => `${ R.toUpper(R.head(val)) }${ R.toLower(R.tail(val)) }`,
       splitToWords(str, flag)
@@ -27,7 +27,7 @@ function camelCase (str, flag = false) {
 }
 
 function clean (str) {
-  return R.replace(/\s+/g, " ", str).trim()
+  return R.replace(/\s+/g, ' ', str).trim()
 }
 
 function count (str, substr) {
@@ -69,8 +69,8 @@ function distance (a, b) {
 }
 
 const normalizeGermanChar = char => {
-  const arr = [ "ä", "ö", "ü", "ß" ]
-  const normalizedArr = [ "a", "o", "u", "ss" ]
+  const arr = [ 'ä', 'ö', 'ü', 'ß' ]
+  const normalizedArr = [ 'a', 'o', 'u', 'ss' ]
   const foundIndex = arr.indexOf(char)
   if (foundIndex === -1) {
     return char
@@ -80,12 +80,12 @@ const normalizeGermanChar = char => {
 }
 
 const normalizeGermanWord = str => R.join(
-    "",
-    R.map(
-      val => normalizeGermanChar(val),
-      R.split("", R.toLower(str))
-    )
+  '',
+  R.map(
+    val => normalizeGermanChar(val),
+    R.split('', R.toLower(str))
   )
+)
 
 function distanceGerman (a, b) {
   return distance(normalizeGermanWord(a), normalizeGermanWord(b))
@@ -93,26 +93,26 @@ function distanceGerman (a, b) {
 
 function filter (str, fn) {
   return R.join(
-    "",
+    '',
     R.filter(
       val => fn(val),
-      R.split("", str)
+      R.split('', str)
     )
   )
 }
 
 function glob (str, globStr) {
-  const numGlobs = count(globStr, "*")
+  const numGlobs = count(globStr, '*')
   if (numGlobs === 1) {
-    if (R.head(globStr) === "*") {
+    if (R.head(globStr) === '*') {
       return str.endsWith(R.tail(globStr))
-    } else if (R.last(globStr) === "*") {
+    } else if (R.last(globStr) === '*') {
       return str.startsWith(R.init(globStr))
     }
   } else if (
     numGlobs === 2 &&
-    R.head(globStr) === "*" &&
-    R.last(globStr) === "*"
+    R.head(globStr) === '*' &&
+    R.last(globStr) === '*'
   ) {
     globStr = R.init(R.tail(globStr))
     const foundIndex = str.indexOf(globStr)
@@ -123,22 +123,22 @@ function glob (str, globStr) {
   return str.includes(globStr)
 }
 
-function indent(str, indentCount){
+function indent (str, indentCount) {
   return R.join(
-    "\n",
+    '\n',
     R.map(
-      val => `${" ".repeat(indentCount)}${val}`,
-      R.split("\n", str)
+      val => `${ ' '.repeat(indentCount) }${ val }`,
+      R.split('\n', str)
     )
   )
 }
 
-function removeIndent(str){
+function removeIndent (str) {
   return R.join(
-    "\n",
+    '\n',
     R.map(
       val => val.trimLeft(),
-      R.split("\n", str)
+      R.split('\n', str)
     )
   )
 }
@@ -146,24 +146,24 @@ function removeIndent(str){
 function kebabCase (str, flag = false) {
   return R.toLower(
     R.join(
-      "-",
+      '-',
       splitToWords(str, flag)
     )
   )
 }
 
 const redux = R.compose(
-    R.join('_'),
-    R.map(R.toUpper),
-    splitToWords
-  )
+  R.join('_'),
+  R.map(R.toUpper),
+  splitToWords
+)
 
 function map (str, fn) {
   return R.join(
-    "",
+    '',
     R.map(
       val => fn(val),
-      R.split("", str)
+      R.split('', str)
     )
   )
 }
@@ -174,7 +174,7 @@ const maskWordHelper = (word, replacer, charLimit) => {
   if (
     R.test(PUNCTUATIONS, word) ||
     word.length < 2
-    ) {
+  ) {
     return word
   }
 
@@ -185,7 +185,7 @@ const maskWordHelper = (word, replacer, charLimit) => {
   return `${ R.head(word) }${ replacer.repeat(word.length - 2) }${ R.last(word) }`
 }
 
-function maskSentence ({ sentence, replacer = "_", charLimit = 3, words = [] }) {
+function maskSentence ({ sentence, replacer = '_', charLimit = 3, words = [] }) {
   sentence = clean(
     addSpaceAroundPunctuation(sentence)
   )
@@ -207,7 +207,7 @@ function maskSentence ({ sentence, replacer = "_", charLimit = 3, words = [] }) 
       hidden.push(val)
       visible.push(visiblePart)
     },
-    R.split(" ", sentence)
+    R.split(' ', sentence)
   )
 
   return {
@@ -216,22 +216,22 @@ function maskSentence ({ sentence, replacer = "_", charLimit = 3, words = [] }) 
   }
 }
 
-function splitSentence(sentence){
+function splitSentence (sentence) {
   return R.split(
-    " ",
+    ' ',
     clean(
       addSpaceAroundPunctuation(sentence)
     )
   )
 }
 
-function maskWords ({ words, replacer = "_", charLimit = 3 }) {
+function maskWords ({ words, replacer = '_', charLimit = 3 }) {
   const result = R.map(
     val => maskWordHelper(val, replacer, charLimit),
-    R.split(" ", words)
+    R.split(' ', words)
   )
 
-  return R.join(" ", result)
+  return R.join(' ', result)
 }
 
 function padLeft ({ str, padLimit, padChar }) {
@@ -278,24 +278,24 @@ function removeRightPadding ({ str, padChar }) {
   return str.substring(0, index + 1)
 }
 
-function replaceLast (str, replacer = "") {
+function replaceLast (str, replacer = '') {
   return `${ R.init(str) }${ replacer }`
 }
 
-function replaceFirst (str, replacer = "") {
+function replaceFirst (str, replacer = '') {
   return `${ replacer }${ R.tail(str) }`
 }
 
 function reverse (str) {
   return str
-  .split("")
-  .reverse()
-  .join("")
+    .split('')
+    .reverse()
+    .join('')
 }
 
 function seoTitle (str, lowLimit = 3, flag = false) {
   const result = R.join(
-    " ",
+    ' ',
     R.map(
       val => {
         if (val.length >= lowLimit) {
@@ -326,9 +326,9 @@ const shuffleArr = arr => {
 
 function shuffle (str) {
   return R.join(
-    "",
+    '',
     shuffleArr(
-      R.split("", str)
+      R.split('', str)
     )
   )
 }
@@ -336,7 +336,7 @@ function shuffle (str) {
 function snakeCase (str, flag = false) {
   return R.toLower(
     R.join(
-      "_",
+      '_',
       splitToWords(str, flag)
     )
   )
@@ -344,16 +344,16 @@ function snakeCase (str, flag = false) {
 ///
 
 function stripPunctuation (str) {
-  return R.replace(PUNCTUATIONS, "", str)
+  return R.replace(PUNCTUATIONS, '', str)
 }
 
 function stripTags (str) {
   return R.replace(
     /\s+/g,
-    " ",
+    ' ',
     R.replace(
       HTML_TAGS,
-      " ",
+      ' ',
       str
     )
   ).trim()
@@ -369,7 +369,7 @@ function surround (str, leftStr, rightStr) {
 
 function titleCase (str, flag = false) {
   return R.join(
-    " ",
+    ' ',
     R.map(
       val => `${ R.toUpper(R.head(val)) }${ R.toLower(R.tail(val)) }`,
       splitToWords(str, flag)
@@ -377,9 +377,9 @@ function titleCase (str, flag = false) {
   )
 }
 
-function truncate (str, lengthLimit, tail = "...") {
+function truncate (str, lengthLimit, tail = '...') {
   if (str.length > lengthLimit) {
-    lengthLimit = lengthLimit - tail.length
+    lengthLimit -= tail.length
 
     return `${ str.substr(0, lengthLimit) }${ tail }`
   }
@@ -400,47 +400,47 @@ function wrap (str, wrapLimit, flag = false) {
     1 :
     wrapLimit
 
-  const strAsArr = str.split("")
+  const strAsArr = str.split('')
   const willReturn = []
   let counter = 0
 
   Array(str.length).fill()
-  .map((val, key) => {
-    if (key === counter) {
-      const nextCellKey = key + wrapLimit
-      if (nextCellKey > strAsArr.length) {
-        willReturn.push(str.substr(key))
-      } else {
-        const shortString = str.substr(key, wrapLimit)
-
-        if (strAsArr[ nextCellKey ] === " ") {
-          willReturn.push(shortString)
-          counter = nextCellKey + 1
+    .map((val, key) => {
+      if (key === counter) {
+        const nextCellKey = key + wrapLimit
+        if (nextCellKey > strAsArr.length) {
+          willReturn.push(str.substr(key))
         } else {
-          let spaceCellKey = shortString.lastIndexOf(" ")
-          if (spaceCellKey > -1) {
-            willReturn.push(shortString.substring(0, spaceCellKey))
-            counter = spaceCellKey + key + 1
-          } else {
-            const longSubstring = str.substr(key)
-            spaceCellKey = longSubstring.indexOf(" ")
+          const shortString = str.substr(key, wrapLimit)
 
+          if (strAsArr[ nextCellKey ] === ' ') {
+            willReturn.push(shortString)
+            counter = nextCellKey + 1
+          } else {
+            let spaceCellKey = shortString.lastIndexOf(' ')
             if (spaceCellKey > -1) {
-              if (flag) {
-                willReturn.push(longSubstring.substring(0, spaceCellKey))
-              }
+              willReturn.push(shortString.substring(0, spaceCellKey))
               counter = spaceCellKey + key + 1
             } else {
-              if (flag) {
-                willReturn.push(longSubstring)
+              const longSubstring = str.substr(key)
+              spaceCellKey = longSubstring.indexOf(' ')
+
+              if (spaceCellKey > -1) {
+                if (flag) {
+                  willReturn.push(longSubstring.substring(0, spaceCellKey))
+                }
+                counter = spaceCellKey + key + 1
+              } else {
+                if (flag) {
+                  willReturn.push(longSubstring)
+                }
+                counter = str.length
               }
-              counter = str.length
             }
           }
         }
       }
-    }
-  })
+    })
 
   return willReturn
 }

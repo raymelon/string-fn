@@ -6,6 +6,7 @@
   "module": "dist/stringFn.esm.js",
   "scripts": {
     "test": "jest test.js",
+    "dev": "jest test.js --watch",
     "build": "rollup -c files/rollup.config.js",
     "cover": "jest --coverage",
     "de": "git add . --all&&git commit -m update&&git push"
