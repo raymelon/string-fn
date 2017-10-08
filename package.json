@@ -2,9 +2,11 @@
   "name": "string-fn",
   "version": "0.3.2",
   "description": "String manipulation library",
-  "main": "index.js",
+  "main": "dist/stringFn.cjs.js",
+  "module": "dist/stringFn.esm.js",
   "scripts": {
     "test": "jest",
+    "build": "rollup -c files/rollup.config.js",
     "cover": "jest --coverage",
     "de": "git add . --all&&git commit -m update&&git push"
   },
@@ -27,14 +29,19 @@
   "homepage": "https://selfrefactor.github.io/string-fn",
   "homepage__": "https://github.com/selfrefactor/string-fn#readme",
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-env": "^1.6.0",
     "beautify-benchmark": "^0.2.4",
     "benchmark": "^2.1.3",
     "jest": "^20.0.4",
+    "rollup": "^0.50.0",
+    "rollup-plugin-babel": "^3.0.2",
     "string": "^3.3.3",
     "underscore.string": "^3.3.4",
     "voca": "^1.2.0"
   },
   "dependencies": {
-    "rambda": "^0.7.3"
+    "rambda": "^0.9.3"
   }
 }
