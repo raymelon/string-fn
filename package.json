@@ -5,7 +5,7 @@
   "main": "dist/stringFn.cjs.js",
   "module": "dist/stringFn.esm.js",
   "scripts": {
-    "test": "jest test.js",
+    "test": "jest __tests__/",
     "dev": "jest test.js --watch",
     "build": "rollup -c files/rollup.config.js",
     "cover": "jest --coverage",

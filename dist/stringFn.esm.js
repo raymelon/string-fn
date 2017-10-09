@@ -1,17 +1,19 @@
-import { head, join, last, map, split, tail, toLower, toUpper } from 'rambda';
+import { head, join, last, map, match, split, tail, toLower, toUpper } from 'rambda';
 
-function between(str, leftLimit, rightLimit) {
-  return last(split(leftLimit, head(split(rightLimit, str)))).trim();
+function between(str, left, right) {
+  return last(split(left, head(split(right, str)))).trim();
 }
 
+var WORDS = /[A-Z]?[a-z]+|[A-Z]+(?![a-z])+/g;
+
+var splitToWords = match(WORDS);
+
 function camelCase(str) {
-  var flag = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-
   var result = join("", map(function (val) {
-    return "" + toUpper(head(val)) + toLower(tail(val));
-  }, splitToWords(str, flag)));
+    return '' + toUpper(head(val)) + toLower(tail(val));
+  }, splitToWords(str)));
 
-  return "" + toLower(head(result)) + tail(result);
+  return '' + toLower(head(result)) + tail(result);
 }
 
 export { between, camelCase };

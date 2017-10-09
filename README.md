@@ -68,6 +68,7 @@ stringFn.camelCase("foo bar BAZ")
 stringFn.camelCase("foo-bar-baz")
 // => "fooBarBaz"
 ```
+
 #### clean
 > clean(str:String)
 
@@ -200,11 +201,11 @@ stringFn.kebabCase("Foo Bar BAZ")
 #### maskSentence
 
 ```
-maskSentence( { 
-  sentence: string, 
-  replacer: string = "_", 
-  charLimit: number = 3, 
-  words: string[] = [] 
+maskSentence( {
+  sentence: string,
+  replacer: string = "_",
+  charLimit: number = 3,
+  words: string[] = []
 } )
 ```
 
@@ -238,8 +239,8 @@ const {hidden, visible} = stringFn.maskSentence({ sentence, words })
 
 ```
 maskWords({
-  words:string, 
-  replacer:string = "_", 
+  words:string,
+  replacer:string = "_",
   charLimit: number = 3
 })
 ```
@@ -260,7 +261,7 @@ Each word of **words** is masked following the rules:
 
 - If word is shorter than **charLimit**, then each char from the tail is replaced with **replacer**
 
-#### padLeft 
+#### padLeft
 > padLeft({str: string, limit: number, char: string})
 
 ```
