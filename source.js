@@ -9,35 +9,13 @@ const HTML_TAGS = /<[^>]*>/g
 
 
 
-function removeIndent (str) {
-  return R.join(
-    '\n',
-    R.map(
-      val => val.trimLeft(),
-      R.split('\n', str)
-    )
-  )
-}
 
 
 
-const redux = R.compose(
-  R.join('_'),
-  R.map(R.toUpper),
-  splitToWords
-)
 
-function map (str, fn) {
-  return R.join(
-    '',
-    R.map(
-      val => fn(val),
-      R.split('', str)
-    )
-  )
-}
 
-const addSpaceAroundPunctuation = sentence => sentence.replace(PUNCTUATIONS, match => ` ${ match } `)
+
+
 
 const maskWordHelper = (word, replacer, charLimit) => {
   if (
@@ -101,50 +79,6 @@ function maskWords ({ words, replacer = '_', charLimit = 3 }) {
   )
 
   return R.join(' ', result)
-}
-
-function padLeft ({ str, padLimit, padChar }) {
-  const length = str.length
-  if (padLimit < length) {
-    return str
-  }
-
-  return `${ padChar.repeat(padLimit - length) }${ str }`
-}
-
-function padRight ({ str, padLimit, padChar }) {
-  const length = str.length
-  if (padLimit < length) {
-    return str
-  }
-
-  return `${ str }${ padChar.repeat(padLimit - length) }`
-}
-
-function removeLeftPadding ({ str, padChar }) {
-  let index = -1
-  let flag = true
-
-  while (flag && ++index < str.length) {
-    if (str[ index ] !== padChar) {
-      flag = false
-    }
-  }
-
-  return str.substr(index)
-}
-
-function removeRightPadding ({ str, padChar }) {
-  let index = str.length
-  let flag = true
-
-  while (flag && --index > 0) {
-    if (str[ index ] !== padChar) {
-      flag = false
-    }
-  }
-
-  return str.substring(0, index + 1)
 }
 
 function replaceLast (str, replacer = '') {

@@ -246,56 +246,12 @@ Each word of **words** is masked following the rules:
 
 - If word is shorter than **charLimit**, then each char from the tail is replaced with **replacer**
 
-#### padLeft
-> padLeft({str: string, limit: number, char: string})
-
-```
-stringFn.padLeft({str:"13",char:"0",limit:7})
-// => "0000013"
-
-stringFn.padLeft({str:"1313",char:"0",limit:3})
-// => "1313"
-```
-
-#### padRight
-> padRight({str: string, limit: number, char: string})
-
-```
-stringFn.padRight({str:"13",char:"0",limit:7})
-// => "1300000"
-
-stringFn.padRight({str:"1313",char:"0",limit:3})
-// => "1313"
-```
-
 #### removeIndent
 > removeIndent(str)
 
 ```
 stringFn.removeIndent("    foo\n    bar\n    baz")
 // => "foo\nbar\nbaz"
-```
-
-#### removeLeftPadding
-> removeLeftPadding(str, padChar)
-
-```
-stringFn.removeLeftPadding("0000130", "0")
-// => "130"
-
-stringFn.removeLeftPadding("888", "0")
-// => "888"
-```
-
-#### removeRightPadding
-> removeRightPadding(str, padChar)
-
-```
-stringFn.removeRightPadding({str:"0130000",padChar:"0"})
-// => "013"
-
-stringFn.removeRightPadding({str:"888",padChar:"0"})
-// => "888"
 ```
 
 #### reverse
