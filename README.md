@@ -298,26 +298,6 @@ stringFn.removeRightPadding({str:"888",padChar:"0"})
 // => "888"
 ```
 
-#### replaceFirst
-> replaceFirst(str, replacer)
-
-Replaces the first char of **str** with **replacer**
-
-```
-stringFn.replaceFirst("fooBarBaz", "F")
-// => "FooBarBaz"
-```
-
-#### replaceLast
-> replaceLast(str, replacer)
-
-Replaces the last char of **str** with **replacer**
-
-```
-stringFn.replaceLast("fooBarBaz", "ZZ")
-// => "fooBarBaZZ"
-```
-
 #### reverse
 > reverse(str)
 
