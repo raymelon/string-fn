@@ -2,13 +2,15 @@ export default function distance (a, b) {
   if (a.length === 0) { return b.length }
   if (b.length === 0) { return a.length }
   let i, j, prev, val, tmp
+
   if (a.length > b.length) {
     tmp = a
     a = b
     b = tmp
   }
 
-  row = Array(a.length + 1)
+  const row = Array(a.length + 1)
+
   for (i = 0; i <= a.length; i++) {
     row[ i ] = i
   }
@@ -19,9 +21,13 @@ export default function distance (a, b) {
       if (b[ i - 1 ] === a[ j - 1 ]) {
         val = row[ j - 1 ]
       } else {
-        val = Math.min(row[ j - 1 ] + 1,
-          Math.min(prev + 1,
-            row[ j ] + 1))
+        val = Math.min(
+          row[ j - 1 ] + 1,
+          Math.min(
+            prev + 1,
+            row[ j ] + 1
+          )
+        )
       }
       row[ j - 1 ] = prev
       prev = val

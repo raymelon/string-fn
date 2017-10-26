@@ -4,13 +4,17 @@ import {
   last,
   tail,
 } from 'rambda'
+
+import count from './count'
+
 export default function glob (str, globStr) {
   const numGlobs = count(globStr, '*')
+
   if (numGlobs === 1) {
-    if (R.head(globStr) === '*') {
-      return str.endsWith(R.tail(globStr))
-    } else if (R.last(globStr) === '*') {
-      return str.startsWith(R.init(globStr))
+    if (head(globStr) === '*') {
+      return str.endsWith(tail(globStr))
+    } else if (last(globStr) === '*') {
+      return str.startsWith(init(globStr))
     }
   } else if (
     numGlobs === 2 &&

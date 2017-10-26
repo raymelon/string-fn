@@ -5,10 +5,8 @@ import {
 } from 'rambda'
 
 export default function between (str, left, right) {
-  return last(
-    split(
-      left,
-      head(split(right, str))
-    )
-  ).trim()
+  return last(split(
+    left,
+    head(split(right, str))
+  )).trim()
 }

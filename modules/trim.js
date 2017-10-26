@@ -1,5 +1,5 @@
 import {
-  replace
+  replace,
 } from 'rambda'
 
 export default function clean (str) {

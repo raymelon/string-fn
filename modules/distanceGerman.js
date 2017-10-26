@@ -1,13 +1,16 @@
 import {
   map,
   split,
+  join,
   toLower,
 } from 'rambda'
+import distance from './distance'
 
 const normalizeGermanChar = char => {
   const arr = [ 'ä', 'ö', 'ü', 'ß' ]
   const normalizedArr = [ 'a', 'o', 'u', 'ss' ]
   const foundIndex = arr.indexOf(char)
+
   if (foundIndex === -1) {
     return char
   }
@@ -15,7 +18,7 @@ const normalizeGermanChar = char => {
   return normalizedArr[ foundIndex ]
 }
 
-const normalizeGermanWord = str => R.join(
+const normalizeGermanWord = str => join(
   '',
   map(
     val => normalizeGermanChar(val),

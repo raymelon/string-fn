@@ -69,16 +69,6 @@ stringFn.camelCase("foo-bar-baz")
 // => "fooBarBaz"
 ```
 
-#### clean
-> clean(str:String)
-
-It trims **str** and turns multiple whitespace to single whitespace
-
-```
-stringFn.clean("   foo  bar   baz   ")
-// => "foo bar baz"
-```
-
 #### count
 > count(str, substring)
 
@@ -94,11 +84,6 @@ stringFn.count("fooBarfoo", "baz")
 stringFn.count("foo1 Bar foo1 baz Foo1 foo1", "foo1")
 // => 3
 ```
-
-#### countX
-> countX(str, substring)
-
-It is same as `count`, but for extended Latin languages(German, French, Finnish, etc.).
 
 #### distance
 > distance(firstString, secondString)
@@ -166,13 +151,13 @@ stringFn.glob("/home/dev/foo.js", "*/dev/foo*")
 // => true
 ```
 
-#### intent
-> intent(str:string, indentCount:number)
+#### indent
+> indent(str:string, indentCount:number)
 
-Intent each line in **str** with **intentCount** spaces
+Indent each line in **str** with **intentCount** spaces
 
 ```
-stringFn.indent("foo\nbar\nbaz",4)
+stringFn.indent("foo\nbar\nbaz", 4)
 // => "    foo\n    bar\n    baz"
 ```
 
@@ -427,6 +412,16 @@ stringFn.titleCase("foo bar BAZ")
 // => "Foo Bar Baz"
 ```
 
+#### trim
+> trim(str:String)
+
+It trims **str** and turns multiple whitespace to single whitespace
+
+```
+stringFn.trim("   foo  bar   baz   ")
+// => "foo bar baz"
+```
+
 #### truncate
 > truncate({str: string, limit: number, tail: string = "..."})
 
@@ -459,23 +454,3 @@ stringFn.words("fooBarBaz")
 
 It is same as `stripPunctuation`, but for extended Latin languages(German, French, Finnish, etc.).
 
-#### wrap
-> wrap(str: string, limit: number)
-
-```
-stringFn.wrap("dr strangelove or how i learned to love the bomb", 15)
-// => [ "dr strangelove", "or how i", "learned to love", "the bomb" ]
-```
-
-Returns array of substrings with whole words of **str**. Each substring is no
-longer than **wrapLimit**.
-
-Those words of **str** that are longer than **wrapLimit** will be ommited.
-
-```
-stringFn.wrap("dr strangelove or how i learned to love the bomb", 5)
-// => [ "dr", "or", "how i", "to", "love", "the", "bomb" ]
-
-stringFn.wrap("dr strangelove or how i learned", 1)
-// => [ "i" ]
-```
