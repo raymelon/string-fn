@@ -2,6 +2,6 @@ import {
   replace,
 } from 'rambda'
 
-export default function clean (str) {
+export default function trim (str) {
   return replace(/\s+/g, ' ', str).trim()
 }

@@ -17,16 +17,16 @@ console.log(stringFn.camelCase("foo-bar-baz"))
 
 ## Benchmark
 
-![Screen](/screen.png)
+![Screen](/files/screen.png)
 
 ## Installation
 
-- Use **npm i string-fn** for Webpack and Node.js
+- Use **yarn add string-fn** for Webpack and Node.js
 
-- For browser usage refer to
+- For browser usage(exported global is `StringFn`)
 
 ```
-https://unpkg.com/string-fn@0.3.1/webVersion.js
+https://cdnjs.cloudflare.com/ajax/libs/string-fn/0.3.2/webVersion.js
 ```
 
 ## API

@@ -1,4 +1,4 @@
-import * as stringFn from '../stringFn'
+import * as stringFn from '../src/stringFn'
 
 test('', () => {
   expect(stringFn.glob('/home/dev/foo.js', '*.js')).toEqual(true)

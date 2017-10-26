@@ -1,4 +1,4 @@
-import * as stringFn from '../stringFn'
+import * as stringFn from '../src/stringFn'
 
 test('', () => {
   expect(stringFn.distance('foobarbaz', 'ffoobarbaz')).toEqual(1)
