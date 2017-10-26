@@ -5,10 +5,8 @@ import {
 } from 'rambda'
 
 export default function kebabCase (str, flag = false) {
-  return toLower(
-    join(
-      '-',
-      splitToWords(str, flag)
-    )
-  )
+  return toLower(join(
+    '-',
+    splitToWords(str, flag)
+  ))
 }
