@@ -10,6 +10,7 @@
 		"dev": "jest test.js --watch",
 		"build": "rollup -c rollup.config.js",
 		"cover": "jest --coverage",
+		"docs": "docsify init ./docs",
 		"de": "git add . --all&&git commit -m update&&git push"
 	},
 	"repository": {
