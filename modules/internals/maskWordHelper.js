@@ -1,14 +1,22 @@
-const maskWordHelper = (word, replacer, charLimit) => {
+import {
+  test,
+  head,
+  last
+} from 'rambda'
+
+import {PUNCTUATIONS} from './constants'
+
+export default function maskWordHelper(word, replacer, charLimit){
   if (
-    R.test(PUNCTUATIONS, word) ||
+    test(PUNCTUATIONS, word) ||
     word.length < 2
   ) {
     return word
   }
 
   if (word.length < charLimit) {
-    return `${ R.head(word) }${ replacer.repeat(word.length - 1) }`
+    return `${ head(word) }${ replacer.repeat(word.length - 1) }`
   }
 
-  return `${ R.head(word) }${ replacer.repeat(word.length - 2) }${ R.last(word) }`
+  return `${ head(word) }${ replacer.repeat(word.length - 2) }${ last(word) }`
 }

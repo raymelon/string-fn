@@ -1,7 +1,14 @@
 import trim from './trim'
 import maskWordHelper from './internals/maskWordHelper'
+import {PUNCTUATIONS} from './internals/constants'
 
-const addSpaceAroundPunctuation = sentence => sentence.replace(PUNCTUATIONS, match => ` ${ match } `)
+import {
+  map,
+  split
+} from 'rambda'
+
+const addSpaceAroundPunctuation = sentence => 
+  sentence.replace(PUNCTUATIONS, x => ` ${ x } `)
 
 export default function maskSentence ({ sentence, replacer = '_', charLimit = 3, words = [] }) {
   sentence = trim(addSpaceAroundPunctuation(sentence))
@@ -9,7 +16,7 @@ export default function maskSentence ({ sentence, replacer = '_', charLimit = 3,
   const hidden = []
   const visible = []
 
-  R.map(
+  map(
     val => {
       let visiblePart
 
@@ -24,7 +31,7 @@ export default function maskSentence ({ sentence, replacer = '_', charLimit = 3,
       hidden.push(val)
       visible.push(visiblePart)
     },
-    R.split(' ', sentence)
+    split(' ', sentence)
   )
 
   return {
