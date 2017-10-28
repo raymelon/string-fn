@@ -238,7 +238,7 @@ stringFn.maskWords({words:"James"})
 // => "J___s"
 ```
 
-Returns string that is masked version of **words**
+It returns a string that is a masked version of **words**
 
 Each word of **words** is masked following the rules:
 

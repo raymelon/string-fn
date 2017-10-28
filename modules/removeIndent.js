@@ -1,10 +1,15 @@
+import {
+  join, 
+  map,
+  split
+} from 'rambda'
 
-function removeIndent (str) {
-  return R.join(
+export default function removeIndent (str) {
+  return join(
     '\n',
-    R.map(
+    map(
       val => val.trimLeft(),
-      R.split('\n', str)
+      split('\n', str)
     )
   )
 }
