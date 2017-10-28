@@ -301,17 +301,12 @@ stringFn.snakeCase("foo bar BAZ")
 #### stripPunctuation
 > stripPunctuation(str)
 
-Removes all the punctiation marks from **str**
+Removes all the punctuation marks from **str**
 
 ```
 stringFn.stripPunctuation("If my, wings should, fail me ...")
 // => "If my wings should fail me "
 ```
-
-#### stripPunctuationX
-> stripPunctuationX(str)
-
-It is same as `stripPunctuation`, but for extended Latin languages(German, French, Finnish, etc.).
 
 #### stripTags
 > stripTags(str)

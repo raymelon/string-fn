@@ -13,32 +13,8 @@ function splitSentence (sentence) {
     )
   )
 }
-
-function snakeCase (str, flag = false) {
-  return R.toLower(
-    R.join(
-      '_',
-      splitToWords(str, flag)
-    )
-  )
-}
 ///
 
-function stripPunctuation (str) {
-  return R.replace(PUNCTUATIONS, '', str)
-}
-
-function stripTags (str) {
-  return R.replace(
-    /\s+/g,
-    ' ',
-    R.replace(
-      HTML_TAGS,
-      ' ',
-      str
-    )
-  ).trim()
-}
 
 function surround (str, leftStr, rightStr) {
   if (rightStr === undefined) {

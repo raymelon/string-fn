@@ -13,4 +13,7 @@ export { default as removeIndent } from '../modules/removeIndent'
 export { default as reverse } from '../modules/reverse'
 export { default as seoTitle } from '../modules/seoTitle'
 export { default as shuffle } from '../modules/shuffle'
+export { default as snakeCase } from '../modules/snakeCase'
+export { default as stripPunctuation } from '../modules/stripPunctuation'
+export { default as stripTags } from '../modules/stripTags'
 

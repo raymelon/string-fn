@@ -1,3 +1,8 @@
+import {
+  join,
+  split
+} from 'rambda'
+
 const shuffleArr = arr => {
   let counter = arr.length
   while (counter > 0) {
@@ -11,11 +16,11 @@ const shuffleArr = arr => {
   return arr
 }
 
-function shuffle (str) {
-  return R.join(
+export default function shuffle (str) {
+  return join(
     '',
     shuffleArr(
-      R.split('', str)
+      split('', str)
     )
   )
 }
