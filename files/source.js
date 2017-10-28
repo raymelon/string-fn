@@ -8,40 +8,10 @@ const HTML_TAGS = /<[^>]*>/g
 function splitSentence (sentence) {
   return R.split(
     ' ',
-    clean(
+    trim(
       addSpaceAroundPunctuation(sentence)
     )
   )
-}
-///
-
-
-function surround (str, leftStr, rightStr) {
-  if (rightStr === undefined) {
-    rightStr = leftStr
-  }
-
-  return `${ leftStr }${ str }${ rightStr }`
-}
-
-function titleCase (str, flag = false) {
-  return R.join(
-    ' ',
-    R.map(
-      val => `${ R.toUpper(R.head(val)) }${ R.toLower(R.tail(val)) }`,
-      splitToWords(str, flag)
-    )
-  )
-}
-
-function truncate (str, lengthLimit, tail = '...') {
-  if (str.length > lengthLimit) {
-    lengthLimit -= tail.length
-
-    return `${ str.substr(0, lengthLimit) }${ tail }`
-  }
-
-  return str
 }
 
 function splitToWords (str, flag = false) {

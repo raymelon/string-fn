@@ -318,21 +318,6 @@ stringFn.stripTags("<p>foo <b>bar</b>   <hr/> baz</p>")
 // => "foo bar baz"
 ```
 
-#### surround
-> surround(str, left, right)
-
-It returns **str** surrounded by **left** and **right**.
-
-If `right` is ommitted, then it is equal to `left`.
-
-```
-stringFn.surround("foo", "<br/>")
-// => "<br/>foo<br/>"
-
-stringFn.surround("foo", "<b>", "</b>")
-// => "<b>foo</b>"
-```
-
 #### titleCase
 > titleCase(str)
 
@@ -353,23 +338,6 @@ stringFn.trim("   foo  bar   baz   ")
 // => "foo bar baz"
 ```
 
-#### truncate
-> truncate({str: string, limit: number, tail: string = "..."})
-
-Truncates **str** if its length is greater than **lengthLimit** by using **tail** if necessary.
-
-```
-const str = "dr strangelove or how i learned"
-stringFn.truncate({str:str, limit: 15})
-// => "dr strangelo..."
-
-stringFn.truncate({str: str, limit: 15, tail: " =>"})
-// => "dr strangelo =>"
-
-stringFn.truncate({str:str, limit: 20})
-// => "dr strangelove"
-```
-
 #### words
 > words(str)
 
@@ -383,5 +351,5 @@ stringFn.words("fooBarBaz")
 #### wordsX
 > wordsX(str)
 
-It is same as `stripPunctuation`, but for extended Latin languages(German, French, Finnish, etc.).
+It is same as `words`, but for extended Latin languages(German, French, Finnish, etc.).
 
