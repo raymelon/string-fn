@@ -307,6 +307,17 @@ stringFn.snakeCase('foo bar BAZ')
 // => 'foo_bar_baz'
 ```
 
+### splitSentence
+
+> splitSentence(str)
+
+It generates arrays with all parts of the sentence `str`.
+
+```
+stringFn.snakeCase('I need, more.')
+// => ['I', 'need', ',', 'more', '.']
+```
+
 #### stripPunctuation
 > stripPunctuation(str)
 
