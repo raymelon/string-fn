@@ -31,7 +31,8 @@ https://cdnjs.cloudflare.com/ajax/libs/string-fn/0.3.2/webVersion.js
 
 ## API
 
-#### between
+### between
+
 > between(str, left, right)
 
 Returns substring of **str** placed between **left** and **right**
@@ -47,7 +48,9 @@ stringFn.between('begin foo bar baz end', 'q', 'x')
 // => 'begin foo bar baz end'
 
 ```
-#### camelCase
+
+### camelCase
+
 > camelCase(str)
 
 Returns camel case version of **str**.
@@ -69,7 +72,8 @@ stringFn.camelCase('foo-bar-baz')
 // => 'fooBarBaz'
 ```
 
-#### count
+### count
+
 > count(str, substring)
 
 Count number of occurances of **substring** within **str**
@@ -85,7 +89,8 @@ stringFn.count('foo1 Bar foo1 baz Foo1 foo1', 'foo1')
 // => 3
 ```
 
-#### distance
+### distance
+
 > distance(firstString, secondString)
 
 Calculates Levenshtein distance between **firstString** and **secondString**
@@ -104,7 +109,8 @@ stringFn.distance('foobarbaz', 'foobarbaz')
 // => 0
 ```
 
-#### distanceGerman
+### distanceGerman
+
 > distanceGerman(firstString, secondString)
 
 Calculates Levenshtein distance between normalized German strings
@@ -126,7 +132,8 @@ stringFn.distanceGerman('der anlass', 'der Anlaß')
 // => 0
 ```
 
-#### glob
+### glob
+
 > glob(str, globRule)
 
 Returns boolean of **str** following **globRule**.
@@ -151,7 +158,8 @@ stringFn.glob('/home/dev/foo.js', '*/dev/foo*')
 // => true
 ```
 
-#### indent
+### indent
+
 > indent(str:string, indentCount:number)
 
 Indent each line in **str** with **intentCount** spaces
@@ -161,7 +169,8 @@ stringFn.indent('foo\nbar\nbaz', 4)
 // => '    foo\n    bar\n    baz'
 ```
 
-#### kebabCase
+### kebabCase
+
 > kebabCase(str)
 
 Return kebab case version of **str**
@@ -183,7 +192,9 @@ stringFn.kebabCase('Foo Bar BAZ')
 // => 'foo-bar-baz'
 ```
 
-#### maskSentence
+### maskSentence
+
+> Typing
 
 ```
 maskSentence( {
@@ -194,12 +205,15 @@ maskSentence( {
 } )
 ```
 
+> Example
+
 ```
 const sentence = 'it was, for what i need, good.'
 const {hidden , visible} = stringFn.maskSentence({ sentence })
 // hidden => ['it', 'was', ',', 'for', 'what', 'i', 'need', ',', 'good', '.']
 // visible => ['i_', 'w_s', ',', 'f_r', 'w__t', 'i', 'n__d', ',', 'g__d', '.']
 ```
+
 Returns object with notation **{visible: Array<string>, hidden: Array<string>}**
 
 **visible** is array of masked words following the rules:
@@ -212,6 +226,7 @@ Returns object with notation **{visible: Array<string>, hidden: Array<string>}**
 
 You can pass **words** array so the masking rule is applied only to members of
 **words**.
+
 ```
 const sentence = 'it was good.'
 const words = ['good']
@@ -220,7 +235,9 @@ const {hidden, visible} = stringFn.maskSentence({ sentence, words })
 // visible => ['it', 'was', 'g__d', '.']
 ```
 
-#### maskWords
+### maskWords
+
+> Typing
 
 ```
 maskWords({
@@ -229,6 +246,8 @@ maskWords({
   charLimit: number = 3
 })
 ```
+
+> Example
 
 ```
 stringFn.maskWords({words:'James Brown'})
@@ -246,16 +265,19 @@ Each word of **words** is masked following the rules:
 
 - If word is shorter than **charLimit**, then each char from the tail is replaced with **replacer**
 
-#### redux
+### redux
+
 > redux(str)
 
-It creates `Redux`-related string.
+It creates string for dispatching `Redux` actions.
+
 ```
 stringFn.redux('FooBarBaz')
 // => 'FOO_BAR_BAZ'
 ```
 
-#### removeIndent
+### removeIndent
+
 > removeIndent(str)
 
 ```
@@ -263,7 +285,7 @@ stringFn.removeIndent('    foo\n    bar\n    baz')
 // => 'foo\nbar\nbaz'
 ```
 
-#### reverse
+### reverse
 > reverse(str)
 
 ```
@@ -271,7 +293,8 @@ stringFn.reverse('fooBarBaz')
 // => 'zaBraBoof'
 ```
 
-#### seoTitle
+### seoTitle
+
 > seoTitle(str:String, limit = 3)
 
 Capitalize each word of **str** as long as word's length is higher or equal to
@@ -288,7 +311,8 @@ stringFn.seoTitle('i got ants in my pants', 2)
 // => 'I Got Ants In My Pants'
 ```
 
-#### shuffle
+### shuffle
+
 > shuffle(str)
 
 Randomize **str** content
@@ -297,7 +321,8 @@ Randomize **str** content
 stringFn.shuffle('fooBar') // => aforBo
 ```
 
-#### snakeCase
+### snakeCase
+
 > snakeCase(str)
 
 Returns snake case version of **str**
@@ -318,7 +343,8 @@ stringFn.snakeCase('I need, more.')
 // => ['I', 'need', ',', 'more', '.']
 ```
 
-#### stripPunctuation
+### stripPunctuation
+
 > stripPunctuation(str)
 
 Removes all the punctuation marks from **str**
@@ -328,7 +354,8 @@ stringFn.stripPunctuation('If my, wings should, fail me ...')
 // => 'If my wings should fail me '
 ```
 
-#### stripTags
+### stripTags
+
 > stripTags(str)
 
 It removes Html tags from **str**.
@@ -338,7 +365,8 @@ stringFn.stripTags('<p>foo <b>bar</b>   <hr/> baz</p>')
 // => 'foo bar baz'
 ```
 
-#### titleCase
+### titleCase
+
 > titleCase(str)
 
 It returns title case version of **str**.
@@ -348,8 +376,9 @@ stringFn.titleCase('foo bar BAZ')
 // => 'Foo Bar Baz'
 ```
 
-#### trim
-> trim(str:String)
+### trim
+
+> trim(str)
 
 It trims **str** and turns multiple whitespace to single whitespace
 
@@ -358,7 +387,8 @@ stringFn.trim('   foo  bar   baz   ')
 // => 'foo bar baz'
 ```
 
-#### words
+### words
+
 > words(str)
 
 It returns array with the words of **str**.
@@ -368,7 +398,8 @@ stringFn.words('fooBarBaz')
 // => [ 'foo', 'Bar', 'Baz' ]
 ```
 
-#### wordsX
+### wordsX
+
 > wordsX(str)
 
 It is same as `words`, but for extended Latin languages(German, French, Finnish, etc.).
