@@ -1,3 +1,16 @@
+//Taken from https://github.com/getify/Functional-Light-JS/blob/master/ch4.md
+function compose(...fns) {
+  return result => {
+    const list = fns.slice();
+
+    while (list.length > 0) {
+      result = list.pop()(result);
+    }
+
+    return result;
+  };
+}
+
 function drop(dropNumber, x) {
   if (x === undefined) {
     return xHolder => drop(dropNumber, xHolder);
@@ -142,19 +155,19 @@ function between(str, left, right) {
 }
 
 const WORDS = /[A-Z]?[a-z]+|[A-Z]+(?![a-z])+/g;
-
+const WORDS_EXTENDED = /[A-Z\xC0-\xD6\xD8-\xDE]?[a-z\xDF-\xF6\xF8-\xFF]+|[A-Z\xC0-\xD6\xD8-\xDE]+(?![a-z\xDF-\xF6\xF8-\xFF])/g;
 const PUNCTUATIONS = /[\u2000-\u206F\u2E00-\u2E7F\\'!"#$%&()*+,\-./:;<=>?@[\]^_`{|}~]/g;
+const HTML_TAGS = /<[^>]*>/g;
 
-const splitToWords = match(WORDS);
+function words(str) {
 
-function camelCase(str, flag = false) {
-  const result = join('', map(val => `${toUpper(head(val))}${toLower(tail(val))}`, splitToWords(str)));
-
-  return `${toLower(head(result))}${tail(result)}`;
+  return match(WORDS, str);
 }
 
-function trim$1(str) {
-  return replace(/\s+/g, ' ', str).trim();
+function camelCase(str, flag = false) {
+  const result = join('', map(val => `${toUpper(head(val))}${toLower(tail(val))}`, words(str)));
+
+  return `${toLower(head(result))}${tail(result)}`;
 }
 
 function count(str, substr) {
@@ -240,8 +253,12 @@ function indent(str, indentCount) {
   return join('\n', map(val => `${' '.repeat(indentCount)}${val}`, split('\n', str)));
 }
 
-function kebabCase(str, flag = false) {
-  return toLower(join('-', splitToWords(str, flag)));
+function kebabCase(str) {
+  return toLower(join('-', words(str)));
+}
+
+function trim$1(str) {
+  return replace(/\s+/g, ' ', str).trim();
 }
 
 function maskWordHelper(word, replacer, charLimit) {
@@ -282,4 +299,79 @@ function maskSentence({ sentence, replacer = '_', charLimit = 3, words = [] }) {
   };
 }
 
-export { between, camelCase, trim$1 as trim, count, distance, distanceGerman, glob, indent, kebabCase, maskSentence };
+function maskWords({ words, replacer = '_', charLimit = 3 }) {
+  const result = map(val => maskWordHelper(val, replacer, charLimit), split(' ', words));
+
+  return join(' ', result);
+}
+
+function redux(x) {
+  return compose(join('_'), map(toUpper), words)(x);
+}
+
+function removeIndent(str) {
+  return join('\n', map(val => val.trimLeft(), split('\n', str)));
+}
+
+function reverse$1(str) {
+
+  return str.split('').reverse().join('');
+}
+
+function seoTitle(str, limit = 3) {
+  const result = join(' ', map(val => {
+    if (val.length >= limit) {
+      return `${toUpper(head(val))}${toLower(tail(val))}`;
+    }
+
+    return val;
+  }, words(str)));
+
+  return `${toUpper(head(result))}${tail(result)}`;
+}
+
+const shuffleArr = arr => {
+  let counter = arr.length;
+  while (counter > 0) {
+    const index = Math.floor(Math.random() * counter);
+    counter--;
+    const temp = arr[counter];
+    arr[counter] = arr[index];
+    arr[index] = temp;
+  }
+
+  return arr;
+};
+
+function shuffle(str) {
+  return join('', shuffleArr(split('', str)));
+}
+
+function snakeCase(str) {
+  return toLower(join('_', words(str)));
+}
+
+const addSpaceAroundPunctuation$1 = sentence => sentence.replace(PUNCTUATIONS, match$$1 => ` ${match$$1} `);
+
+function splitSentence(sentence) {
+  return split(" ", trim$1(addSpaceAroundPunctuation$1(sentence)));
+}
+
+function stripPunctuation(str) {
+  return replace(PUNCTUATIONS, '', str);
+}
+
+function stripTags(str) {
+  return replace(/\s+/g, ' ', replace(HTML_TAGS, ' ', str)).trim();
+}
+
+function titleCase(str) {
+  return join(' ', map(val => `${toUpper(head(val))}${toLower(tail(val))}`, words(str)));
+}
+
+function words$1(str) {
+
+  return match(WORDS_EXTENDED, str);
+}
+
+export { between, camelCase, count, distance, distanceGerman, glob, indent, kebabCase, maskSentence, maskWords, redux, removeIndent, reverse$1 as reverse, seoTitle, shuffle, snakeCase, splitSentence, stripPunctuation, stripTags, titleCase, trim$1 as trim, words, words$1 as wordsX };
