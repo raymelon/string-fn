@@ -7,11 +7,9 @@
 	"module": "dist/stringFn.esm.js",
 	"scripts": {
 		"test": "jest __tests__/",
-		"dev": "jest test.js --watch",
 		"build": "rollup -c rollup.config.js",
 		"cover": "jest --coverage",
-		"docs": "docsify init ./docs",
-		"de": "git add . --all&&git commit -m update&&git push"
+		"docs": "docsify init ./docs"
 	},
 	"repository": {
 		"type": "git",
@@ -41,6 +39,6 @@
 		"rollup-plugin-node-resolve": "^3.0.0"
 	},
 	"dependencies": {
-		"rambda": "1.0.0"
+		"rambda": "https://github.com/selfrefactor/rambda#1.0.1"
 	}
 }
