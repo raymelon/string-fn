@@ -10,24 +10,28 @@ String manipulation library build on top of `Rambda`
 # Example
 
 ```
-const stringFn = require('string-fn')
-console.log(stringFn.camelCase('foo-bar-baz'))
+import { camelCase } from 'string-fn'
+console.log(camelCase('foo-bar-baz'))
 // => fooBarBaz
+```
+
+## Installation
+
+> Use one of the following commands for Webpack and Node.js usage:
+
+- I recommend bypassing NPM registry with `yarn add https://github.com/selfrefactor/string-fn#1.1.0`
+
+- Otherwise you can use **yarn add string-fn**
+
+> For browser usage(exported global is `StringFn`)
+
+```
+https://cdnjs.cloudflare.com/ajax/libs/string-fn/0.3.2/webVersion.js
 ```
 
 ## Benchmark
 
 ![Screen](/files/screen.png)
-
-## Installation
-
-- Use **yarn add string-fn** for Webpack and Node.js
-
-- For browser usage(exported global is `StringFn`)
-
-```
-https://cdnjs.cloudflare.com/ajax/libs/string-fn/0.3.2/webVersion.js
-```
 
 ## API
 
