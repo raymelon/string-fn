@@ -7,14 +7,14 @@ import {
   tail,
 } from 'rambda'
 
-import splitToWords from './splitToWords'
+import words from './words'
 
 export default function camelCase (str, flag = false) {
   const result = join(
     '',
     map(
       val => `${ toUpper(head(val)) }${ toLower(tail(val)) }`,
-      splitToWords(str)
+      words(str)
     )
   )
 

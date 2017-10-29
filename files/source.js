@@ -13,11 +13,3 @@ function splitSentence (sentence) {
     )
   )
 }
-
-function splitToWords (str, flag = false) {
-  const regex = flag ?
-    WORDS_EXTENDED :
-    WORDS
-
-  return R.match(regex, str)
-}

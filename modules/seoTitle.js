@@ -7,8 +7,7 @@ import {
   tail 
 } from 'rambda'
 
-import splitToWords from './splitToWords'
-
+import words from './words'
 export default function seoTitle (str, limit = 3) {
   const result = join(
     ' ',
@@ -20,7 +19,7 @@ export default function seoTitle (str, limit = 3) {
 
         return val
       },
-      splitToWords(str)
+      words(str)
     )
   )
 

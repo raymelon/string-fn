@@ -2,13 +2,13 @@ import {
   toLower,
   join,
 } from 'rambda'
-import splitToWords from './splitToWords'
+import words from './words'
 
-export default function snakeCase (str, flag = false) {
+export default function snakeCase (str) {
   return toLower(
     join(
       '_',
-      splitToWords(str, flag)
+      words(str)
     )
   )
 }

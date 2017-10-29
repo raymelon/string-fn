@@ -1,12 +1,12 @@
-import splitToWords from './splitToWords'
+import words from './words'
 import {
   toLower,
   join,
 } from 'rambda'
 
-export default function kebabCase (str, flag = false) {
+export default function kebabCase (str) {
   return toLower(join(
     '-',
-    splitToWords(str, flag)
+    words(str)
   ))
 }
