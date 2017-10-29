@@ -29,10 +29,6 @@ console.log(camelCase('foo-bar-baz'))
 https://cdnjs.cloudflare.com/ajax/libs/string-fn/0.3.2/webVersion.js
 ```
 
-## Benchmark
-
-![Screen](/files/screen.png)
-
 ## API
 
 #### between
