@@ -7,7 +7,7 @@ Status](https://travis-ci.org/selfrefactor/string-fn.svg?branch=master)](https:/
 
 String manipulation library build on top of `Rambda`
 
-# Example
+## Example
 
 ```
 import { camelCase } from 'string-fn'
