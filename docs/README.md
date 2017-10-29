@@ -10,8 +10,8 @@ String manipulation library build on top of `Rambda`
 # Example
 
 ```
-const stringFn = require("string-fn")
-console.log(stringFn.camelCase("foo-bar-baz"))
+const stringFn = require('string-fn')
+console.log(stringFn.camelCase('foo-bar-baz'))
 // => fooBarBaz
 ```
 
@@ -37,14 +37,14 @@ https://cdnjs.cloudflare.com/ajax/libs/string-fn/0.3.2/webVersion.js
 Returns substring of **str** placed between **left** and **right**
 
 ```
-stringFn.between("begin foobarbaz end", "foo", "baz")
-// => "bar"
+stringFn.between('begin foobarbaz end', 'foo', 'baz')
+// => 'bar'
 
-stringFn.between("begin foo   bar   baz end", "foo", "baz")
-// => "bar"
+stringFn.between('begin foo   bar   baz end', 'foo', 'baz')
+// => 'bar'
 
-stringFn.between("begin foo bar baz end", "q", "x")
-// => "begin foo bar baz end"
+stringFn.between('begin foo bar baz end', 'q', 'x')
+// => 'begin foo bar baz end'
 
 ```
 #### camelCase
@@ -53,20 +53,20 @@ stringFn.between("begin foo bar baz end", "q", "x")
 Returns camel case version of **str**.
 
 ```
-stringFn.camelCase("Foo-Bar")
-// => "fooBar"
+stringFn.camelCase('Foo-Bar')
+// => 'fooBar'
 
-stringFn.camelCase("--foo.bar")
-// => "fooBar"
+stringFn.camelCase('--foo.bar')
+// => 'fooBar'
 
-stringFn.camelCase("Foo-Bar")
-// => "fooBar"
+stringFn.camelCase('Foo-Bar')
+// => 'fooBar'
 
-stringFn.camelCase("foo bar BAZ")
-// => "fooBarBaz"
+stringFn.camelCase('foo bar BAZ')
+// => 'fooBarBaz'
 
-stringFn.camelCase("foo-bar-baz")
-// => "fooBarBaz"
+stringFn.camelCase('foo-bar-baz')
+// => 'fooBarBaz'
 ```
 
 #### count
@@ -75,13 +75,13 @@ stringFn.camelCase("foo-bar-baz")
 Count number of occurances of **substring** within **str**
 
 ```
-stringFn.count("fooBarfoo", "foo")
+stringFn.count('fooBarfoo', 'foo')
 // => 2
 
-stringFn.count("fooBarfoo", "baz")
+stringFn.count('fooBarfoo', 'baz')
 // => 0
 
-stringFn.count("foo1 Bar foo1 baz Foo1 foo1", "foo1")
+stringFn.count('foo1 Bar foo1 baz Foo1 foo1', 'foo1')
 // => 3
 ```
 
@@ -91,16 +91,16 @@ stringFn.count("foo1 Bar foo1 baz Foo1 foo1", "foo1")
 Calculates Levenshtein distance between **firstString** and **secondString**
 
 ```
-stringFn.distance("foobarbaz", "ffoobarbaz")
+stringFn.distance('foobarbaz', 'ffoobarbaz')
 // => 1
 
-stringFn.distance("foobarbaz", "foo")
+stringFn.distance('foobarbaz', 'foo')
 // => 6
 
-stringFn.distance("foo", "foobarbaz")
+stringFn.distance('foo', 'foobarbaz')
 // => 6
 
-stringFn.distance("foobarbaz", "foobarbaz")
+stringFn.distance('foobarbaz', 'foobarbaz')
 // => 0
 ```
 
@@ -110,19 +110,19 @@ stringFn.distance("foobarbaz", "foobarbaz")
 Calculates Levenshtein distance between normalized German strings
 
 ```
-stringFn.distanceGerman("foobarbaz", "ffoobarbaz")
+stringFn.distanceGerman('foobarbaz', 'ffoobarbaz')
 // => 1
 
-stringFn.distanceGerman("schön", "shön")
+stringFn.distanceGerman('schön', 'shön')
 // => 1
 
-stringFn.distanceGerman("Müde", "mude")
+stringFn.distanceGerman('Müde', 'mude')
 // => 0
 
-stringFn.distanceGerman("die Männer", "die manner")
+stringFn.distanceGerman('die Männer', 'die manner')
 // => 0
 
-stringFn.distanceGerman("der anlass", "der Anlaß")
+stringFn.distanceGerman('der anlass', 'der Anlaß')
 // => 0
 ```
 
@@ -138,16 +138,16 @@ Three types of valid glob rules:
 3. \*foo*
 
 ```
-stringFn.glob("/home/dev/foo.js", "*.js")
+stringFn.glob('/home/dev/foo.js', '*.js')
 // => true
 
-stringFn.glob("/home/dev/foo.js", "*.ts")
+stringFn.glob('/home/dev/foo.js', '*.ts')
 // => false
 
-stringFn.glob("/home/dev/foo.js", "/home/*")
+stringFn.glob('/home/dev/foo.js', '/home/*')
 // => true
 
-stringFn.glob("/home/dev/foo.js", "*/dev/foo*")
+stringFn.glob('/home/dev/foo.js', '*/dev/foo*')
 // => true
 ```
 
@@ -157,8 +157,8 @@ stringFn.glob("/home/dev/foo.js", "*/dev/foo*")
 Indent each line in **str** with **intentCount** spaces
 
 ```
-stringFn.indent("foo\nbar\nbaz", 4)
-// => "    foo\n    bar\n    baz"
+stringFn.indent('foo\nbar\nbaz', 4)
+// => '    foo\n    bar\n    baz'
 ```
 
 #### kebabCase
@@ -167,20 +167,20 @@ stringFn.indent("foo\nbar\nbaz", 4)
 Return kebab case version of **str**
 
 ```
-stringFn.kebabCase("fooBarBaz")
-// => "foo-bar-baz"
+stringFn.kebabCase('fooBarBaz')
+// => 'foo-bar-baz'
 
-stringFn.kebabCase("foo_bar_baz")
-// => "foo-bar-baz"
+stringFn.kebabCase('foo_bar_baz')
+// => 'foo-bar-baz'
 
-stringFn.kebabCase("Foo Bar BAZ")
-// => "foo-bar-baz"
+stringFn.kebabCase('Foo Bar BAZ')
+// => 'foo-bar-baz'
 
-stringFn.kebabCase("__FOO_BAR__")
-// => "foo-bar"
+stringFn.kebabCase('__FOO_BAR__')
+// => 'foo-bar'
 
-stringFn.kebabCase("Foo Bar BAZ")
-// => "foo-bar-baz"
+stringFn.kebabCase('Foo Bar BAZ')
+// => 'foo-bar-baz'
 ```
 
 #### maskSentence
@@ -188,17 +188,17 @@ stringFn.kebabCase("Foo Bar BAZ")
 ```
 maskSentence( {
   sentence: string,
-  replacer: string = "_",
+  replacer: string = '_',
   charLimit: number = 3,
   words: string[] = []
 } )
 ```
 
 ```
-const sentence = "it was, for what i need, good."
+const sentence = 'it was, for what i need, good.'
 const {hidden , visible} = stringFn.maskSentence({ sentence })
-// hidden => ["it", "was", ",", "for", "what", "i", "need", ",", "good", "."]
-// visible => ["i_", "w_s", ",", "f_r", "w__t", "i", "n__d", ",", "g__d", "."]
+// hidden => ['it', 'was', ',', 'for', 'what', 'i', 'need', ',', 'good', '.']
+// visible => ['i_', 'w_s', ',', 'f_r', 'w__t', 'i', 'n__d', ',', 'g__d', '.']
 ```
 Returns object with notation **{visible: Array<string>, hidden: Array<string>}**
 
@@ -213,11 +213,11 @@ Returns object with notation **{visible: Array<string>, hidden: Array<string>}**
 You can pass **words** array so the masking rule is applied only to members of
 **words**.
 ```
-const sentence = "it was good."
-const words = ["good"]
+const sentence = 'it was good.'
+const words = ['good']
 const {hidden, visible} = stringFn.maskSentence({ sentence, words })
-// hidden => ["it", "was", "good", "."]
-// visible => ["it", "was", "g__d", "."]
+// hidden => ['it', 'was', 'good', '.']
+// visible => ['it', 'was', 'g__d', '.']
 ```
 
 #### maskWords
@@ -225,20 +225,20 @@ const {hidden, visible} = stringFn.maskSentence({ sentence, words })
 ```
 maskWords({
   words:string,
-  replacer:string = "_",
+  replacer:string = '_',
   charLimit: number = 3
 })
 ```
 
 ```
-stringFn.maskWords({words:"James Brown"})
-// => "J___s B___n"
+stringFn.maskWords({words:'James Brown'})
+// => 'J___s B___n'
 
-stringFn.maskWords({words:"James"})
-// => "J___s"
+stringFn.maskWords({words:'James'})
+// => 'J___s'
 ```
 
-Returns string that is masked version of **words**
+It returns a string that is a masked version of **words**
 
 Each word of **words** is masked following the rules:
 
@@ -246,20 +246,29 @@ Each word of **words** is masked following the rules:
 
 - If word is shorter than **charLimit**, then each char from the tail is replaced with **replacer**
 
+#### redux
+> redux(str)
+
+It creates `Redux`-related string.
+```
+stringFn.redux('FooBarBaz')
+// => 'FOO_BAR_BAZ'
+```
+
 #### removeIndent
 > removeIndent(str)
 
 ```
-stringFn.removeIndent("    foo\n    bar\n    baz")
-// => "foo\nbar\nbaz"
+stringFn.removeIndent('    foo\n    bar\n    baz')
+// => 'foo\nbar\nbaz'
 ```
 
 #### reverse
 > reverse(str)
 
 ```
-stringFn.reverse("fooBarBaz")
-// => "zaBraBoof"
+stringFn.reverse('fooBarBaz')
+// => 'zaBraBoof'
 ```
 
 #### seoTitle
@@ -269,14 +278,14 @@ Capitalize each word of **str** as long as word's length is higher or equal to
 **limit**. First word is always capitalized.
 
 ```
-stringFn.seoTitle("in my time |,of dying")
-// => "In my Time of Dying"
+stringFn.seoTitle('in my time |,of dying')
+// => 'In my Time of Dying'
 
-stringFn.seoTitle("i got ants in my pants")
-// => "I Got Ants in my Pants"
+stringFn.seoTitle('i got ants in my pants')
+// => 'I Got Ants in my Pants'
 
-stringFn.seoTitle("i got ants in my pants", 2)
-// => "I Got Ants In My Pants"
+stringFn.seoTitle('i got ants in my pants', 2)
+// => 'I Got Ants In My Pants'
 ```
 
 #### shuffle
@@ -285,7 +294,7 @@ stringFn.seoTitle("i got ants in my pants", 2)
 Randomize **str** content
 
 ```
-stringFn.shuffle("fooBar") // => aforBo
+stringFn.shuffle('fooBar') // => aforBo
 ```
 
 #### snakeCase
@@ -294,24 +303,30 @@ stringFn.shuffle("fooBar") // => aforBo
 Returns snake case version of **str**
 
 ```
-stringFn.snakeCase("foo bar BAZ")
-// => "foo_bar_baz"
+stringFn.snakeCase('foo bar BAZ')
+// => 'foo_bar_baz'
+```
+
+### splitSentence
+
+> splitSentence(str)
+
+It generates arrays with all parts of the sentence `str`.
+
+```
+stringFn.snakeCase('I need, more.')
+// => ['I', 'need', ',', 'more', '.']
 ```
 
 #### stripPunctuation
 > stripPunctuation(str)
 
-Removes all the punctiation marks from **str**
+Removes all the punctuation marks from **str**
 
 ```
-stringFn.stripPunctuation("If my, wings should, fail me ...")
-// => "If my wings should fail me "
+stringFn.stripPunctuation('If my, wings should, fail me ...')
+// => 'If my wings should fail me '
 ```
-
-#### stripPunctuationX
-> stripPunctuationX(str)
-
-It is same as `stripPunctuation`, but for extended Latin languages(German, French, Finnish, etc.).
 
 #### stripTags
 > stripTags(str)
@@ -319,23 +334,8 @@ It is same as `stripPunctuation`, but for extended Latin languages(German, Frenc
 It removes Html tags from **str**.
 
 ```
-stringFn.stripTags("<p>foo <b>bar</b>   <hr/> baz</p>")
-// => "foo bar baz"
-```
-
-#### surround
-> surround(str, left, right)
-
-It returns **str** surrounded by **left** and **right**.
-
-If `right` is ommitted, then it is equal to `left`.
-
-```
-stringFn.surround("foo", "<br/>")
-// => "<br/>foo<br/>"
-
-stringFn.surround("foo", "<b>", "</b>")
-// => "<b>foo</b>"
+stringFn.stripTags('<p>foo <b>bar</b>   <hr/> baz</p>')
+// => 'foo bar baz'
 ```
 
 #### titleCase
@@ -344,8 +344,8 @@ stringFn.surround("foo", "<b>", "</b>")
 It returns title case version of **str**.
 
 ```
-stringFn.titleCase("foo bar BAZ")
-// => "Foo Bar Baz"
+stringFn.titleCase('foo bar BAZ')
+// => 'Foo Bar Baz'
 ```
 
 #### trim
@@ -354,25 +354,8 @@ stringFn.titleCase("foo bar BAZ")
 It trims **str** and turns multiple whitespace to single whitespace
 
 ```
-stringFn.trim("   foo  bar   baz   ")
-// => "foo bar baz"
-```
-
-#### truncate
-> truncate({str: string, limit: number, tail: string = "..."})
-
-Truncates **str** if its length is greater than **lengthLimit** by using **tail** if necessary.
-
-```
-const str = "dr strangelove or how i learned"
-stringFn.truncate({str:str, limit: 15})
-// => "dr strangelo..."
-
-stringFn.truncate({str: str, limit: 15, tail: " =>"})
-// => "dr strangelo =>"
-
-stringFn.truncate({str:str, limit: 20})
-// => "dr strangelove"
+stringFn.trim('   foo  bar   baz   ')
+// => 'foo bar baz'
 ```
 
 #### words
@@ -381,12 +364,12 @@ stringFn.truncate({str:str, limit: 20})
 It returns array with the words of **str**.
 
 ```
-stringFn.words("fooBarBaz")
-// => [ "foo", "Bar", "Baz" ]
+stringFn.words('fooBarBaz')
+// => [ 'foo', 'Bar', 'Baz' ]
 ```
 
 #### wordsX
 > wordsX(str)
 
-It is same as `stripPunctuation`, but for extended Latin languages(German, French, Finnish, etc.).
+It is same as `words`, but for extended Latin languages(German, French, Finnish, etc.).
 
