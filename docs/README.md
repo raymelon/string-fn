@@ -19,14 +19,14 @@ console.log(camelCase('foo-bar-baz'))
 
 > Use one of the following commands for Webpack and Node.js usage:
 
-- I recommend bypassing NPM registry with `yarn add https://github.com/selfrefactor/string-fn#1.1.0`
+- You can bypass NPM registry with `yarn add https://github.com/selfrefactor/string-fn#1.3.0`
 
 - Otherwise you can use **yarn add string-fn**
 
 > For browser usage(exported global is `StringFn`)
 
 ```
-https://cdnjs.cloudflare.com/ajax/libs/string-fn/0.3.2/webVersion.js
+https://cdnjs.cloudflare.com/ajax/libs/string-fn/1.2.0/webVersion.js
 ```
 
 ## API
@@ -265,14 +265,14 @@ Each word of **words** is masked following the rules:
 
 - If word is shorter than **charLimit**, then each char from the tail is replaced with **replacer**
 
-### redux
+### reduxCase
 
-> redux(str)
+> reduxCase(str)
 
 It creates string for dispatching `Redux` actions.
 
 ```
-stringFn.redux('FooBarBaz')
+stringFn.reduxCase('FooBarBaz')
 // => 'FOO_BAR_BAZ'
 ```
 
