@@ -309,7 +309,7 @@ function maskWords({ words, replacer = '_', charLimit = 3 }) {
   return join(' ', result);
 }
 
-function redux(x) {
+function reduxCase(x) {
   return compose(join('_'), map(toUpper), words)(x);
 }
 
@@ -388,7 +388,7 @@ exports.indent = indent;
 exports.kebabCase = kebabCase;
 exports.maskSentence = maskSentence;
 exports.maskWords = maskWords;
-exports.redux = redux;
+exports.reduxCase = reduxCase;
 exports.removeIndent = removeIndent;
 exports.reverse = reverse$1;
 exports.seoTitle = seoTitle;
