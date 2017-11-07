@@ -72,6 +72,17 @@ stringFn.camelCase('foo-bar-baz')
 // => 'fooBarBaz'
 ```
 
+### constantCase
+
+> constantCase(str)
+
+It converts string to constant case.
+
+```
+stringFn.constantCase('FooBarBaz')
+// => 'FOO_BAR_BAZ'
+```
+
 ### count
 
 > count(str, substring)
@@ -264,17 +275,6 @@ Each word of **words** is masked following the rules:
 - If word is longer than **charLimit**, then each char from the middle part is replaced with **replacer**
 
 - If word is shorter than **charLimit**, then each char from the tail is replaced with **replacer**
-
-### reduxCase
-
-> reduxCase(str)
-
-It creates string for dispatching `Redux` actions.
-
-```
-stringFn.reduxCase('FooBarBaz')
-// => 'FOO_BAR_BAZ'
-```
 
 ### removeIndent
 
