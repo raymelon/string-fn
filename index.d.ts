@@ -1,6 +1,6 @@
 export function camelCase(str: string): string
 export function kebabCase(str: string): string
-export function reduxCase(str: string): string
+export function constantCase(str: string): string
 export function removeIndent(str: string): string
 export function reverse(str: string): string
 export function shuffle(str: string): string

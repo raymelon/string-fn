@@ -6,7 +6,7 @@ import{
   map,
 } from 'rambda'
 
-export default function reduxCase(x){
+export default function constantCase(x){
   return compose(
     join('_'),
     map(toUpper),
