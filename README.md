@@ -19,14 +19,14 @@ console.log(camelCase('foo-bar-baz'))
 
 > Use one of the following commands for Webpack and Node.js usage:
 
-- You can bypass NPM registry with `yarn add https://github.com/selfrefactor/string-fn#1.3.0`
+- You can bypass NPM registry with `yarn add https://github.com/selfrefactor/string-fn#1.4.0`
 
 - Otherwise you can use **yarn add string-fn**
 
 > For browser usage(exported global is `StringFn`)
 
 ```
-https://cdnjs.cloudflare.com/ajax/libs/string-fn/1.2.0/webVersion.js
+https://cdnjs.cloudflare.com/ajax/libs/string-fn/1.4.0/webVersion.js
 ```
 
 ## API

@@ -305,7 +305,7 @@ function maskWords({ words, replacer = '_', charLimit = 3 }) {
   return join(' ', result);
 }
 
-function reduxCase(x) {
+function constantCase(x) {
   return compose(join('_'), map(toUpper), words)(x);
 }
 
@@ -374,4 +374,4 @@ function words$1(str) {
   return match(WORDS_EXTENDED, str);
 }
 
-export { between, camelCase, count, distance, distanceGerman, glob, indent, kebabCase, maskSentence, maskWords, reduxCase, removeIndent, reverse$1 as reverse, seoTitle, shuffle, snakeCase, splitSentence, stripPunctuation, stripTags, titleCase, trim$1 as trim, words, words$1 as wordsX };
+export { between, camelCase, count, distance, distanceGerman, glob, indent, kebabCase, maskSentence, maskWords, constantCase, removeIndent, reverse$1 as reverse, seoTitle, shuffle, snakeCase, splitSentence, stripPunctuation, stripTags, titleCase, trim$1 as trim, words, words$1 as wordsX };
