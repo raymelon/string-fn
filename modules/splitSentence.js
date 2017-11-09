@@ -1,18 +1,18 @@
 import {
-  split
+  split,
 } from 'rambda'
 import trim from './trim'
-import {PUNCTUATIONS} from './internals/constants'
+import { PUNCTUATIONS } from './internals/constants'
 
-const addSpaceAroundPunctuation = sentence => 
+const addSpaceAroundPunctuation = sentence =>
   sentence.replace(
-    PUNCTUATIONS, 
+    PUNCTUATIONS,
     match => ` ${ match } `
   )
 
-export default function splitSentence(sentence){
+export default function splitSentence (sentence) {
   return split(
-    " ",
+    ' ',
     trim(
       addSpaceAroundPunctuation(sentence)
     )

@@ -1,16 +1,16 @@
 import words from './words'
-import{
+import {
   compose,
   toUpper,
   join,
   map,
 } from 'rambda'
 
-export default function constantCase(x){
+export default function constantCase (x) {
   return compose(
     join('_'),
     map(toUpper),
     words
   )(x)
 }
- 
+

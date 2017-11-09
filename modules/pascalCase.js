@@ -10,7 +10,6 @@ import {
 import words from './words'
 
 export default function pascalCase (str) {
-  
   return join(
     '',
     map(

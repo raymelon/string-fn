@@ -1,6 +1,6 @@
 import {
   join,
-  split
+  split,
 } from 'rambda'
 
 const shuffleArr = arr => {

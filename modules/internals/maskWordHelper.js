@@ -1,12 +1,12 @@
 import {
   test,
   head,
-  last
+  last,
 } from 'rambda'
 
-import {PUNCTUATIONS} from './constants'
+import { PUNCTUATIONS } from './constants'
 
-export default function maskWordHelper(word, replacer, charLimit){
+export default function maskWordHelper (word, replacer, charLimit) {
   if (
     test(PUNCTUATIONS, word) ||
     word.length < 2

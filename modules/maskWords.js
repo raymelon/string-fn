@@ -1,5 +1,5 @@
 import maskWordHelper from './internals/maskWordHelper'
-import {split, join, map} from 'rambda'
+import { split, join, map } from 'rambda'
 
 export default function maskWords ({ words, replacer = '_', charLimit = 3 }) {
   const result = map(

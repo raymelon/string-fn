@@ -7,4 +7,3 @@ test('', () => {
   expect(result).toEqual(expectedResult)
 })
 
-

@@ -1,13 +1,13 @@
 import trim from './trim'
 import maskWordHelper from './internals/maskWordHelper'
-import {PUNCTUATIONS} from './internals/constants'
+import { PUNCTUATIONS } from './internals/constants'
 
 import {
   map,
-  split
+  split,
 } from 'rambda'
 
-const addSpaceAroundPunctuation = sentence => 
+const addSpaceAroundPunctuation = sentence =>
   sentence.replace(PUNCTUATIONS, x => ` ${ x } `)
 
 export default function maskSentence ({ sentence, replacer = '_', charLimit = 3, words = [] }) {

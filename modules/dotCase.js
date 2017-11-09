@@ -7,7 +7,6 @@ import {
 import words from './words'
 
 export default function camelCase (str) {
-  
   return join(
     '.',
     map(

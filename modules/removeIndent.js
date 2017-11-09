@@ -1,7 +1,7 @@
 import {
-  join, 
+  join,
   map,
-  split
+  split,
 } from 'rambda'
 
 export default function removeIndent (str) {

@@ -1,6 +1,6 @@
-import {HTML_TAGS} from './internals/constants'
+import { HTML_TAGS } from './internals/constants'
 import {
-  replace
+  replace,
 } from 'rambda'
 
 export default function stripTags (str) {

@@ -1,9 +1,9 @@
 import {
-  replace
+  replace,
 } from 'rambda'
 
 import {
-  PUNCTUATIONS
+  PUNCTUATIONS,
 } from './internals/constants'
 
 export default function stripPunctuation (str) {

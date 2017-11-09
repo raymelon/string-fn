@@ -1,10 +1,10 @@
-import{
+import {
   join,
   map,
   head,
   toUpper,
   toLower,
-  tail
+  tail,
 } from 'rambda'
 import words from './words'
 
