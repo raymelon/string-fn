@@ -9,14 +9,13 @@ import {
 
 import words from './words'
 
-export default function camelCase (str) {
-  const result = join(
+export default function pascalCase (str) {
+  
+  return join(
     '',
     map(
       val => `${ toUpper(head(val)) }${ toLower(tail(val)) }`,
       words(str)
     )
   )
-
-  return `${ toLower(head(result)) }${ tail(result) }`
 }
