@@ -164,7 +164,7 @@ function words(str) {
   return match(WORDS, str);
 }
 
-function camelCase(str, flag = false) {
+function camelCase(str) {
   const result = join('', map(val => `${toUpper(head(val))}${toLower(tail(val))}`, words(str)));
 
   return `${toLower(head(result))}${tail(result)}`;
@@ -257,6 +257,16 @@ function kebabCase(str) {
   return toLower(join('-', words(str)));
 }
 
+function camelCase$1(str) {
+
+  return join('.', map(toLower, words(str)));
+}
+
+function pascalCase(str) {
+
+  return join('', map(val => `${toUpper(head(val))}${toLower(tail(val))}`, words(str)));
+}
+
 function trim$1(str) {
   return replace(/\s+/g, ' ', str).trim();
 }
@@ -314,7 +324,6 @@ function removeIndent(str) {
 }
 
 function reverse$1(str) {
-
   return str.split('').reverse().join('');
 }
 
@@ -374,4 +383,4 @@ function words$1(str) {
   return match(WORDS_EXTENDED, str);
 }
 
-export { between, camelCase, count, distance, distanceGerman, glob, indent, kebabCase, maskSentence, maskWords, constantCase, removeIndent, reverse$1 as reverse, seoTitle, shuffle, snakeCase, splitSentence, stripPunctuation, stripTags, titleCase, trim$1 as trim, words, words$1 as wordsX };
+export { between, camelCase, count, distance, distanceGerman, glob, indent, kebabCase, camelCase$1 as dotCase, pascalCase, maskSentence, maskWords, constantCase, removeIndent, reverse$1 as reverse, seoTitle, shuffle, snakeCase, splitSentence, stripPunctuation, stripTags, titleCase, trim$1 as trim, words, words$1 as wordsX };

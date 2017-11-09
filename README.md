@@ -17,13 +17,9 @@ console.log(camelCase('foo-bar-baz'))
 
 ## Installation
 
-> Use one of the following commands for Webpack and Node.js usage:
+- Use **yarn add string-fn** for Webpack and Node.js usage:
 
-- You can bypass NPM registry with `yarn add https://github.com/selfrefactor/string-fn#1.4.0`
-
-- Otherwise you can use **yarn add string-fn**
-
-> For browser usage(exported global is `StringFn`)
+- For browser usage, the exported global is `StringFn` and the CDN link is the following:
 
 ```
 https://cdnjs.cloudflare.com/ajax/libs/string-fn/1.4.0/webVersion.js
@@ -35,7 +31,7 @@ https://cdnjs.cloudflare.com/ajax/libs/string-fn/1.4.0/webVersion.js
 
 > between(str, left, right)
 
-Returns substring of **str** placed between **left** and **right**
+It returns **str** substring found between **left** and **right** markers.
 
 ```
 stringFn.between('begin foobarbaz end', 'foo', 'baz')
@@ -51,9 +47,7 @@ stringFn.between('begin foo bar baz end', 'q', 'x')
 
 ### camelCase
 
-> camelCase(str)
-
-Returns camel case version of **str**.
+It converts a string to camel case string.
 
 ```
 stringFn.camelCase('Foo-Bar')
@@ -74,9 +68,7 @@ stringFn.camelCase('foo-bar-baz')
 
 ### constantCase
 
-> constantCase(str)
-
-It converts string to constant case.
+It converts a string to constant case string.
 
 ```
 stringFn.constantCase('FooBarBaz')
@@ -87,7 +79,7 @@ stringFn.constantCase('FooBarBaz')
 
 > count(str, substring)
 
-Count number of occurances of **substring** within **str**
+It counts number of occurances of **substring** within **str**.
 
 ```
 stringFn.count('fooBarfoo', 'foo')
@@ -104,7 +96,7 @@ stringFn.count('foo1 Bar foo1 baz Foo1 foo1', 'foo1')
 
 > distance(firstString, secondString)
 
-Calculates Levenshtein distance between **firstString** and **secondString**
+It calculates Levenshtein distance between **firstString** and **secondString**.
 
 ```
 stringFn.distance('foobarbaz', 'ffoobarbaz')
@@ -124,7 +116,7 @@ stringFn.distance('foobarbaz', 'foobarbaz')
 
 > distanceGerman(firstString, secondString)
 
-Calculates Levenshtein distance between normalized German strings
+It calculates Levenshtein distance between two normalized German strings.
 
 ```
 stringFn.distanceGerman('foobarbaz', 'ffoobarbaz')
@@ -141,6 +133,15 @@ stringFn.distanceGerman('die Männer', 'die manner')
 
 stringFn.distanceGerman('der anlass', 'der Anlaß')
 // => 0
+```
+
+### dotCase
+
+It converts a string to dot case string.
+
+```
+stringFn.dotCase('FooBarBAZ')
+// => 'foo.bar.baz'
 ```
 
 ### glob
@@ -173,7 +174,7 @@ stringFn.glob('/home/dev/foo.js', '*/dev/foo*')
 
 > indent(str:string, indentCount:number)
 
-Indent each line in **str** with **intentCount** spaces
+It indents each line in **str** with **intentCount** spaces.
 
 ```
 stringFn.indent('foo\nbar\nbaz', 4)
@@ -182,9 +183,7 @@ stringFn.indent('foo\nbar\nbaz', 4)
 
 ### kebabCase
 
-> kebabCase(str)
-
-Return kebab case version of **str**
+It converts a string to kebab case string.
 
 ```
 stringFn.kebabCase('fooBarBaz')
@@ -276,9 +275,16 @@ Each word of **words** is masked following the rules:
 
 - If word is shorter than **charLimit**, then each char from the tail is replaced with **replacer**
 
-### removeIndent
+### pascalCase
 
-> removeIndent(str)
+It converts a string to pascal case string.
+
+```
+stringFn.pascalCase('fooBarBAZ')
+// => 'FooBarBaz'
+```
+
+### removeIndent
 
 ```
 stringFn.removeIndent('    foo\n    bar\n    baz')
@@ -286,7 +292,6 @@ stringFn.removeIndent('    foo\n    bar\n    baz')
 ```
 
 ### reverse
-> reverse(str)
 
 ```
 stringFn.reverse('fooBarBaz')
@@ -313,19 +318,13 @@ stringFn.seoTitle('i got ants in my pants', 2)
 
 ### shuffle
 
-> shuffle(str)
-
-Randomize **str** content
-
 ```
 stringFn.shuffle('fooBar') // => aforBo
 ```
 
 ### snakeCase
 
-> snakeCase(str)
-
-Returns snake case version of **str**
+It converts a string to snake case string.
 
 ```
 stringFn.snakeCase('foo bar BAZ')
@@ -334,9 +333,7 @@ stringFn.snakeCase('foo bar BAZ')
 
 ### splitSentence
 
-> splitSentence(str)
-
-It generates arrays with all parts of the sentence `str`.
+It generates an array with all parts of the suplied string.
 
 ```
 stringFn.snakeCase('I need, more.')
@@ -345,9 +342,7 @@ stringFn.snakeCase('I need, more.')
 
 ### stripPunctuation
 
-> stripPunctuation(str)
-
-Removes all the punctuation marks from **str**
+It removes all the punctuation marks from **str**
 
 ```
 stringFn.stripPunctuation('If my, wings should, fail me ...')
@@ -356,9 +351,7 @@ stringFn.stripPunctuation('If my, wings should, fail me ...')
 
 ### stripTags
 
-> stripTags(str)
-
-It removes Html tags from **str**.
+It removes Html tags from the supplied string.
 
 ```
 stringFn.stripTags('<p>foo <b>bar</b>   <hr/> baz</p>')
@@ -367,9 +360,7 @@ stringFn.stripTags('<p>foo <b>bar</b>   <hr/> baz</p>')
 
 ### titleCase
 
-> titleCase(str)
-
-It returns title case version of **str**.
+It converts a string to title case string.
 
 ```
 stringFn.titleCase('foo bar BAZ')
@@ -380,7 +371,7 @@ stringFn.titleCase('foo bar BAZ')
 
 > trim(str)
 
-It trims **str** and turns multiple whitespace to single whitespace
+It trims **str** and turns multiple whitespace to single whitespace.
 
 ```
 stringFn.trim('   foo  bar   baz   ')
@@ -391,7 +382,7 @@ stringFn.trim('   foo  bar   baz   ')
 
 > words(str)
 
-It returns array with the words of **str**.
+It returns array with the words within **str**.
 
 ```
 stringFn.words('fooBarBaz')
