@@ -1,10 +1,10 @@
 {
 	"name": "string-fn",
 	"version": "1.5.0",
-	"typings": "index.d.ts",
+	"typings": "./index.d.ts",
 	"description": "String manipulation library",
-	"main": "dist/stringFn.cjs.js",
-	"module": "dist/stringFn.esm.js",
+	"main": "./dist/stringFn.cjs.js",
+	"module": "./dist/stringFn.esm.js",
 	"scripts": {
 		"test": "jest __tests__/",
 		"build": "rollup -c rollup.config.js",
