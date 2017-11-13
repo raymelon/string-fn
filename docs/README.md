@@ -1,5 +1,4 @@
-[![Build
-Status](https://travis-ci.org/selfrefactor/string-fn.svg?branch=master)](https://travis-ci.org/selfrefactor/string-fn)
+[![CircleCI](https://img.shields.io/circleci/project/github/selfrefactor/string-fn.svg)](https://circleci.com/gh/selfrefactor/string-fn)
 [![codecov](https://codecov.io/gh/selfrefactor/string-fn/branch/master/graph/badge.svg)](https://codecov.io/gh/selfrefactor/string-fn)
 [![CDNJS](https://img.shields.io/cdnjs/v/string-fn.svg)](https://cdnjs.com/libraries/string-fn)
 
