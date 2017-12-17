@@ -9,7 +9,7 @@ import { PUNCTUATIONS } from './constants'
 export default function maskWordHelper (word, replacer, charLimit) {
   if (
     test(PUNCTUATIONS, word) ||
-    word.length < 2
+    word.length <= 2
   ) {
     return word
   }

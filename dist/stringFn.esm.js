@@ -160,7 +160,6 @@ const PUNCTUATIONS = /[\u2000-\u206F\u2E00-\u2E7F\\'!"#$%&()*+,\-./:;<=>?@[\]^_`
 const HTML_TAGS = /<[^>]*>/g;
 
 function words(str) {
-
   return match(WORDS, str);
 }
 
@@ -258,12 +257,10 @@ function kebabCase(str) {
 }
 
 function camelCase$1(str) {
-
   return join('.', map(toLower, words(str)));
 }
 
 function pascalCase(str) {
-
   return join('', map(val => `${toUpper(head(val))}${toLower(tail(val))}`, words(str)));
 }
 
@@ -272,7 +269,7 @@ function trim$1(str) {
 }
 
 function maskWordHelper(word, replacer, charLimit) {
-  if (test(PUNCTUATIONS, word) || word.length < 2) {
+  if (test(PUNCTUATIONS, word) || word.length <= 2) {
     return word;
   }
 
@@ -363,7 +360,7 @@ function snakeCase(str) {
 const addSpaceAroundPunctuation$1 = sentence => sentence.replace(PUNCTUATIONS, match$$1 => ` ${match$$1} `);
 
 function splitSentence(sentence) {
-  return split(" ", trim$1(addSpaceAroundPunctuation$1(sentence)));
+  return split(' ', trim$1(addSpaceAroundPunctuation$1(sentence)));
 }
 
 function stripPunctuation(str) {
@@ -379,7 +376,6 @@ function titleCase(str) {
 }
 
 function words$1(str) {
-
   return match(WORDS_EXTENDED, str);
 }
 
