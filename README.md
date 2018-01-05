@@ -4,6 +4,8 @@
 
 # String-fn
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/selfrefactor/string-fn.svg)](https://greenkeeper.io/)
+
 String manipulation library build on top of `Rambda`
 
 ## Example
