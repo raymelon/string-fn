@@ -12,3 +12,9 @@ test('X', () => {
   expect(stringFn.distance('schönefeld', 'schonefeld')).toEqual(1)
   expect(stringFn.distance('schönefeld', 'schönefel')).toEqual(1)
 })
+
+test('with Bulgarian language', () => {
+  const x = 'Имаме неясни надежди, но ясни страхове.'
+  const y = 'Имам неясни надежди, но ясни страхове.'
+  expect(stringFn.distance(x, y)).toEqual(1)
+})

@@ -6,6 +6,7 @@
   "main": "./dist/stringFn.cjs.js",
   "module": "./dist/stringFn.esm.js",
   "scripts": {
+    "dev": "jest __tests__/distance.js --watch",
     "test": "jest __tests__/",
     "build": "rollup -c rollup.config.js",
     "cover": "jest --coverage",
@@ -39,6 +40,6 @@
     "rollup-plugin-node-resolve": "^3.0.0"
   },
   "dependencies": {
-    "rambda": "https://github.com/selfrefactor/rambda#1.0.1"
+    "rambda": "^1.0.9"
   }
 }

@@ -27,7 +27,7 @@ function mapObject(fn, obj) {
   const willReturn = {};
 
   for (const prop in obj) {
-    willReturn[prop] = fn(obj[prop]);
+    willReturn[prop] = fn(obj[prop], prop);
   }
 
   return willReturn;
@@ -159,7 +159,7 @@ function between(str, left, right) {
 }
 
 const WORDS = /[A-Z]?[a-z]+|[A-Z]+(?![a-z])+/g;
-const WORDS_EXTENDED = /[A-Z\xC0-\xD6\xD8-\xDE]?[a-z\xDF-\xF6\xF8-\xFF]+|[A-Z\xC0-\xD6\xD8-\xDE]+(?![a-z\xDF-\xF6\xF8-\xFF])/g;
+const WORDS_EXTENDED = /[A-Z\xC0-\xD6\xD8-\xDEА-Я]?[a-z\xDF-\xF6\xF8-\xFFа-я]+|[A-Z\xC0-\xD6\xD8-\xDE]+(?![a-z\xDF-\xF6\xF8-\xFF])/g;
 const PUNCTUATIONS = /[\u2000-\u206F\u2E00-\u2E7F\\'!"#$%&()*+,\-./:;<=>?@[\]^_`{|}~]/g;
 const HTML_TAGS = /<[^>]*>/g;
 
