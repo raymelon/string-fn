@@ -1,6 +1,6 @@
 {
   "name": "string-fn",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "typings": "./index.d.ts",
   "description": "String manipulation library",
   "main": "./dist/stringFn.cjs.js",
