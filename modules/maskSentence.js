@@ -1,6 +1,6 @@
 import trim from './trim'
 import maskWordHelper from './internals/maskWordHelper'
-import { PUNCTUATIONS } from './internals/constants'
+import { PUNCTUATIONSX } from './internals/constants'
 
 import {
   map,
@@ -8,8 +8,12 @@ import {
 } from 'rambda'
 
 const addSpaceAroundPunctuation = sentence =>
-  sentence.replace(PUNCTUATIONS, x => ` ${ x } `)
+  sentence.replace(PUNCTUATIONSX, x => ` ${ x } `)
 
+/**
+ * Use shorter version of PUNCTUATIONS so_
+ * cases `didn't` and `по-добри` be handled
+ */
 export default function maskSentence ({ sentence, replacer = '_', charLimit = 3, words = [] }) {
   sentence = trim(addSpaceAroundPunctuation(sentence))
 

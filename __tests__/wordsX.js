@@ -7,6 +7,13 @@ test('with Bulgarian language', () => {
   expect(result).toEqual(expectedResult)
 })
 
+test.skip('in Bulgarian language dash is part of the word', () => {
+  const result = stringFn.wordsX('Имаме по-ясни надежди, но ясни страхове.')
+  const expectedResult = [ 'Имаме', 'по-ясни', 'надежди', 'но', 'ясни', 'страхове']
+
+  expect(result).toEqual(expectedResult)
+})
+
 test('', () => {
   const result = stringFn.wordsX('fooBarBAZ')
   const expectedResult = [ 'foo', 'Bar', 'BAZ' ]

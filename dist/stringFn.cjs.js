@@ -160,8 +160,8 @@ function between(str, left, right) {
 
 const WORDS = /[A-Z]?[a-z]+|[A-Z]+(?![a-z])+/g;
 const WORDS_EXTENDED = /[A-Z\xC0-\xD6\xD8-\xDEА-Я]?[a-z\xDF-\xF6\xF8-\xFFа-я]+|[A-Z\xC0-\xD6\xD8-\xDE]+(?![a-z\xDF-\xF6\xF8-\xFF])/g;
-const PUNCTUATIONS = /[",\.\?]/g;
-
+const PUNCTUATIONSX = /[",\.\?]/g;
+const PUNCTUATIONS = /[\u2000-\u206F\u2E00-\u2E7F\\'!"#$%&()*+,\-./:;<=>?@[\]^_`{|}~]/g;
 const HTML_TAGS = /<[^>]*>/g;
 
 function words(str) {
@@ -274,7 +274,7 @@ function trim$1(str) {
 }
 
 function maskWordHelper(word, replacer, charLimit) {
-  if (test(PUNCTUATIONS, word) || word.length <= 2) {
+  if (test(PUNCTUATIONSX, word) || word.length <= 2) {
     return word;
   }
 
@@ -285,8 +285,12 @@ function maskWordHelper(word, replacer, charLimit) {
   return `${head(word)}${replacer.repeat(word.length - 2)}${last(word)}`;
 }
 
-const addSpaceAroundPunctuation = sentence => sentence.replace(PUNCTUATIONS, x => ` ${x} `);
+const addSpaceAroundPunctuation = sentence => sentence.replace(PUNCTUATIONSX, x => ` ${x} `);
 
+/**
+ * Use shorter version of PUNCTUATIONS so_
+ * cases `didn't` and `по-добри` be handled
+ */
 function maskSentence({ sentence, replacer = '_', charLimit = 3, words = [] }) {
   sentence = trim$1(addSpaceAroundPunctuation(sentence));
 

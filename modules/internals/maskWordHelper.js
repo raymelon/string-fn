@@ -4,11 +4,11 @@ import {
   last,
 } from 'rambda'
 
-import { PUNCTUATIONS } from './constants'
+import { PUNCTUATIONSX } from './constants'
 
 export default function maskWordHelper (word, replacer, charLimit) {
   if (
-    test(PUNCTUATIONS, word) ||
+    test(PUNCTUATIONSX, word) ||
     word.length <= 2
   ) {
     return word
